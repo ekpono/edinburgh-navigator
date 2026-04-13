@@ -14,6 +14,35 @@ const TABS = [
 
 export default function BudgetPage() {
   const [tab, setTab] = useState("tax");
+  const [incomeInput, setIncomeInput] = useState("");
+  const personalAllowance = 12570;
+  const taxBands = [
+    { width: 14876 - 12570, rate: 0.19, label: "Starter" },
+    { width: 26561 - 14876, rate: 0.2, label: "Basic" },
+    { width: 43662 - 26561, rate: 0.21, label: "Intermediate" },
+    { width: 75000 - 43662, rate: 0.42, label: "Higher" },
+    { width: 125140 - 75000, rate: 0.45, label: "Advanced" },
+    { width: Number.POSITIVE_INFINITY, rate: 0.48, label: "Top" },
+  ];
+
+  const annualIncome = Math.max(0, Number(incomeInput) || 0);
+  const taxableIncome = Math.max(0, annualIncome - personalAllowance);
+  let remaining = taxableIncome;
+  let totalTax = 0;
+  const bandBreakdown = taxBands.map((band) => {
+    const amount = Math.min(remaining, band.width);
+    const tax = amount * band.rate;
+    remaining = Math.max(0, remaining - amount);
+    totalTax += tax;
+    return { ...band, amount, tax };
+  });
+
+  const formatMoney = (value: number) =>
+    new Intl.NumberFormat("en-GB", {
+      style: "currency",
+      currency: "GBP",
+      maximumFractionDigits: 0,
+    }).format(value);
 
   return (
     <div className="min-h-full bg-slate-50">
@@ -85,6 +114,65 @@ export default function BudgetPage() {
                   ))}
                 </tbody>
               </table>
+            </div>
+
+            <div className="bg-white rounded-xl border border-slate-200 p-5">
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="font-bold text-slate-900 text-sm">Income Tax Estimate (Scotland)</h3>
+                  <p className="text-xs text-slate-500 mt-1">Simple estimate based on Scottish income tax bands. Excludes National Insurance, student loans, pension, and personal allowance taper above £100k.</p>
+                </div>
+                <div className="text-right">
+                  <div className="text-xs text-slate-500">Estimated annual tax</div>
+                  <div className="text-lg font-bold text-amber-700">{formatMoney(totalTax)}</div>
+                </div>
+              </div>
+              <div className="mt-4 grid sm:grid-cols-3 gap-3">
+                <div>
+                  <label className="text-xs font-semibold text-slate-700" htmlFor="income">
+                    Annual income before tax
+                  </label>
+                  <div className="mt-1 flex items-center gap-2">
+                    <span className="text-xs font-bold text-slate-500">£</span>
+                    <input
+                      id="income"
+                      type="number"
+                      inputMode="numeric"
+                      min={0}
+                      placeholder="35000"
+                      value={incomeInput}
+                      onChange={(event) => setIncomeInput(event.target.value)}
+                      className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-200"
+                    />
+                  </div>
+                </div>
+                <div className="bg-slate-50 border border-slate-200 rounded-lg p-3">
+                  <div className="text-xs text-slate-500">Taxable income</div>
+                  <div className="text-sm font-bold text-slate-900 mt-1">{formatMoney(taxableIncome)}</div>
+                  <div className="text-[11px] text-slate-400 mt-1">Personal allowance: {formatMoney(personalAllowance)}</div>
+                </div>
+                <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
+                  <div className="text-xs text-amber-800">Effective tax rate</div>
+                  <div className="text-sm font-bold text-amber-900 mt-1">
+                    {annualIncome > 0 ? `${((totalTax / annualIncome) * 100).toFixed(1)}%` : "0.0%"}
+                  </div>
+                  <div className="text-[11px] text-amber-700 mt-1">Approx monthly tax: {formatMoney(totalTax / 12)}</div>
+                </div>
+              </div>
+              <div className="mt-4 grid sm:grid-cols-3 gap-2">
+                {bandBreakdown
+                  .filter((band) => band.amount > 0)
+                  .map((band) => (
+                    <div key={band.label} className="border border-slate-100 rounded-lg p-3">
+                      <div className="text-xs font-semibold text-slate-700">{band.label} rate</div>
+                      <div className="text-xs text-slate-500 mt-1">Taxed: {formatMoney(band.amount)}</div>
+                      <div className="text-xs font-bold text-slate-900 mt-1">{formatMoney(band.tax)} at {(band.rate * 100).toFixed(0)}%</div>
+                    </div>
+                  ))}
+                {!bandBreakdown.some((band) => band.amount > 0) && (
+                  <div className="text-xs text-slate-500">Enter your annual income to see the band breakdown.</div>
+                )}
+              </div>
             </div>
 
             <div className="bg-white rounded-xl border border-slate-200 p-5">
