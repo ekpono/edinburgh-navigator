@@ -7,12 +7,28 @@ import ServiceCard from "@/components/service-card";
 import { SERVICE_CONTACTS } from "@/lib/edinburgh-data";
 
 const TABS = [
+  { id: "live",     label: "🔴 Live Departures" },
   { id: "overview", label: "Getting Around" },
-  { id: "buses", label: "Buses" },
-  { id: "tram", label: "Trams & Rail" },
-  { id: "cycling", label: "Cycling" },
-  { id: "airport", label: "Airport" },
-  { id: "parking", label: "Parking" },
+  { id: "buses",    label: "Buses" },
+  { id: "tram",     label: "Trams & Rail" },
+  { id: "cycling",  label: "Cycling" },
+  { id: "airport",  label: "Airport" },
+  { id: "parking",  label: "Parking" },
+];
+
+const MAJOR_STOPS = [
+  { name: "Princes Street (east)", code: "36237809", area: "City Centre" },
+  { name: "Waverley Bridge", code: "36232642", area: "City Centre" },
+  { name: "Haymarket Station", code: "36237836", area: "West End" },
+  { name: "Leith Walk (Elm Row)", code: "36237261", area: "Leith Walk" },
+  { name: "Royal Mile (St Giles)", code: "36232898", area: "Old Town" },
+  { name: "Grassmarket", code: "36232811", area: "Old Town" },
+  { name: "Morningside Road", code: "36239105", area: "Morningside" },
+  { name: "Portobello High St", code: "36242061", area: "Portobello" },
+  { name: "Ocean Terminal", code: "36238516", area: "Leith" },
+  { name: "Newington Road", code: "36241001", area: "Newington" },
+  { name: "Gorgie Road", code: "36237547", area: "Gorgie" },
+  { name: "St Andrew Square", code: "36237812", area: "City Centre" },
 ];
 
 const KEY_ROUTES = [
@@ -37,7 +53,8 @@ const TRAM_STOPS = [
 ];
 
 export default function TransportPage() {
-  const [tab, setTab] = useState("overview");
+  const [tab, setTab] = useState("live");
+  const [stopCode, setStopCode] = useState("");
   const keyServices = SERVICE_CONTACTS.filter((service) =>
     ["lothian-buses", "edinburgh-trams", "waverley-station"].includes(service.id)
   );
@@ -73,6 +90,123 @@ export default function TransportPage() {
         </div>
 
         <SectionTabs tabs={TABS} active={tab} onChange={setTab} />
+
+        {tab === "live" && (
+          <div className="space-y-4">
+            {/* Stop code lookup */}
+            <div className="bg-white rounded-2xl border border-slate-200 p-5">
+              <h2 className="font-bold text-slate-900 text-base mb-1">Live bus arrivals</h2>
+              <p className="text-xs text-slate-500 mb-4 leading-relaxed">
+                Enter your bus stop code (found on the yellow sign at the top of every bus stop pole) to see live departures. Or pick a major stop below.
+              </p>
+              <div className="flex gap-2">
+                <input
+                  type="text"
+                  value={stopCode}
+                  onChange={(e) => setStopCode(e.target.value.trim())}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && stopCode) {
+                      window.open(`https://lothianbuses.com/rtpi/?stopId=${stopCode}`, "_blank", "noreferrer");
+                    }
+                  }}
+                  placeholder="e.g. 36237809"
+                  className="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-orange-400 font-mono"
+                />
+                <button
+                  onClick={() => {
+                    if (stopCode) window.open(`https://lothianbuses.com/rtpi/?stopId=${stopCode}`, "_blank", "noreferrer");
+                  }}
+                  disabled={!stopCode}
+                  className="bg-orange-600 text-white text-sm font-bold px-4 py-2.5 rounded-xl hover:bg-orange-700 transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex-shrink-0"
+                >
+                  See arrivals →
+                </button>
+              </div>
+              <p className="text-xs text-slate-400 mt-2">
+                💡 You can also <strong>text your stop code to 87010</strong> to get live arrivals by SMS — works even without internet.
+              </p>
+            </div>
+
+            {/* Major stops quick-launch */}
+            <div className="bg-white rounded-xl border border-slate-200 p-5">
+              <h3 className="font-bold text-slate-900 text-sm mb-3">Major stops — tap to see live times</h3>
+              <div className="grid sm:grid-cols-2 gap-2">
+                {MAJOR_STOPS.map((stop) => (
+                  <a
+                    key={stop.code}
+                    href={`https://lothianbuses.com/rtpi/?stopId=${stop.code}`}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center justify-between p-3 border border-slate-200 rounded-xl hover:bg-orange-50 hover:border-orange-200 transition-colors group"
+                  >
+                    <div>
+                      <div className="text-xs font-semibold text-slate-900 group-hover:text-orange-700">{stop.name}</div>
+                      <div className="text-xs text-slate-400 mt-0.5">{stop.area} • Stop {stop.code}</div>
+                    </div>
+                    <span className="text-orange-500 font-bold text-xs ml-2 flex-shrink-0">Live →</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Service status */}
+            <div className="bg-white rounded-xl border border-slate-200 p-5">
+              <h3 className="font-bold text-slate-900 text-sm mb-3">Real-time service status</h3>
+              <div className="space-y-2">
+                {[
+                  { name: "Lothian Buses — service updates", url: "https://lothianbuses.com/service-updates/", desc: "Live disruptions, diversions, and cancellations for all Lothian routes", icon: "🚌", color: "orange" },
+                  { name: "Edinburgh Trams — live departures", url: "https://edinburghtrams.com/travel-information/tram-tracker", desc: "Real-time tram positions and departure board for all stops on the line", icon: "🚋", color: "sky" },
+                  { name: "ScotRail live departures", url: "https://www.scotrail.co.uk/plan-your-journey/live-rail-information", desc: "Live arrivals and departures at Waverley, Haymarket, and all Edinburgh stations", icon: "🚂", color: "blue" },
+                  { name: "National Rail live departures", url: "https://www.nationalrail.co.uk/", desc: "LNER, CrossCountry, and Avanti services — for London and long-distance travel", icon: "🚆", color: "red" },
+                  { name: "Traveline Scotland journey planner", url: "https://www.travelinescotland.com/", desc: "Multimodal planner — combines bus, tram, rail into one journey. Best for unfamiliar routes.", icon: "🗺️", color: "emerald" },
+                ].map((s) => (
+                  <a key={s.name} href={s.url} target="_blank" rel="noreferrer"
+                    className="flex items-start gap-3 p-3 border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors">
+                    <span className="text-xl flex-shrink-0">{s.icon}</span>
+                    <div className="flex-1 min-w-0">
+                      <div className="font-semibold text-slate-900 text-xs">{s.name}</div>
+                      <div className="text-xs text-slate-500 mt-0.5 leading-relaxed">{s.desc}</div>
+                    </div>
+                    <span className="text-orange-500 font-bold text-xs flex-shrink-0 ml-1">→</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Tram live tracker embed info */}
+            <div className="bg-sky-50 border border-sky-200 rounded-xl p-4">
+              <h3 className="font-bold text-sky-900 text-sm mb-2">🚋 Edinburgh Trams — Tram Tracker</h3>
+              <p className="text-xs text-sky-800 leading-relaxed mb-3">
+                Edinburgh Trams has a live "Tram Tracker" showing where each tram is right now and when it will reach each stop. Runs every 7–8 minutes at peak times, 12–15 minutes off-peak.
+              </p>
+              <a href="https://edinburghtrams.com/travel-information/tram-tracker"
+                target="_blank" rel="noreferrer"
+                className="inline-flex items-center gap-2 bg-sky-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl hover:bg-sky-700 transition-colors">
+                Open Tram Tracker →
+              </a>
+            </div>
+
+            {/* Quick fare reference */}
+            <div className="bg-slate-900 text-white rounded-xl p-5">
+              <h3 className="font-bold text-white text-sm mb-3">Quick fare reference</h3>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                {[
+                  { label: "Bus single", value: "£1.80" },
+                  { label: "Bus day ticket", value: "£4.50" },
+                  { label: "Weekly Ridacard", value: "£19.00" },
+                  { label: "Tram (city zone)", value: "£1.80" },
+                  { label: "Tram (airport)", value: "£8.50" },
+                  { label: "Under 22s / Over 60s", value: "FREE" },
+                ].map((f) => (
+                  <div key={f.label} className="bg-white/10 rounded-lg p-3 text-center">
+                    <div className="text-sm font-bold text-white">{f.value}</div>
+                    <div className="text-xs text-slate-400 mt-0.5">{f.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
 
         {tab === "overview" && (
           <div className="space-y-3">

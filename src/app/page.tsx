@@ -50,7 +50,11 @@ const SECTIONS = [
   { href: "/budget",        emoji: "💷", label: "Tax & Budget",      desc: "Council tax, reductions, help",        bg: "bg-amber-50",  border: "border-amber-200",  accent: "text-amber-600" },
   { href: "/visitor",       emoji: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", label: "Visitor Guide", desc: "Attractions, tips, day trips",          bg: "bg-rose-50",   border: "border-rose-200",   accent: "text-rose-600" },
   { href: "/entertainment",  emoji: "🎉", label: "Entertainment",     desc: "Pubs, restaurants, skating & fun",      bg: "bg-pink-50",   border: "border-pink-200",   accent: "text-pink-600" },
-  { href: "/faqs",          emoji: "❓", label: "Council FAQs",      desc: "Searchable answers to common questions",bg: "bg-slate-50",  border: "border-slate-200",  accent: "text-slate-600" },
+  { href: "/schools",        emoji: "🏫", label: "Schools",           desc: "Catchments, apply, ASN & free meals",   bg: "bg-blue-50",   border: "border-blue-200",   accent: "text-blue-600" },
+  { href: "/culture",        emoji: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", label: "Scottish Culture",  desc: "Glossary, customs & cultural calendar",  bg: "bg-indigo-50", border: "border-indigo-200", accent: "text-indigo-600" },
+  { href: "/childcare",      emoji: "👶", label: "Childcare",         desc: "Free hours, nurseries & family benefits",bg: "bg-rose-50",   border: "border-rose-200",   accent: "text-rose-600" },
+  { href: "/cost-of-living", emoji: "💰", label: "Cost of Living",    desc: "Rent, food, bills & budget tips",        bg: "bg-green-50",  border: "border-green-200",  accent: "text-green-600" },
+  { href: "/faqs",           emoji: "❓", label: "Council FAQs",      desc: "Searchable answers to common questions", bg: "bg-slate-50",  border: "border-slate-200",  accent: "text-slate-600" },
 ];
 
 export default function HomePage() {

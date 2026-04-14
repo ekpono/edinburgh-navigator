@@ -18,7 +18,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "/budget",        priority: 0.7,  changeFrequency: "monthly" as const },
     { url: "/faqs",          priority: 0.8,  changeFrequency: "monthly" as const },
     { url: "/visitor",       priority: 0.8,  changeFrequency: "monthly" as const },
-    { url: "/entertainment", priority: 0.8,  changeFrequency: "monthly" as const },
+    { url: "/entertainment",  priority: 0.8, changeFrequency: "monthly" as const },
+    { url: "/schools",        priority: 0.9, changeFrequency: "monthly" as const },
+    { url: "/culture",        priority: 0.7, changeFrequency: "monthly" as const },
+    { url: "/childcare",      priority: 0.8, changeFrequency: "monthly" as const },
+    { url: "/cost-of-living", priority: 0.9, changeFrequency: "monthly" as const },
   ];
 
   return routes.map(({ url, priority, changeFrequency }) => ({
