@@ -49,6 +49,7 @@ const SECTIONS = [
   { href: "/youth",         emoji: "🎓", label: "Youth & Rights",    desc: "Under-22 free buses, EMA, support",   bg: "bg-purple-50", border: "border-purple-200", accent: "text-purple-600" },
   { href: "/budget",        emoji: "💷", label: "Tax & Budget",      desc: "Council tax, reductions, help",        bg: "bg-amber-50",  border: "border-amber-200",  accent: "text-amber-600" },
   { href: "/visitor",       emoji: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", label: "Visitor Guide", desc: "Attractions, tips, day trips",          bg: "bg-rose-50",   border: "border-rose-200",   accent: "text-rose-600" },
+  { href: "/entertainment",  emoji: "🎉", label: "Entertainment",     desc: "Pubs, restaurants, skating & fun",      bg: "bg-pink-50",   border: "border-pink-200",   accent: "text-pink-600" },
   { href: "/faqs",          emoji: "❓", label: "Council FAQs",      desc: "Searchable answers to common questions",bg: "bg-slate-50",  border: "border-slate-200",  accent: "text-slate-600" },
 ];
 

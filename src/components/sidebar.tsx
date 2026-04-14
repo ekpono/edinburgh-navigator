@@ -18,6 +18,7 @@ const NAV_ITEMS = [
   { href: "/community", label: "Community Hub", emoji: "🤝" },
   { href: "/youth", label: "Youth & Rights", emoji: "🎓" },
   { href: "/budget", label: "Tax & Budget", emoji: "💷" },
+  { href: "/entertainment", label: "Entertainment", emoji: "🎉" },
   { href: "/faqs", label: "Council FAQs", emoji: "❓" },
   { href: "/visitor", label: "Visitor Guide", emoji: "🏴󠁧󠁢󠁳󠁣󠁴󠁿" },
 ];
