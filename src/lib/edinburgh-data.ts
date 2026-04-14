@@ -447,6 +447,15 @@ export const COMMUNITY_GROUPS = [
   { name: "Leith Decides", focus: "Participatory budgeting in Leith — residents vote on local spending", link: "https://www.edinburgh.gov.uk/participatory-budgeting" },
 ];
 
+export const CHARITY_ORGS = [
+  { name: "Cyrenians", focus: "Homelessness prevention, food, employability and community support", link: "https://www.cyrenians.scot/" },
+  { name: "Bethany Christian Trust", focus: "Homelessness support, housing, and wellbeing services", link: "https://www.bethanychristiantrust.com/" },
+  { name: "Edinburgh Food Project", focus: "Foodbanks and emergency food parcels across Edinburgh", link: "https://edinburghfoodproject.org/" },
+  { name: "Shelter Scotland", focus: "Housing advice, rights, and emergency support", link: "https://scotland.shelter.org.uk/" },
+  { name: "Age Scotland", focus: "Support, advice, and friendship for older people", link: "https://www.agescotland.org.uk/" },
+  { name: "CHAI (Community Help and Advice Initiative)", focus: "Advice, employability, and financial support services", link: "https://www.chaiedinburgh.org.uk/" },
+];
+
 // ─── Youth ────────────────────────────────────────────────────────────────────
 export const YOUTH_SERVICES = [
   { name: "Young Scot", focus: "National card giving discounts, opportunities and rights info for 11–26 year olds in Scotland", link: "https://youngscot.net/" },

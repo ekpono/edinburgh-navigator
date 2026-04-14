@@ -39,7 +39,6 @@ export function parseCouncilNews(html: string) {
 
 export async function fetchCouncilNews() {
   const response = await fetch(NEWS_URL, {
-    next: { revalidate: 3600 },
     headers: {
       "User-Agent": "Mozilla/5.0 (compatible; EdinburghNavigator/1.0)",
       "Accept-Language": "en-GB,en;q=0.9",

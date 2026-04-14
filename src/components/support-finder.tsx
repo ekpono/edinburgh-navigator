@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 
 type Message = {
@@ -28,12 +28,8 @@ export default function SupportFinder() {
   const [loading, setLoading] = useState(false);
   const [history, setHistory] = useState<HistoryItem[]>([]);
   const [started, setStarted] = useState(false);
-  const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, loading]);
 
   async function send(text: string) {
     const trimmed = text.trim();
@@ -93,7 +89,6 @@ export default function SupportFinder() {
           <div className="flex items-center gap-2">
             <div className="size-2 rounded-full bg-emerald-400 animate-pulse" />
             <h3 className="font-bold text-slate-900 text-base">AI Assistant</h3>
-            <span className="text-xs bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full">Powered by Gemini</span>
           </div>
           <p className="text-xs text-slate-500 mt-0.5">Ask anything about living in Edinburgh — housing, health, benefits, transport</p>
         </div>
@@ -140,7 +135,6 @@ export default function SupportFinder() {
               </div>
             </div>
           )}
-          <div ref={bottomRef} />
         </div>
       ) : (
         /* Welcome / suggestions */

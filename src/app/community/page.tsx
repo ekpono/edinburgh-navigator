@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
-import { COMMUNITY_GROUPS, SERVICE_CONTACTS } from "@/lib/edinburgh-data";
+import { CHARITY_ORGS, COMMUNITY_GROUPS, SERVICE_CONTACTS } from "@/lib/edinburgh-data";
 import PageHeader from "@/components/page-header";
 import SectionTabs from "@/components/section-tabs";
 import ServiceCard from "@/components/service-card";
@@ -64,6 +64,19 @@ export default function CommunityPage() {
                 <a href={g.link} target="_blank" rel="noreferrer" className="text-xs font-semibold text-teal-600 hover:underline mt-2 inline-block">Visit →</a>
               </div>
             ))}
+            <div className="bg-white rounded-xl border border-slate-200 p-4">
+              <h3 className="font-bold text-slate-900 text-sm mb-2">Charity Organisations in Edinburgh</h3>
+              <p className="text-xs text-slate-500">Support services, food, housing, and advice from local charities.</p>
+              <div className="mt-3 grid sm:grid-cols-2 gap-3">
+                {CHARITY_ORGS.map((org) => (
+                  <div key={org.name} className="border border-slate-100 rounded-lg p-3">
+                    <div className="text-xs font-semibold text-slate-900">{org.name}</div>
+                    <div className="text-xs text-slate-500 mt-1 leading-relaxed">{org.focus}</div>
+                    <a href={org.link} target="_blank" rel="noreferrer" className="text-xs font-semibold text-teal-600 hover:underline mt-2 inline-block">Visit →</a>
+                  </div>
+                ))}
+              </div>
+            </div>
             <div className="bg-teal-50 border border-teal-200 rounded-xl p-4">
               <strong className="text-sm text-teal-900">Community Councils</strong>
               <p className="text-xs text-teal-800 mt-1 leading-relaxed">Edinburgh has 18 community councils — the grassroots democratic link between residents and the City Council. They hold public meetings, consult on planning, and run local campaigns. Find yours at edinburgh.gov.uk/community-councils.</p>
