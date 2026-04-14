@@ -140,7 +140,7 @@ export default function VisitorPage() {
       <div className="p-5 w-full max-w-6xl mx-auto">
         <div className="bg-white rounded-2xl border border-slate-200 p-6 mb-5">
           <h1 className="text-2xl font-bold text-slate-900 mb-2">Visitor <span className="text-rose-500">Guide.</span></h1>
-          <p className="text-sm text-slate-600">Edinburgh — Scotland's capital, a UNESCO World Heritage city, and one of Europe's most beautiful and walkable cities. Here's everything you need to get the most from your visit.</p>
+          <p className="text-sm text-slate-600">Edinburgh - Scotland's capital, a UNESCO World Heritage city, and one of Europe's most beautiful and walkable cities. Here's everything you need to get the most from your visit.</p>
           <div className="mt-3 flex flex-wrap gap-2">
             {[
               { label: "🏰 UNESCO Heritage", note: "Old & New Towns" },
