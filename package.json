@@ -5,8 +5,6 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint",
     "pages:build": "next-on-pages && echo '_worker.js' > .vercel/output/static/.assetsignore",
     "pages:dev": "next-on-pages dev",
     "deploy": "npm run pages:build"
