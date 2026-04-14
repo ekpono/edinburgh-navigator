@@ -42,6 +42,7 @@ const SECTIONS = [
   { href: "/housing",       emoji: "🏘️", label: "Housing",          desc: "Tenancy law, deposits, eviction",      bg: "bg-blue-50",   border: "border-blue-200",   accent: "text-blue-600" },
   { href: "/health",        emoji: "🏥", label: "Health & NHS",      desc: "GP, prescriptions, mental health",     bg: "bg-emerald-50",border: "border-emerald-200",accent: "text-emerald-600" },
   { href: "/transport",     emoji: "🚌", label: "Transport",         desc: "Buses, trams, cycling, airport",       bg: "bg-orange-50", border: "border-orange-200", accent: "text-orange-600" },
+  { href: "/weather",       emoji: "🌦️", label: "Weather",          desc: "Live conditions and wind",             bg: "bg-sky-50",    border: "border-sky-200",    accent: "text-sky-600" },
   { href: "/employment",    emoji: "💼", label: "Employment",        desc: "Jobs, Scottish benefits, training",    bg: "bg-violet-50", border: "border-violet-200", accent: "text-violet-600" },
   { href: "/neighbourhoods",emoji: "🗺️", label: "Neighbourhoods",   desc: "Compare areas, rents, lifestyle",      bg: "bg-cyan-50",   border: "border-cyan-200",   accent: "text-cyan-600" },
   { href: "/environment",   emoji: "♻️", label: "Clean Edinburgh",  desc: "Bins, recycling, report problems",     bg: "bg-lime-50",   border: "border-lime-200",   accent: "text-lime-600" },

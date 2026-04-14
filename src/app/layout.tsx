@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/sidebar";
+import Sherlock from "@/components/sherlock";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
@@ -97,6 +98,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Sidebar />
           <main className="flex-1 overflow-y-auto min-h-full pt-14 md:pt-0">
             {children}
+            <Sherlock />
             <footer className="mt-10 border-t border-slate-200 bg-white">
               <div className="px-5 py-8">
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">

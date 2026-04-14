@@ -12,6 +12,7 @@ const NAV_ITEMS = [
   { href: "/health", label: "Health", emoji: "🏥" },
   { href: "/housing", label: "Housing", emoji: "🏘️" },
   { href: "/transport", label: "Transport", emoji: "🚌" },
+  { href: "/weather", label: "Weather", emoji: "🌦️" },
   { href: "/neighbourhoods", label: "Neighbourhoods", emoji: "🗺️" },
   { href: "/employment", label: "Employment", emoji: "💼" },
   { href: "/environment", label: "Clean Edinburgh", emoji: "♻️" },

@@ -2,7 +2,24 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
-const SYSTEM_PROMPT = `You are the Edinburgh Navigator assistant — a knowledgeable, friendly guide helping people living in or visiting Edinburgh, Scotland.
+// Simple in-memory rate limiter: 15 requests per 5 minutes per IP
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT = 15;
+const RATE_WINDOW_MS = 5 * 60 * 1000;
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_WINDOW_MS });
+    return false;
+  }
+  if (entry.count >= RATE_LIMIT) return true;
+  entry.count++;
+  return false;
+}
+
+const SYSTEM_PROMPT = `You are Sherlock — Edinburgh Navigator's AI assistant, a knowledgeable, friendly guide helping people living in or visiting Edinburgh, Scotland.
 
 
 
@@ -47,23 +64,45 @@ RESPONSE STYLE:
 - Format with short paragraphs, not bullet-heavy walls of text`;
 
 export async function POST(req: Request) {
+  // Rate limiting
+  const ip =
+    req.headers.get("cf-connecting-ip") ??
+    req.headers.get("x-forwarded-for")?.split(",")[0].trim() ??
+    "unknown";
+
+  if (isRateLimited(ip)) {
+    return Response.json(
+      { error: "Too many requests. Please wait a few minutes before asking again." },
+      { status: 429 }
+    );
+  }
+
   try {
-    const { message, history } = await req.json() as {
+    const { message, history, page } = await req.json() as {
       message: string;
       history: Array<{ role: "user" | "model"; parts: Array<{ text: string }> }>;
+      page?: string;
     };
 
     if (!message?.trim()) {
       return Response.json({ error: "No message provided" }, { status: 400 });
     }
 
+    // Build page-aware system prompt
+    const pageContext = page
+      ? `\n\nCURRENT PAGE: The user is on the "${page}" section of Edinburgh Navigator. Prioritise information relevant to that topic when it fits their question.`
+      : "";
+
     const model = genAI.getGenerativeModel({
       model: "gemini-2.5-flash-lite",
-      systemInstruction: SYSTEM_PROMPT,
+      systemInstruction: SYSTEM_PROMPT + pageContext,
     });
 
+    // Cap history to last 6 items (3 exchanges) to control costs
+    const cappedHistory = (history ?? []).slice(-6);
+
     const chat = model.startChat({
-      history: history ?? [],
+      history: cappedHistory,
       generationConfig: {
         maxOutputTokens: 512,
         temperature: 0.7,

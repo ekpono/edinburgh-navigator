@@ -10,6 +10,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "/housing",       priority: 0.9,  changeFrequency: "monthly" as const },
     { url: "/health",        priority: 0.9,  changeFrequency: "monthly" as const },
     { url: "/transport",     priority: 0.8,  changeFrequency: "monthly" as const },
+    { url: "/weather",       priority: 0.8,  changeFrequency: "daily" as const },
     { url: "/employment",    priority: 0.8,  changeFrequency: "monthly" as const },
     { url: "/neighbourhoods",priority: 0.8,  changeFrequency: "monthly" as const },
     { url: "/environment",   priority: 0.7,  changeFrequency: "monthly" as const },
