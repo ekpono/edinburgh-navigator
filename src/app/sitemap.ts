@@ -18,6 +18,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: "/budget",        priority: 0.7,  changeFrequency: "monthly" as const },
     { url: "/faqs",          priority: 0.8,  changeFrequency: "monthly" as const },
     { url: "/visitor",       priority: 0.8,  changeFrequency: "monthly" as const },
+
+
   ];
 
   return routes.map(({ url, priority, changeFrequency }) => ({
