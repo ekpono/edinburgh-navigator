@@ -1,6 +1,5 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
 export const alt = "Edinburgh Navigator — Your guide to Scotland's capital";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -56,7 +55,7 @@ export default function OgImage() {
             border: "1px solid rgba(255,255,255,0.12)",
             borderRadius: "100px",
             padding: "10px 24px",
-            width: "fit-content",
+            alignSelf: "flex-start",
           }}
         >
           <span style={{ fontSize: "22px" }}>🏰</span>
@@ -77,6 +76,8 @@ export default function OgImage() {
         <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
           <div
             style={{
+              display: "flex",
+              flexDirection: "column",
               fontSize: "72px",
               fontWeight: 800,
               color: "white",
@@ -84,8 +85,7 @@ export default function OgImage() {
               letterSpacing: "-0.02em",
             }}
           >
-            Edinburgh
-            <br />
+            <span>Edinburgh</span>
             <span style={{ color: "#38bdf8" }}>Navigator.</span>
           </div>
           <div

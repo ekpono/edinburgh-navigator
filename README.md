@@ -33,7 +33,7 @@ The homepage includes an AI-powered assistant (Claude) that can answer questions
 
 ## Tech stack
 
-- **Next.js 16** (App Router)
+- **Next.js 15.5** (App Router)
 - **React 19**
 - **Tailwind CSS v4**
 - **TypeScript 5**
