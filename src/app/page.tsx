@@ -79,7 +79,7 @@ export default function HomePage() {
 
           {/* Headline */}
           <h1 className="text-4xl sm:text-5xl font-bold text-white leading-[1.1] mb-3">
-            Your guide to<br />
+            Your guide t o<br />
             <span className="text-sky-400">Scotland's capital.</span>
           </h1>
           <p className="text-slate-400 text-sm sm:text-base mb-8 max-w-lg leading-relaxed">

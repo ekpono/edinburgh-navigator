@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "pages:build": "next-on-pages && echo '_worker.js' > .vercel/output/static/.assetsignore",
+    "pages:build": "next-on-pages && echo '_worker.js' > .vercel/output/static/.assetsignore && npx @cloudflare/next-on-pages",
     "pages:dev": "next-on-pages dev",
-    "deploy": "npm run pages:build"
+    "deploy": "npm run pages:build && wrangler pages deploy"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
