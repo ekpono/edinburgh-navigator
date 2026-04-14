@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "edinburgh-navigator",
+  "compatibility_date": "2026-01-11",
+  "assets": {
+    "directory": ".vercel/output/static"
+  },
+  "routes": [
+    {
+      "pattern": "www.edinburghnavigator.com",
+      "custom_domain": true
+    },
+    {
+      "pattern": "edinburghnavigator.com",
+      "custom_domain": true
+    }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}

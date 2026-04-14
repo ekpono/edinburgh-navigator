@@ -2,6 +2,7 @@ import { MetadataRoute } from "next";
 
 const BASE_URL = "https://edinburgh-navigator.vercel.app";
 
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     { url: "/",              priority: 1.0,  changeFrequency: "weekly" as const },
