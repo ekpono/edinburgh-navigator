@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/api/",
     },
-    sitemap: "https://edinburgh-navigator.vercel.app/sitemap.xml",
+    sitemap: "https://edinburghnavigator.com/sitemap.xml",
   };
 }

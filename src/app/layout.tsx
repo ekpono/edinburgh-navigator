@@ -7,7 +7,7 @@ import Sherlock from "@/components/sherlock";
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
-const BASE_URL = "https://edinburgh-navigator.vercel.app";
+const BASE_URL = "https://edinburghnavigator.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
