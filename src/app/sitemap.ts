@@ -4,6 +4,7 @@ const BASE_URL = "https://edinburghnavigator.com";
 
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  console.log("Generating sitemap...");
   const routes = [
     { url: "/",              priority: 1.0,  changeFrequency: "weekly" as const },
     { url: "/crisis",        priority: 0.9,  changeFrequency: "monthly" as const },
