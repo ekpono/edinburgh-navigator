@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-const BASE_URL = "https://edinburgh-navigator.vercel.app";
+const BASE_URL = "https://edinburghnavigator.com";
 
 
 export default function sitemap(): MetadataRoute.Sitemap {
