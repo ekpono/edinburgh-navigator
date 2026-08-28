@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { CRISIS_HELPLINES, CRISIS_ORGS, CRISIS_SCENARIOS, LEGAL_RIGHTS, SERVICE_CONTACTS } from "@/lib/edinburgh-data";
 import PageHeader from "@/components/page-header";
+import Band from "@/components/band";
+import PageIntro from "@/components/page-intro";
 import SectionTabs from "@/components/section-tabs";
 import ServiceCard from "@/components/service-card";
 
@@ -51,17 +53,17 @@ function RightsChecker() {
         <div className="text-xs text-slate-400 mb-2 font-medium">Question {step + 1} of 3</div>
         <div className="font-semibold text-slate-900 mb-4 text-sm leading-relaxed">{questions[step].q}</div>
         <div className="flex gap-2">
-          <button onClick={() => answer(true)} className="flex-1 py-2 bg-sky-600 text-white rounded-lg text-sm font-semibold">Yes</button>
+          <button onClick={() => answer(true)} className="flex-1 py-2 bg-slate-900 text-white rounded-lg text-sm font-semibold">Yes</button>
           <button onClick={() => answer(false)} className="flex-1 py-2 bg-slate-200 text-slate-700 rounded-lg text-sm font-semibold">No</button>
         </div>
       </div>
     );
   }
   const outcomes: Record<number, { title: string; body: string; color: string }> = {
-    10: { title: "Not currently homeless", body: "If you're not at immediate risk, you may still access housing advice. Contact Edinburgh Housing Advice Partnership (EHAP) on 0131 538 8222 for preventative advice.", color: "bg-blue-50 border-blue-200" },
+    10: { title: "Not currently homeless", body: "If you're not at immediate risk, you may still access housing advice. Contact Edinburgh Housing Advice Partnership (EHAP) on 0131 538 8222 for preventative advice.", color: "bg-emerald-50 border-emerald-200" },
     11: { title: "Limited local connection", body: "Even without a local connection, the council must assess you. If you are fleeing domestic abuse, local connection rules cannot be used against you. Contact Shelter Scotland: 0808 800 4444.", color: "bg-amber-50 border-amber-200" },
-    20: { title: "✅ You likely have Priority Need", body: "Edinburgh Council has a strong legal duty to provide you with temporary accommodation while they assess your case. Go to City Chambers (253 High Street) or call 0131 200 2000. Do not leave without getting written confirmation of their decision.", color: "bg-green-50 border-green-200" },
-    21: { title: "You will be assessed", body: "Even without automatic priority need, the council must assess your case. Attend in person if possible — City Chambers, 253 High Street, EH1 1YJ. Ask for a written decision so you can appeal if needed. Citizens Advice Edinburgh can support you: 0131 557 1500.", color: "bg-blue-50 border-blue-200" },
+    20: { title: "✅ You likely have Priority Need", body: "Edinburgh Council has a strong legal duty to provide you with temporary accommodation while they assess your case. Go to City Chambers (253 High Street) or call 0131 200 2000. Do not leave without getting written confirmation of their decision.", color: "bg-emerald-50 border-emerald-200" },
+    21: { title: "You will be assessed", body: "Even without automatic priority need, the council must assess your case. Attend in person if possible — City Chambers, 253 High Street, EH1 1YJ. Ask for a written decision so you can appeal if needed. Citizens Advice Edinburgh can support you: 0131 557 1500.", color: "bg-emerald-50 border-emerald-200" },
   };
   const outcome = outcomes[step];
   return (
@@ -80,14 +82,14 @@ export default function CrisisPage() {
   );
 
   return (
-    <div className="min-h-full bg-slate-50">
-      <PageHeader title="Crisis Support" subtitle="Real help, real numbers, real rights" />
+    <div className="min-h-full">
+      <PageHeader section="Urgent" title="Crisis Support" subtitle="Real help, real numbers, real rights" />
 
-      <div className="p-5 w-full max-w-6xl mx-auto">
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 mb-5">
-          <h1 className="text-2xl font-bold text-slate-900 mb-2">Crisis <span className="text-red-500">Support.</span></h1>
-          <p className="text-slate-600 text-sm">Real help, real numbers, real rights — for Edinburgh residents in crisis.</p>
-        </div>
+            <PageIntro label="In brief">
+        Real help, real numbers, real rights — for Edinburgh residents in crisis.
+      </PageIntro>
+      <Band label="Get help now" ground="paper">
+        
 
         <div className="grid gap-3 sm:grid-cols-2 mb-5">
           {keyServices.map((service) => (
@@ -109,10 +111,10 @@ export default function CrisisPage() {
               <HelplineCard title="Housing Emergency (24/7)" desc="Edinburgh Council out-of-hours housing emergency." num="0131 200 2000" urgent />
               <HelplineCard title="Shelter Scotland" desc="Free housing and homelessness advice." num="0808 800 4444" urgent />
             </div>
-            <div className="bg-sky-50 border border-sky-200 rounded-xl p-4">
+            <div className="border-l-2 border-emerald-700 bg-emerald-50 px-5 py-4 max-w-3xl">
               <strong className="text-sm text-slate-900">Edinburgh Housing Advice Partnership (EHAP)</strong>
-              <p className="text-xs text-slate-600 mt-1 leading-relaxed">Free housing advice and legal representation for Edinburgh residents. They can attend tribunal hearings with you.</p>
-              <div className="mt-2 font-mono font-bold text-sm text-sky-700">0131 538 8222</div>
+              <p className="text-xs text-slate-700 mt-1 leading-relaxed">Free housing advice and legal representation for Edinburgh residents. They can attend tribunal hearings with you.</p>
+              <div className="mt-2 font-mono font-bold text-sm text-emerald-700">0131 538 8222</div>
               <div className="text-xs text-slate-500">Mon–Fri 9am–5pm | Norton Park, 57 Albion Road, EH7 5QY</div>
             </div>
           </div>
@@ -162,8 +164,8 @@ export default function CrisisPage() {
             </div>
             {LEGAL_RIGHTS.map((r, i) => (
               <div key={i} className="bg-white rounded-xl border border-slate-200 p-4">
-                <strong className="text-sm text-sky-700">{r.title}</strong>
-                <p className="text-xs text-slate-600 mt-2 leading-relaxed">{r.body}</p>
+                <strong className="text-sm text-emerald-700">{r.title}</strong>
+                <p className="text-xs text-slate-700 mt-2 leading-relaxed">{r.body}</p>
               </div>
             ))}
           </div>
@@ -179,12 +181,12 @@ export default function CrisisPage() {
             {CRISIS_ORGS.map((org, i) => (
               <div key={i} className={`bg-white rounded-xl border p-4 ${org.urgent ? "border-red-200" : "border-slate-200"}`}>
                 <div className="font-bold text-slate-900 text-sm">{org.name}</div>
-                <div className="text-xs text-sky-600 font-medium mt-0.5">{org.focus}</div>
+                <div className="text-xs text-slate-700 font-medium mt-0.5">{org.focus}</div>
                 <div className="text-xs text-slate-500 mt-1">📍 {org.address}</div>
                 <div className="text-xs text-slate-500">🕐 {org.hours}</div>
                 <div className="flex items-center justify-between mt-2">
-                  <div className="font-mono font-bold text-sm text-slate-800">{org.num}</div>
-                  <a href={org.link} target="_blank" rel="noreferrer" className="text-xs font-semibold text-sky-600 hover:underline">Visit →</a>
+                  <div className="font-mono font-bold text-sm text-slate-900">{org.num}</div>
+                  <a href={org.link} target="_blank" rel="noreferrer" className="text-xs font-semibold text-slate-700 hover:underline">Visit →</a>
                 </div>
               </div>
             ))}
@@ -195,7 +197,7 @@ export default function CrisisPage() {
         {tab === "dangerous" && (
           <div className="space-y-4">
             <div className="bg-red-50 border border-red-200 rounded-xl p-5">
-              <strong className="text-sm text-red-900">Report a Dangerous or Unfit Property</strong>
+              <strong className="text-sm text-red-700">Report a Dangerous or Unfit Property</strong>
               <p className="text-xs text-slate-700 mt-2 leading-relaxed">
                 Your landlord must maintain the property to the Repairing Standard under the Housing (Scotland) Act 2006.
                 Report serious issues to Edinburgh Council's Private Sector Housing team.
@@ -213,13 +215,13 @@ export default function CrisisPage() {
               { title: "HMO Without a Licence", body: "If you share with 3+ unrelated people, your landlord must hold an HMO licence from Edinburgh Council. Check the public register at edinburgh.gov.uk/hmo-register. An unlicensed HMO is illegal — report it." },
             ].map((item, i) => (
               <div key={i} className="bg-white rounded-xl border border-slate-200 p-4">
-                <strong className="text-sm text-amber-700">⚠️ {item.title}</strong>
-                <p className="text-xs text-slate-600 mt-2 leading-relaxed">{item.body}</p>
+                <strong className="text-sm text-amber-800">⚠️ {item.title}</strong>
+                <p className="text-xs text-slate-700 mt-2 leading-relaxed">{item.body}</p>
               </div>
             ))}
           </div>
         )}
-      </div>
+      </Band>
     </div>
   );
 }

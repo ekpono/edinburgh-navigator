@@ -24,7 +24,6 @@ export interface Neighbourhood {
   area: AreaOfCity;
   description: string;
   longDescription: string;
-  color: string;
   textColor: string;
   emoji: string;
   postcode: string;
@@ -68,7 +67,6 @@ export const NEIGHBOURHOODS: Neighbourhood[] = [
       "Once a separate port town, Leith has reinvented itself as Edinburgh's most dynamic neighbourhood. The Shore is packed with award-winning restaurants, independent bars, and creative studios, all against a working waterfront backdrop.",
     longDescription:
       "Leith spent decades in Edinburgh's shadow, but that's long in the past. Today it's the city's most talked-about neighbourhood — a genuine mix of long-standing working-class community and an influx of young professionals, artists, and chefs who've made it Edinburgh's food and drink capital. The Shore strip alone has more Michelin-starred and critically acclaimed restaurants per square metre than almost anywhere in Scotland. Ocean Terminal brings major retail, and the Royal Yacht Britannia draws tourists year-round. Crucially, Leith feels real: it's not gentrified into blandness. Friday nights on Constitution Street buzz with a mix of regulars and newcomers. The Edinburgh Tram now runs directly to York Place in 10 minutes, making the commute entirely painless.",
-    color: "#0d9488",
     textColor: "#ffffff",
     emoji: "⚓",
     postcode: "EH6",
@@ -128,7 +126,6 @@ export const NEIGHBOURHOODS: Neighbourhood[] = [
       "A UNESCO World Heritage Site and one of Europe's finest examples of Georgian urban planning. New Town offers wide boulevards, elegant sandstone tenements, and some of Edinburgh's best independent shopping on Thistle Street and Multrees Walk.",
     longDescription:
       "Built between 1765 and 1850 as Edinburgh expanded beyond the cramped Old Town, the New Town is the city's architectural crown jewel. George Street, once the main commercial spine, is now lined with upscale bars and restaurants. Princes Street to the south offers department stores with unbeatable views of the Castle. Behind the main streets, quiet residential crescents and gardens feel almost suburban in their calm. Charlotte Square is one of the UK's finest public spaces. This is where Edinburgh's lawyers, consultants, and senior professionals tend to land. The trade-off: it's expensive, and the rental market is tight. But for central living with genuine grandeur, nothing else in Edinburgh competes.",
-    color: "#1e3a5f",
     textColor: "#ffffff",
     emoji: "🏛️",
     postcode: "EH2/EH3",
@@ -188,7 +185,6 @@ export const NEIGHBOURHOODS: Neighbourhood[] = [
       "The Royal Mile, Grassmarket, and Cowgate — living in Old Town puts you at the centre of everything Edinburgh is famous for. Expect stunning views, cobbled streets, and a buzzing bar scene. Also expect tourists. Many tourists.",
     longDescription:
       "Old Town is where Edinburgh began, and it remains the city's most dramatic neighbourhood. The medieval street plan — the original 'closes' and wynds running off the Royal Mile — is unlike anywhere else in Britain. Living here means Castle views from your window, a 2-minute walk to the Grassmarket's pubs, and everything the Fringe throws at you in August. The residential population is a mix of students, young professionals, and the occasional eccentric who's lived here for decades. It's genuinely vibrant year-round, not just during festivals. The Cowgate has Edinburgh's liveliest club scene. Victoria Street curves beautifully downhill to the Grassmarket. But it is noisy, sometimes raucous, and firmly tourist-territory in summer.",
-    color: "#7c3aed",
     textColor: "#ffffff",
     emoji: "🏰",
     postcode: "EH1",
@@ -247,7 +243,6 @@ export const NEIGHBOURHOODS: Neighbourhood[] = [
       "Stockbridge consistently tops 'best Edinburgh neighbourhood' lists and for good reason. It has the feel of a self-contained village — independent delis, bookshops, a Sunday market — while being a 15-minute walk from Princes Street.",
     longDescription:
       "If you could design the perfect urban neighbourhood, you'd probably end up with something like Stockbridge. The Sunday farmers' market on Saunders Street has become a genuine Edinburgh institution. The Water of Leith walkway starts here, giving access to beautiful green riverside walks. Raeburn Place has an excellent collection of independent shops, cafés, and a long-standing cinema. The area has strong community bonds — there are neighbourhood associations, local campaigns, and a sense that residents genuinely care about the place. Families and professionals dominate, which keeps it safe and pleasant without losing the warmth. The flip side: demand massively outstrips supply, rents have risen sharply, and finding a good flat requires patience.",
-    color: "#166534",
     textColor: "#ffffff",
     emoji: "🌿",
     postcode: "EH3/EH4",
@@ -306,7 +301,6 @@ export const NEIGHBOURHOODS: Neighbourhood[] = [
       "Morningside is Edinburgh's quintessential middle-class suburb, with a reputation for respectability that locals both mock and enjoy. Excellent schools, quiet streets, large Victorian houses, and some of the city's best coffee shops.",
     longDescription:
       "The butt of many Edinburgh jokes, Morningside is also quietly one of the best places to live in the city if you have a family. Morningside Road is a proper high street — not just coffee shops, but a post office, bank, library, butcher, and enough restaurants to make going elsewhere unnecessary. The residential streets are wide, leafy, and quiet. Gardens are large. The Victorian and Edwardian housing stock is well-maintained. Schools — particularly South Morningside Primary — are among the most sought-after in Edinburgh. It does skew older, and if you're in your twenties and want nightlife, it's not for you. But for families or those who appreciate calm and quality of life, Morningside delivers consistently.",
-    color: "#9f1239",
     textColor: "#ffffff",
     emoji: "🍂",
     postcode: "EH10",
@@ -365,7 +359,6 @@ export const NEIGHBOURHOODS: Neighbourhood[] = [
       "Bruntsfield sits between the Meadows and Morningside, combining the best of both. The Links are great for picnics and morning runs; Bruntsfield Place is lined with excellent independent cafés and restaurants. Popular with young professionals and couples.",
     longDescription:
       "Bruntsfield has a distinctive energy — it's social without being rowdy, independent without being hipster. Bruntsfield Place is one of Edinburgh's best café strips: Cafè Tartine, Lovecrumbs, and a string of others keep the pavement busy on weekend mornings. The Links — the historic golf course and park — means green space is literally on your doorstep. The Meadows, a few minutes' walk east, is where everyone congregates in summer. Residential streets off the main road are quieter and very pleasant. The demographic is mostly 25-40 year olds: young professionals, couples, and a smattering of academics from the nearby university. It's more affordable than Stockbridge but equally pleasant, which makes it one of Edinburgh's best value mid-tier options.",
-    color: "#ea580c",
     textColor: "#ffffff",
     emoji: "🌤️",
     postcode: "EH10",
@@ -424,7 +417,6 @@ export const NEIGHBOURHOODS: Neighbourhood[] = [
       "Dense Victorian tenements, the Meadows on the doorstep, and Edinburgh University around the corner. Marchmont is classic Edinburgh student territory — but the housing quality is genuinely good and it's increasingly popular with young professionals too.",
     longDescription:
       "Marchmont's identity is inseparable from Edinburgh University. The streets of Spottiswoode Road, Marchmont Road, and Roseneath Street have housed generations of students, and the local economy reflects it — cheap takeaways alongside excellent coffee shops, convenience stores alongside the odd interesting restaurant. But it's a mistake to dismiss it as purely student territory. The tenement flats are substantial — many have high ceilings, large rooms, and real period features. The Meadows is a 2-minute walk for most residents. Southside is immediately adjacent, adding further cafés and amenities. Young professionals who can't afford Bruntsfield or Stockbridge increasingly choose Marchmont and don't regret it.",
-    color: "#d97706",
     textColor: "#ffffff",
     emoji: "📚",
     postcode: "EH9",
@@ -482,7 +474,6 @@ export const NEIGHBOURHOODS: Neighbourhood[] = [
       "Newington (sometimes called the Southside) runs along Newington Road and Causewayside, just south of the university. It's affordable, diverse, and has Edinburgh's best selection of restaurants outside the city centre.",
     longDescription:
       "Newington is Edinburgh's most genuinely diverse area and its food scene reflects it — excellent Indian, Chinese, Turkish, Ethiopian, and Middle Eastern restaurants line Newington Road and its side streets. The area has strong student ties through its proximity to Edinburgh University and Summerhall (a thriving arts venue in a converted brewery), but it's also home to long-established families and a growing professional population. The Arthur's Seat end of Newington is particularly pleasant — greener, quieter, and with better access to Holyrood Park. The trade-off is that it can feel slightly scrappy around the main road, with traffic and the associated noise.",
-    color: "#6d28d9",
     textColor: "#ffffff",
     emoji: "🎭",
     postcode: "EH9",
@@ -540,7 +531,6 @@ export const NEIGHBOURHOODS: Neighbourhood[] = [
       "Scotland's answer to Brighton has Edinburgh's only sandy beach, a proper promenade, and a village high street independent shops. Families and creatives have been moving here for a decade, and the community is warm and distinctive.",
     longDescription:
       "Portobello is genuinely unique in Edinburgh — a seaside community with its own distinct identity that predates Edinburgh absorbing it. The beach is real sand, nearly 2 miles long, and draws swimmers, dog walkers, paddleboarders, and weekend barbecuers from across the city. The high street has resisted the homogenisation affecting most Scottish towns — you'll find a fishmonger, independent bookshop, vinyl record store, and excellent cafés rather than national chains. The indoor pool and Turkish baths are heritage assets worth knowing about. The trade-off is distance: it's 20 minutes on the bus to the centre, and the tram doesn't reach here. But for families especially, it offers a quality of life that's hard to find closer in at the same price point.",
-    color: "#0369a1",
     textColor: "#ffffff",
     emoji: "🏖️",
     postcode: "EH15",
@@ -599,7 +589,6 @@ export const NEIGHBOURHOODS: Neighbourhood[] = [
       "The junction at the heart of Edinburgh's southside. Tollcross is unfashionable in the best possible way — properly diverse, extremely well connected, and more affordable than its proximity to the centre suggests.",
     longDescription:
       "Tollcross isn't a place people brag about living in the way they do with Stockbridge or Bruntsfield, but it punches well above its weight. It's one of the most connected spots in Edinburgh — buses head in every direction, and the Meadows and Bruntsfield are a short walk south. The main road has a useful mix of supermarkets, takeaways, and practical shops. The King's Theatre brings a cultural anchor. The areas directly around Tollcross — Gilmore Place, Home Street, Viewforth — have pleasant residential streets that many people don't realise are part of the neighbourhood. For renters who want to be close to the action without paying Old Town or New Town prices, Tollcross is an excellent option.",
-    color: "#b45309",
     textColor: "#ffffff",
     emoji: "🔀",
     postcode: "EH3",
@@ -657,7 +646,6 @@ export const NEIGHBOURHOODS: Neighbourhood[] = [
       "Right next to the tram and train, Haymarket has been quietly improving for years. Property is cheaper than New Town, which is a 10-minute walk east, and the tram takes you to the airport in 35 minutes.",
     longDescription:
       "Haymarket's main selling point is brutal practicality: Edinburgh's second-busiest train station, tram connections to the airport and Leith, and a growing collection of restaurants and bars. The residential streets behind the station — Morrison Street, Dalry Road, Dewar Place — are unremarkable but perfectly pleasant. The neighbourhood lacks the character of Stockbridge or the grandeur of New Town, but makes up for it in connectivity and relative affordability. For professionals who travel frequently or commute, the combination of train, tram, and proximity to the city centre is very hard to beat. There's investment coming — development around the station is ongoing and the area is uptrending.",
-    color: "#334155",
     textColor: "#ffffff",
     emoji: "🚉",
     postcode: "EH12",
@@ -715,7 +703,6 @@ export const NEIGHBOURHOODS: Neighbourhood[] = [
       "Sandwiched between the glamour of New Town and the energy of Leith, Canonmills is an underrated spot that gets both right. The Water of Leith runs through it, there's a good village atmosphere, and it's far more affordable than its neighbours.",
     longDescription:
       "Canonmills doesn't have a loud identity, which is precisely why it works. It takes the best elements of its famous neighbours — New Town's quality housing stock, Leith's community feel, Stockbridge's independent shops — without the premium price tag attached to any of them. The Water of Leith walkway runs through, connecting you on foot to Stockbridge to the west and eventually Leith to the east. Eyre Place has some excellent restaurants. The area is mostly residential, mostly quiet, and mostly pleasant. For those priced out of Stockbridge but wanting something of the same feel, Canonmills is the obvious next step.",
-    color: "#0891b2",
     textColor: "#ffffff",
     emoji: "🌊",
     postcode: "EH3",
@@ -773,7 +760,6 @@ export const NEIGHBOURHOODS: Neighbourhood[] = [
       "One of Edinburgh's most photographed spots. Dean Village is a genuine medieval milling community tucked into the Water of Leith gorge, minutes from Princes Street. It's small, extraordinarily pretty, and very sought after.",
     longDescription:
       "Dean Village feels like a film set — a cluster of historic mill buildings beside a rushing river, surrounded by woodland, yet a 10-minute walk from Princes Street. It's one of Edinburgh's smallest and most exclusive neighbourhoods. Properties rarely come to market, and when they do, they command a premium. The Water of Leith walkway begins here, the Scottish National Gallery of Modern Art is nearby, and Stockbridge is a pleasant 5-minute stroll. It's so picturesque that it attracts photographers year-round, which can make summer mornings feel busy on the footbridge. But for those who can afford it, Dean Village offers a living experience that's almost without parallel in Scotland.",
-    color: "#be185d",
     textColor: "#ffffff",
     emoji: "🌸",
     postcode: "EH4",
@@ -830,7 +816,6 @@ export const NEIGHBOURHOODS: Neighbourhood[] = [
       "Home to Scotland's national rugby stadium and some of Edinburgh's most prestigious addresses. Murrayfield is large-house suburban territory — wide roads, big gardens, and excellent schools. Quiet except for six weekends a year.",
     longDescription:
       "Murrayfield is Edinburgh's premium western suburb, attracting senior professionals, established families, and those who want space above all. The housing stock is mostly large detached and semi-detached villas from the Edwardian and inter-war period — significant garden space, garages, and the kind of solidity that Edinburgh's tenement-heavy areas can't offer. The main downside is obvious: on international rugby days, the entire neighbourhood is gridlocked with 67,000 fans. The local primary school is excellent, and Carrick Knowe and Murrayfield Golf Club provide local green space. The tram at Murrayfield stops gives direct access to the city centre and airport.",
-    color: "#065f46",
     textColor: "#ffffff",
     emoji: "🏉",
     postcode: "EH12",
@@ -889,7 +874,6 @@ export const NEIGHBOURHOODS: Neighbourhood[] = [
       "Dalry and Gorgie form Edinburgh's most underrated affordable belt. Close to Haymarket and Tollcross, with good cycling routes to the centre, it's where people who know Edinburgh well choose to live when budgets are tight.",
     longDescription:
       "Dalry Road and Gorgie Road aren't glamorous, but they're real. The area has longstanding working-class roots and still feels like somewhere Edinburghers rather than the tourist industry live. Tynecastle Stadium (Hearts FC) is a neighbourhood landmark. The Union Canal towpath provides excellent cycling west towards Ratho and east towards the centre. There's good bus access in every direction. The housing is mostly smaller tenements — less grand than Victorian counterparts elsewhere but decent value, often well-maintained. As gentrification pressure pushes west from Tollcross, Dalry/Gorgie is the smart early mover's area.",
-    color: "#b91c1c",
     textColor: "#ffffff",
     emoji: "⚽",
     postcode: "EH11",
@@ -946,7 +930,6 @@ export const NEIGHBOURHOODS: Neighbourhood[] = [
       "Edinburgh Zoo is here, and it sets the neighbourhood's family-friendly tone. Corstorphine has a proper high street, good schools, and the tram to the city centre and airport. Comfortable, suburban, and entirely unpretentious.",
     longDescription:
       "Corstorphine is the kind of place people from Edinburgh proper can be slightly snobbish about, and the kind of place families who actually live here wouldn't swap. It functions as a self-contained suburban town within the city, with its own high street, library, doctors, and recreational options. Edinburgh Zoo, on the Corstorphine Hill edge, is a major employer and draws tourists without significantly affecting the residential streets. The tram provides direct links to the city centre (15 min) and the airport (10 min west). The school catchment area is strong. Housing is a mix of inter-war semi-detached and more modern suburban builds. If you're moving from a city like London or Manchester and want familiar suburban comfort, Corstorphine delivers it.",
-    color: "#4d7c0f",
     textColor: "#ffffff",
     emoji: "🦒",
     postcode: "EH12",
@@ -1005,7 +988,6 @@ export const NEIGHBOURHOODS: Neighbourhood[] = [
       "Granton is Edinburgh's most ambitious regeneration project — a former industrial harbour being transformed into a sustainable waterfront district. It's the most affordable area with sea views in Edinburgh, and the tram is coming.",
     longDescription:
       "Granton is where Edinburgh is going. The council's Waterfront Edinburgh project is one of Scotland's largest regeneration programmes, transforming 130 hectares of former gas works and industrial land into a new mixed-use quarter. Current residents get Edinburgh's most affordable rents with genuine waterfront access. The community is tight-knit — long-established residents who've lived here for decades alongside newer arrivals who spotted the opportunity. Granton Square has a small selection of local shops, and Granton Harbour is genuinely beautiful on a clear day looking across to Fife. The tram extension to Granton is planned, which will fundamentally change the area's commutability. If you can stomach being slightly ahead of the gentrification curve, this is Edinburgh's best value-for-money option.",
-    color: "#475569",
     textColor: "#ffffff",
     emoji: "🏗️",
     postcode: "EH5",
@@ -1063,7 +1045,6 @@ export const NEIGHBOURHOODS: Neighbourhood[] = [
       "Trinity is Edinburgh's understated north coastal suburb — a quiet grid of Victorian villas and tenements, good schools, and easy Firth of Forth access at Newhaven. Popular with families who know Edinburgh well enough to overlook its low profile.",
     longDescription:
       "Trinity sits between Granton's industrial edge and Leith's energy, and inherits the best of neither — which is actually a selling point. It's just quiet, pleasant, and residential in a way that's hard to find at this price point. The tram runs along Newhaven Road to the south, connecting to Leith and the city centre. Newhaven Harbour is a short walk, with a growing cluster of good restaurants. Trinity Academy is well-regarded. The streets are wide, tree-lined in places, and the housing is solid Victorian and inter-war stock. For families who've researched Edinburgh thoroughly, Trinity keeps appearing as an intelligent choice.",
-    color: "#0f766e",
     textColor: "#ffffff",
     emoji: "⛵",
     postcode: "EH5",
@@ -1121,7 +1102,6 @@ export const NEIGHBOURHOODS: Neighbourhood[] = [
       "Edinburgh's southern fringe — large gardens, good schools, and quick access to the A720 bypass. Liberton is unapologetically suburban and popular with families relocating from elsewhere in the UK who want more space for their money.",
     longDescription:
       "Liberton doesn't try to be fashionable, and its residents don't want it to be. The appeal is straightforward: larger-than-average housing, good schools, green space (including Liberton Golf Club and the Braid Hills nearby), and easy road access south out of the city. For families moving from cities with large suburban housing stock, Edinburgh's Victorian tenements can feel claustrophobic. Liberton offers an antidote. The high street has the basics. Buses run to the centre but the journey is 30-40 minutes. If you work from home several days a week and need to be in town occasionally, it's an excellent balance of space and access. The King's Buildings University campus is nearby, bringing some younger residents.",
-    color: "#3f6212",
     textColor: "#ffffff",
     emoji: "🏡",
     postcode: "EH16",
@@ -1178,7 +1158,6 @@ export const NEIGHBOURHOODS: Neighbourhood[] = [
       "Home to Edinburgh's new Meadowbank Sports Centre and a short walk from Holyrood Park, this east-end neighbourhood is on the up. Good transport east and west, more affordable than nearby Leith, and increasingly attractive to young professionals.",
     longDescription:
       "Meadowbank has historically sat in the gap between more celebrated neighbourhoods — not quite the centre, not quite Portobello. But its position is actually excellent: a straight run west to the city centre, east to Portobello and the coast, and south to Arthur's Seat and Holyrood. The new Meadowbank Sports Centre (rebuilt 2023) is a major asset. London Road has good transport links. The housing is an interesting mix — some Victorian tenements, some post-war housing, and newer builds near the sports centre. Rents are notably lower than Leith for comparable properties, which makes it an obvious call for value-hunters who've done their homework.",
-    color: "#a16207",
     textColor: "#ffffff",
     emoji: "🏃",
     postcode: "EH7",

@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import PageHeader from "@/components/page-header";
+import Band from "@/components/band";
+import PageIntro from "@/components/page-intro";
 import SectionTabs from "@/components/section-tabs";
 
 const TABS = [
@@ -89,21 +91,18 @@ export default function CulturePage() {
   );
 
   return (
-    <div className="min-h-full bg-slate-50">
+    <div className="min-h-full">
       <PageHeader
+        section="The city"
         title="Scottish Culture & Glossary"
         subtitle="Phrases, customs, festivals, and key differences from the rest of the UK"
       />
 
-      <div className="p-5 w-full max-w-6xl mx-auto">
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 mb-5">
-          <h1 className="text-2xl font-bold text-slate-900 mb-2">
-            Scottish <span className="text-tartan-500" style={{ color: "#005EB8" }}>Culture.</span>
-          </h1>
-          <p className="text-sm text-slate-600">
-            Whether you're moving from England, arriving from overseas, or just visiting — understanding Scottish culture, expressions, and customs will make Edinburgh feel like home much faster.
-          </p>
-        </div>
+            <PageIntro label="In brief">
+        Whether you're moving from England, arriving from overseas, or just visiting — understanding Scottish culture, expressions, and customs will make Edinburgh feel like home much faster.
+      </PageIntro>
+      <Band label="Background" ground="paper">
+        
 
         <SectionTabs tabs={TABS} active={tab} onChange={setTab} />
 
@@ -115,7 +114,7 @@ export default function CulturePage() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Search Scots words or meanings…"
-                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:border-transparent"
               />
             </div>
             <div className="grid sm:grid-cols-2 gap-3">
@@ -123,7 +122,7 @@ export default function CulturePage() {
                 <div key={g.word} className="bg-white rounded-xl border border-slate-200 p-4">
                   <div className="flex items-start justify-between gap-2">
                     <div className="font-bold text-slate-900 text-sm">{g.word}</div>
-                    <span className="text-xs bg-blue-50 text-blue-700 font-semibold px-2 py-0.5 rounded-full flex-shrink-0">{g.meaning}</span>
+                    <span className="text-xs bg-emerald-50 text-emerald-700 font-semibold px-2 py-0.5 rounded-full flex-shrink-0">{g.meaning}</span>
                   </div>
                   <div className="text-xs text-slate-500 mt-1.5 italic leading-relaxed">"{g.example}"</div>
                 </div>
@@ -132,8 +131,8 @@ export default function CulturePage() {
                 <div className="col-span-2 text-center text-sm text-slate-400 py-8">No matches found for "{search}"</div>
               )}
             </div>
-            <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
-              <p className="text-xs text-blue-800">
+            <div className="border-l-2 border-emerald-700 bg-emerald-50 px-5 py-4 max-w-3xl">
+              <p className="text-[0.9375rem] text-emerald-900 leading-relaxed">
                 <strong>Note on pronunciation:</strong> Ceilidh = "KAY-lee", Loch = "LOKH" (with a guttural ch), Auld = "awld" (old), Nae = "nay" (no). Scots is a distinct language — not just slang — with its own rich literary tradition going back 700+ years.
               </p>
             </div>
@@ -143,7 +142,7 @@ export default function CulturePage() {
         {tab === "calendar" && (
           <div className="space-y-3">
             <div className="bg-white rounded-xl border border-slate-200 p-4">
-              <p className="text-xs text-slate-600 leading-relaxed">Edinburgh's cultural calendar is one of the busiest in Europe. August especially transforms the city — population doubles, every space becomes a venue. Book accommodation and restaurants well in advance if visiting in August.</p>
+              <p className="text-xs text-slate-700 leading-relaxed">Edinburgh's cultural calendar is one of the busiest in Europe. August especially transforms the city — population doubles, every space becomes a venue. Book accommodation and restaurants well in advance if visiting in August.</p>
             </div>
             {CALENDAR.map((ev) => (
               <div key={ev.event} className="bg-white rounded-xl border border-slate-200 p-4">
@@ -152,11 +151,11 @@ export default function CulturePage() {
                     <div className="text-xs font-bold text-slate-400 uppercase tracking-wide">{ev.month} • {ev.date}</div>
                     <div className="font-bold text-slate-900 text-sm mt-0.5">{ev.event}</div>
                   </div>
-                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-full flex-shrink-0 ${ev.free === true ? "bg-emerald-100 text-emerald-700" : ev.free === false ? "bg-slate-100 text-slate-500" : "bg-amber-100 text-amber-700"}`}>
+                  <span className={`text-xs font-semibold px-2 py-0.5 rounded-full flex-shrink-0 ${ev.free === true ? "bg-emerald-50 text-emerald-700" : ev.free === false ? "bg-slate-100 text-slate-500" : "bg-amber-50 text-amber-800"}`}>
                     {ev.free === true ? "Many free" : ev.free === false ? "Ticketed" : "Mixed"}
                   </span>
                 </div>
-                <p className="text-xs text-slate-600 leading-relaxed">{ev.desc}</p>
+                <p className="text-xs text-slate-700 leading-relaxed">{ev.desc}</p>
               </div>
             ))}
           </div>
@@ -218,7 +217,7 @@ export default function CulturePage() {
                 <div key={item.title} className={`bg-white rounded-xl border border-slate-200 p-4`}>
                   <div className="text-2xl mb-2">{item.icon}</div>
                   <div className="font-bold text-slate-900 text-sm mb-1.5">{item.title}</div>
-                  <p className="text-xs text-slate-600 leading-relaxed">{item.body}</p>
+                  <p className="text-xs text-slate-700 leading-relaxed">{item.body}</p>
                 </div>
               ))}
             </div>
@@ -227,8 +226,8 @@ export default function CulturePage() {
 
         {tab === "differences" && (
           <div className="space-y-4">
-            <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
-              <p className="text-xs text-blue-800 leading-relaxed">
+            <div className="border-l-2 border-emerald-700 bg-emerald-50 px-5 py-4 max-w-3xl">
+              <p className="text-xs text-emerald-900 leading-relaxed">
                 <strong>Moving from England or Wales?</strong> Scotland has a separate legal system, NHS, education structure, and many benefits programmes. These are not cosmetic differences — they have real practical impact on your daily life.
               </p>
             </div>
@@ -240,7 +239,7 @@ export default function CulturePage() {
                   </div>
                   <div className="grid sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
                     <div className="p-4">
-                      <div className="text-xs font-bold text-blue-600 mb-1">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</div>
+                      <div className="text-xs font-bold text-slate-700 mb-1">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland</div>
                       <p className="text-xs text-slate-700 leading-relaxed">{d.scotland}</p>
                     </div>
                     <div className="p-4">
@@ -253,7 +252,7 @@ export default function CulturePage() {
             </div>
           </div>
         )}
-      </div>
+      </Band>
     </div>
   );
 }

@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { HOUSING_PLATFORMS, HOUSING_RENTAL_PRICES, TENANT_RIGHTS, TENANT_FAQS, TENANT_GUIDE_SECTIONS, SOCIAL_HOUSING, SERVICE_CONTACTS } from "@/lib/edinburgh-data";
 import PageHeader from "@/components/page-header";
+import Band from "@/components/band";
+import PageIntro from "@/components/page-intro";
 import SectionTabs from "@/components/section-tabs";
 import ServiceCard from "@/components/service-card";
 
@@ -23,17 +25,14 @@ export default function HousingPage() {
   );
 
   return (
-    <div className="min-h-full bg-slate-50">
-      <PageHeader title="Housing" subtitle="Scottish tenancy law — your rights are stronger here" />
+    <div className="min-h-full">
+      <PageHeader section="Home & health" title="Housing" subtitle="Scottish tenancy law — your rights are stronger here" />
 
-      <div className="p-5 w-full max-w-6xl mx-auto">
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 mb-5">
-          <h1 className="text-2xl font-bold text-slate-900 mb-2">Housing <span className="text-blue-500">in Edinburgh.</span></h1>
-          <p className="text-sm text-slate-600 mb-3">Edinburgh has one of the UK's most acute housing pressures — but also some of the strongest tenant protections in Britain.</p>
-          <div className="bg-blue-50 border border-blue-200 rounded-xl p-3">
-            <p className="text-xs text-blue-900"><strong>⚖️ Scotland is different:</strong> No-fault eviction is banned. No Section 21 exists here. The Private Residential Tenancy (PRT) gives you open-ended security of tenure. Your landlord cannot simply ask you to leave — they must prove a legal ground.</p>
-          </div>
-        </div>
+            <PageIntro label="In brief" note={<><strong>Scotland is different:</strong> No-fault eviction is banned. No Section 21 exists here. The Private Residential Tenancy (PRT) gives you open-ended security of tenure. Your landlord cannot simply ask you to leave — they must prove a legal ground.</>}>
+        Edinburgh has one of the UK's most acute housing pressures — but also some of the strongest tenant protections in Britain.
+      </PageIntro>
+      <Band label="Where to go" ground="paper">
+        
 
         <div className="grid gap-3 sm:grid-cols-2 mb-5">
           {keyServices.map((service) => (
@@ -57,8 +56,8 @@ export default function HousingPage() {
               </div>
               <p className="text-xs text-slate-400 mt-3">Ranges vary significantly by area. Leith and Dalry are more affordable; New Town and Stockbridge command the highest rents.</p>
             </div>
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
-              <strong className="text-xs text-amber-900">No letting agent fees in Scotland</strong>
+            <div className="border-l-2 border-amber-600 bg-amber-50 px-5 py-4 max-w-3xl">
+              <strong className="text-xs text-amber-800">No letting agent fees in Scotland</strong>
               <p className="text-xs text-amber-800 mt-1">It is illegal for letting agents in Scotland to charge tenants fees (Tenant Fees Act 2012). If charged, report to Trading Standards.</p>
             </div>
             <div className="grid sm:grid-cols-2 gap-3">
@@ -67,7 +66,7 @@ export default function HousingPage() {
                   className="bg-white rounded-xl border border-slate-200 p-4 hover:shadow-md hover:-translate-y-0.5 transition-all block">
                   <div className="font-bold text-slate-900 text-sm">{p.name}</div>
                   <div className="text-xs text-slate-500 mt-1 leading-relaxed">{p.desc}</div>
-                  <div className="text-xs font-semibold text-sky-600 mt-2">Browse listings →</div>
+                  <div className="text-xs font-semibold text-slate-700 mt-2">Browse listings →</div>
                 </a>
               ))}
             </div>
@@ -81,8 +80,8 @@ export default function HousingPage() {
                   "OpenRent (no agency fee) is growing fast in Edinburgh",
                   "Avoid any agent who asks for money before you view",
                 ].map((tip, i) => (
-                  <li key={i} className="text-xs text-slate-600 flex items-start gap-2">
-                    <span className="text-sky-500 flex-shrink-0 mt-0.5">→</span>{tip}
+                  <li key={i} className="text-xs text-slate-700 flex items-start gap-2">
+                    <span className="text-slate-700 flex-shrink-0 mt-0.5">→</span>{tip}
                   </li>
                 ))}
               </ul>
@@ -93,11 +92,11 @@ export default function HousingPage() {
         {tab === "guide" && (
           <div className="space-y-5">
             {/* Scotland vs England/Wales note */}
-            <div className="bg-amber-50 border border-amber-300 rounded-xl p-4">
+            <div className="bg-amber-50 border border-amber-400 rounded-xl p-4">
               <div className="flex items-start gap-3">
                 <span className="text-xl flex-shrink-0">⚠️</span>
                 <div>
-                  <strong className="text-sm text-amber-900">Scotland has its own tenancy law — different from England</strong>
+                  <strong className="text-sm text-amber-800">Scotland has its own tenancy law — different from England</strong>
                   <p className="text-xs text-amber-800 mt-1 leading-relaxed">
                     The PDF below covers the <strong>Renters' Rights Act 2026</strong>, which applies to <strong>England and Wales only</strong>.
                     Edinburgh tenants are protected by the <strong>Housing (Scotland) Act 2016</strong> and the <strong>Private Residential Tenancy (PRT)</strong>.
@@ -119,7 +118,7 @@ export default function HousingPage() {
                   href="/The_Renters__Rights_Act_Information_Sheet_2026.pdf"
                   target="_blank"
                   rel="noreferrer"
-                  className="text-xs font-bold text-sky-400 hover:underline flex-shrink-0 ml-3"
+                  className="text-xs font-bold text-slate-700 hover:underline flex-shrink-0 ml-3"
                 >
                   Open PDF ↗
                 </a>
@@ -131,7 +130,7 @@ export default function HousingPage() {
                 style={{ height: "520px" }}
               />
               <div className="px-5 py-3 bg-slate-50 border-t border-slate-200">
-                <p className="text-xs text-slate-500">Can't see the PDF? <a href="/The_Renters__Rights_Act_Information_Sheet_2026.pdf" target="_blank" rel="noreferrer" className="text-sky-600 font-semibold hover:underline">Download it directly →</a></p>
+                <p className="text-xs text-slate-500">Can't see the PDF? <a href="/The_Renters__Rights_Act_Information_Sheet_2026.pdf" target="_blank" rel="noreferrer" className="text-slate-700 font-semibold hover:underline">Download it directly →</a></p>
               </div>
             </div>
 
@@ -172,7 +171,7 @@ export default function HousingPage() {
                                     href={item.action.url}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="inline-block mt-3 text-xs font-bold text-sky-700 bg-sky-50 border border-sky-200 px-3 py-1.5 rounded-lg hover:bg-sky-100 transition-colors"
+                                    className="inline-block mt-3 text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-lg hover:bg-emerald-50 transition-colors"
                                   >
                                     {item.action.label} →
                                   </a>
@@ -207,9 +206,9 @@ export default function HousingPage() {
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-2.5">
                     <span className="size-4 rounded border border-white/20 bg-white/10 flex-shrink-0 mt-0.5" />
-                    <div className="text-xs text-slate-300 leading-relaxed">
+                    <div className="text-xs text-slate-200 leading-relaxed">
                       {item.url ? (
-                        <a href={item.url} target="_blank" rel="noreferrer" className="text-sky-400 hover:underline">{item.check}</a>
+                        <a href={item.url} target="_blank" rel="noreferrer" className="text-slate-700 hover:underline">{item.check}</a>
                       ) : item.check}
                     </div>
                   </div>
@@ -222,13 +221,13 @@ export default function HousingPage() {
               <div className="bg-white rounded-xl border border-slate-200 p-4">
                 <div className="font-bold text-slate-900 text-sm mb-1">🏠 Shelter Scotland</div>
                 <div className="text-xs text-slate-500 mb-2">Free housing advice for all tenants — eviction, repairs, deposits, rights.</div>
-                <div className="font-mono font-bold text-sm text-blue-700">0808 800 4444</div>
+                <div className="font-mono font-bold text-sm text-emerald-700">0808 800 4444</div>
                 <div className="text-xs text-slate-400">Free from any phone, Mon–Fri 9am–5pm</div>
               </div>
               <div className="bg-white rounded-xl border border-slate-200 p-4">
                 <div className="font-bold text-slate-900 text-sm mb-1">🤝 Citizens Advice Edinburgh</div>
                 <div className="text-xs text-slate-500 mb-2">Free advice on deposits, repairs, rent disputes, and tenant rights.</div>
-                <div className="font-mono font-bold text-sm text-blue-700">0131 557 1500</div>
+                <div className="font-mono font-bold text-sm text-emerald-700">0131 557 1500</div>
                 <div className="text-xs text-slate-400">Mon–Fri 9am–5pm</div>
               </div>
             </div>
@@ -240,25 +239,25 @@ export default function HousingPage() {
             <div className="bg-white rounded-xl border border-slate-200 p-4">
               <h3 className="font-bold text-slate-900 text-sm mb-3">Social Housing in Edinburgh</h3>
               <div className="bg-red-50 border border-red-200 rounded-lg p-3 mb-3">
-                <p className="text-xs text-red-800"><strong>28,400 households</strong> are currently on Edinburgh's housing waiting list. Average waits are long — but understanding the system helps you maximise your priority.</p>
+                <p className="text-[0.9375rem] text-emerald-900 leading-relaxed"><strong>28,400 households</strong> are currently on Edinburgh's housing waiting list. Average waits are long — but understanding the system helps you maximise your priority.</p>
               </div>
             </div>
             {SOCIAL_HOUSING.map((item, i) => (
               <div key={i} className="bg-white rounded-xl border border-slate-200 p-4">
-                <strong className="text-sm text-sky-700">{item.title}</strong>
-                <p className="text-xs text-slate-600 mt-2 leading-relaxed">{item.body}</p>
+                <strong className="text-sm text-emerald-700">{item.title}</strong>
+                <p className="text-xs text-slate-700 mt-2 leading-relaxed">{item.body}</p>
               </div>
             ))}
             <div className="bg-white rounded-xl border border-slate-200 p-4">
               <strong className="text-sm text-slate-900">Housing Associations in Edinburgh</strong>
               <div className="mt-2 space-y-1.5">
                 {["Dunedin Canmore Housing", "Castle Rock Edinvar", "Link Housing", "Hillcrest Housing", "Wheatley Group (includes Cube)", "Places for People Scotland"].map((ha) => (
-                  <div key={ha} className="text-xs text-slate-600 flex items-center gap-2">
+                  <div key={ha} className="text-xs text-slate-700 flex items-center gap-2">
                     <span className="size-1.5 rounded-full bg-slate-400 flex-shrink-0" />{ha}
                   </div>
                 ))}
               </div>
-              <a href="https://www.edinburgh.gov.uk/housing" target="_blank" rel="noreferrer" className="inline-block mt-3 text-xs font-bold text-sky-600 hover:underline">Apply — edinburgh.gov.uk/housing →</a>
+              <a href="https://www.edinburgh.gov.uk/housing" target="_blank" rel="noreferrer" className="inline-block mt-3 text-xs font-bold text-slate-700 hover:underline">Apply — edinburgh.gov.uk/housing →</a>
             </div>
           </div>
         )}
@@ -271,13 +270,13 @@ export default function HousingPage() {
             </div>
             <div className="bg-slate-50 border border-slate-200 rounded-xl p-4">
               <strong className="text-sm text-slate-900">Official Renters' Rights Act information sheet (2026)</strong>
-              <p className="text-xs text-slate-600 mt-2 leading-relaxed">UK Government overview of the Renters' Rights Act. Scotland has its own tenancy law, but this is useful background for reforms and terminology.</p>
-              <a href="https://assets.publishing.service.gov.uk/media/69bc04b8f7b1c24d8e23ce60/The_Renters__Rights_Act_Information_Sheet_2026.pdf" target="_blank" rel="noreferrer" className="inline-block mt-3 text-xs font-bold text-sky-600 hover:underline">Read the information sheet (PDF) →</a>
+              <p className="text-xs text-slate-700 mt-2 leading-relaxed">UK Government overview of the Renters' Rights Act. Scotland has its own tenancy law, but this is useful background for reforms and terminology.</p>
+              <a href="https://assets.publishing.service.gov.uk/media/69bc04b8f7b1c24d8e23ce60/The_Renters__Rights_Act_Information_Sheet_2026.pdf" target="_blank" rel="noreferrer" className="inline-block mt-3 text-xs font-bold text-slate-700 hover:underline">Read the information sheet (PDF) →</a>
             </div>
             {TENANT_RIGHTS.map((r, i) => (
               <div key={i} className="bg-white rounded-xl border border-slate-200 p-4">
-                <strong className="text-sm text-sky-700">{r.title}</strong>
-                <p className="text-xs text-slate-600 mt-2 leading-relaxed">{r.body}</p>
+                <strong className="text-sm text-emerald-700">{r.title}</strong>
+                <p className="text-xs text-slate-700 mt-2 leading-relaxed">{r.body}</p>
               </div>
             ))}
             <div className="bg-white rounded-xl border border-slate-200 p-4">
@@ -286,23 +285,23 @@ export default function HousingPage() {
                 {TENANT_FAQS.map((faq, i) => (
                   <div key={i} className="border border-slate-100 rounded-lg p-3">
                     <div className="text-xs font-semibold text-slate-900">{faq.q}</div>
-                    <div className="text-xs text-slate-600 mt-1 leading-relaxed">{faq.a}</div>
+                    <div className="text-xs text-slate-700 mt-1 leading-relaxed">{faq.a}</div>
                   </div>
                 ))}
               </div>
             </div>
             <div className="bg-slate-900 text-white rounded-xl p-4">
               <strong className="text-sm">Deposit protection — check yours now</strong>
-              <p className="text-xs text-slate-300 mt-1">Your deposit must be in one of: SafeDeposits Scotland, Letting Protection Service Scotland, or mydeposits Scotland. If not, you can claim up to 3× the deposit.</p>
-              <a href="https://www.safedepositsscotland.com/" target="_blank" rel="noreferrer" className="inline-block mt-2 text-xs font-bold text-sky-400 hover:underline">Check SafeDeposits Scotland →</a>
+              <p className="text-xs text-slate-200 mt-1">Your deposit must be in one of: SafeDeposits Scotland, Letting Protection Service Scotland, or mydeposits Scotland. If not, you can claim up to 3× the deposit.</p>
+              <a href="https://www.safedepositsscotland.com/" target="_blank" rel="noreferrer" className="inline-block mt-2 text-xs font-bold text-slate-700 hover:underline">Check SafeDeposits Scotland →</a>
             </div>
           </div>
         )}
 
         {tab === "eviction" && (
           <div className="space-y-4">
-            <div className="bg-amber-50 border border-amber-300 rounded-xl p-5">
-              <strong className="text-sm text-amber-900">⚖️ Key fact: No-fault eviction is banned in Scotland</strong>
+            <div className="bg-amber-50 border border-amber-400 rounded-xl p-5">
+              <strong className="text-sm text-amber-800">⚖️ Key fact: No-fault eviction is banned in Scotland</strong>
               <p className="text-xs text-amber-800 mt-2 leading-relaxed">Your landlord cannot evict you simply because they want their property back. They must prove one of 18 legal grounds AND apply to the First-tier Tribunal. This is completely different from England's Section 21.</p>
             </div>
             {[
@@ -313,7 +312,7 @@ export default function HousingPage() {
             ].map((item, i) => (
               <div key={i} className="bg-white rounded-xl border border-slate-200 p-4">
                 <strong className="text-sm text-slate-900">{item.title}</strong>
-                <p className="text-xs text-slate-600 mt-2 leading-relaxed">{item.body}</p>
+                <p className="text-xs text-slate-700 mt-2 leading-relaxed">{item.body}</p>
               </div>
             ))}
             <div className="grid sm:grid-cols-2 gap-3">
@@ -325,7 +324,7 @@ export default function HousingPage() {
               ].map((org) => (
                 <div key={org.name} className="bg-white rounded-xl border border-slate-200 p-3">
                   <div className="font-bold text-slate-900 text-xs">{org.name}</div>
-                  <div className="font-mono text-sm font-bold text-sky-700 mt-1">{org.num}</div>
+                  <div className="font-mono text-sm font-bold text-emerald-700 mt-1">{org.num}</div>
                 </div>
               ))}
             </div>
@@ -335,8 +334,8 @@ export default function HousingPage() {
         {tab === "emergency" && (
           <div className="space-y-4">
             <div className="bg-red-50 border border-red-200 rounded-xl p-5">
-              <h3 className="font-bold text-red-900 text-sm mb-2">🚨 Emergency Housing — Tonight</h3>
-              <p className="text-xs text-red-800 leading-relaxed mb-3">If you have nowhere safe to sleep tonight, Edinburgh Council has a 24/7 housing emergency line. You have a legal right to be assessed immediately.</p>
+              <h3 className="font-bold text-red-700 text-sm mb-2">🚨 Emergency Housing — Tonight</h3>
+              <p className="text-xs text-red-700 leading-relaxed mb-3">If you have nowhere safe to sleep tonight, Edinburgh Council has a 24/7 housing emergency line. You have a legal right to be assessed immediately.</p>
               <div className="font-mono font-bold text-2xl text-red-700">0131 200 2000</div>
               <div className="text-xs text-red-700 mt-1">Available 24 hours, 7 days a week</div>
             </div>
@@ -348,12 +347,12 @@ export default function HousingPage() {
             ].map((item, i) => (
               <div key={i} className="bg-white rounded-xl border border-slate-200 p-4">
                 <strong className="text-sm text-slate-900">{item.title}</strong>
-                <p className="text-xs text-slate-600 mt-2 leading-relaxed">{item.body}</p>
+                <p className="text-xs text-slate-700 mt-2 leading-relaxed">{item.body}</p>
               </div>
             ))}
           </div>
         )}
-      </div>
+      </Band>
     </div>
   );
 }

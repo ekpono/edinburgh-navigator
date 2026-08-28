@@ -57,7 +57,7 @@ function VibeBar({
 }) {
   return (
     <div className="flex items-center gap-3">
-      <div className="w-36 text-sm text-slate-600 flex items-center gap-1.5 flex-shrink-0">
+      <div className="w-36 text-sm text-slate-700 flex items-center gap-1.5 flex-shrink-0">
         <span>{emoji}</span>
         <span>{label}</span>
       </div>
@@ -126,7 +126,7 @@ export default async function NeighbourhoodDetailPage({
       {/* Hero */}
       <section
         className="text-white relative overflow-hidden"
-        style={{ backgroundColor: n.color }}
+        style={{ backgroundColor: "var(--color-plum-600)" }}
       >
         {/* Subtle pattern overlay */}
         <div className="absolute inset-0 opacity-10">
@@ -191,7 +191,7 @@ export default async function NeighbourhoodDetailPage({
           {/* Description */}
           <div className="lg:col-span-2 bg-white rounded-2xl border border-slate-200 p-6">
             <h2 className="font-bold text-slate-900 text-lg mb-4">About {n.name}</h2>
-            <p className="text-slate-600 leading-relaxed">{n.longDescription}</p>
+            <p className="text-slate-700 leading-relaxed">{n.longDescription}</p>
           </div>
 
           {/* Vibe scores */}
@@ -202,7 +202,7 @@ export default async function NeighbourhoodDetailPage({
                 <VibeBar
                   key={key}
                   score={n.vibes[key]}
-                  color={n.color}
+                  color="var(--color-plum-600)"
                   label={label}
                   emoji={emoji}
                 />
@@ -220,13 +220,13 @@ export default async function NeighbourhoodDetailPage({
             </span>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            <RentCard label="Studio" range={n.rents.studio} color={n.color} />
-            <RentCard label="1 bedroom" range={n.rents.oneBed} color={n.color} />
-            <RentCard label="2 bedrooms" range={n.rents.twoBed} color={n.color} />
-            <RentCard label="3 bedrooms" range={n.rents.threeBed} color={n.color} />
+            <RentCard label="Studio" range={n.rents.studio} color="var(--color-plum-600)" />
+            <RentCard label="1 bedroom" range={n.rents.oneBed} color="var(--color-plum-600)" />
+            <RentCard label="2 bedrooms" range={n.rents.twoBed} color="var(--color-plum-600)" />
+            <RentCard label="3 bedrooms" range={n.rents.threeBed} color="var(--color-plum-600)" />
           </div>
-          <div className="mt-4 p-3 bg-amber-50 rounded-xl border border-amber-100">
-            <p className="text-xs text-amber-800">
+          <div className="mt-4 p-3 bg-amber-50 rounded-xl border border-amber-50">
+            <p className="text-[0.9375rem] text-emerald-900 leading-relaxed">
               <strong>Scottish law note:</strong> All rentals use a Private Residential Tenancy
               (PRT). No fixed-term end date can force you to leave — only a valid{" "}
               <em>notice to leave</em> with a legal ground applies. SafeDeposits Scotland holds
@@ -242,7 +242,7 @@ export default async function NeighbourhoodDetailPage({
             <h2 className="font-bold text-slate-900 text-lg mb-4 flex items-center gap-2">
               <span
                 className="size-7 rounded-lg flex items-center justify-center text-white text-sm"
-                style={{ backgroundColor: n.color }}
+                style={{ backgroundColor: "var(--color-plum-600)" }}
               >
                 ✓
               </span>
@@ -251,7 +251,7 @@ export default async function NeighbourhoodDetailPage({
             <ul className="space-y-2.5">
               {n.highlights.map((item) => (
                 <li key={item} className="flex items-start gap-2.5 text-sm text-slate-700">
-                  <span className="text-emerald-500 font-bold mt-0.5 flex-shrink-0">✓</span>
+                  <span className="text-emerald-700 font-bold mt-0.5 flex-shrink-0">✓</span>
                   {item}
                 </li>
               ))}
@@ -261,7 +261,7 @@ export default async function NeighbourhoodDetailPage({
           {/* Watch out */}
           <div className="bg-white rounded-2xl border border-slate-200 p-6">
             <h2 className="font-bold text-slate-900 text-lg mb-4 flex items-center gap-2">
-              <span className="size-7 rounded-lg flex items-center justify-center bg-amber-500 text-white text-sm">
+              <span className="size-7 rounded-lg flex items-center justify-center bg-amber-600 text-white text-sm">
                 !
               </span>
               Things to know
@@ -269,7 +269,7 @@ export default async function NeighbourhoodDetailPage({
             <ul className="space-y-2.5">
               {n.watchOut.map((item) => (
                 <li key={item} className="flex items-start gap-2.5 text-sm text-slate-700">
-                  <span className="text-amber-500 font-bold mt-0.5 flex-shrink-0">⚠</span>
+                  <span className="text-amber-600 font-bold mt-0.5 flex-shrink-0">⚠</span>
                   {item}
                 </li>
               ))}
@@ -289,7 +289,7 @@ export default async function NeighbourhoodDetailPage({
             <div className="text-center p-4 bg-slate-50 rounded-xl">
               <div className="text-2xl mb-1">🚋</div>
               <div className="text-xs text-slate-500 mb-1">Tram</div>
-              <div className={`font-bold ${n.transport.tram ? "text-emerald-600" : "text-slate-400"}`}>
+              <div className={`font-bold ${n.transport.tram ? "text-emerald-700" : "text-slate-400"}`}>
                 {n.transport.tram ? `Yes — ${n.transport.tramStop}` : "Not served"}
               </div>
             </div>
@@ -307,11 +307,11 @@ export default async function NeighbourhoodDetailPage({
               <div
                 className={`font-bold capitalize ${
                   n.transport.cyclingScore === "excellent"
-                    ? "text-emerald-600"
+                    ? "text-emerald-700"
                     : n.transport.cyclingScore === "good"
-                    ? "text-sky-600"
+                    ? "text-slate-700"
                     : n.transport.cyclingScore === "fair"
-                    ? "text-amber-500"
+                    ? "text-amber-600"
                     : "text-red-500"
                 }`}
               >
@@ -329,11 +329,11 @@ export default async function NeighbourhoodDetailPage({
               <div
                 key={item}
                 className="flex items-start gap-3 p-3 rounded-xl"
-                style={{ backgroundColor: n.color + "0d" }}
+                style={{ backgroundColor: "var(--color-plum-100)" }}
               >
                 <span
                   className="size-5 rounded-full flex items-center justify-center text-white text-xs flex-shrink-0 mt-0.5"
-                  style={{ backgroundColor: n.color }}
+                  style={{ backgroundColor: "var(--color-plum-600)" }}
                 >
                   ✓
                 </span>
@@ -346,7 +346,7 @@ export default async function NeighbourhoodDetailPage({
         {/* Council tax */}
         <div
           className="rounded-2xl p-5 border text-white flex items-start gap-4"
-          style={{ backgroundColor: n.color }}
+          style={{ backgroundColor: "var(--color-plum-600)" }}
         >
           <div className="text-2xl flex-shrink-0">🏛️</div>
           <div>
@@ -374,14 +374,14 @@ export default async function NeighbourhoodDetailPage({
                 >
                   <span
                     className="text-2xl size-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{ backgroundColor: s.color + "18" }}
+                    style={{ backgroundColor: "var(--color-plum-100)" }}
                   >
                     {s.emoji}
                   </span>
                   <div className="min-w-0">
                     <div className="font-semibold text-slate-900 group-hover:underline">{s.name}</div>
                     <div className="text-xs text-slate-500 mt-0.5 truncate">{s.tagline}</div>
-                    <div className="text-xs font-medium mt-1.5" style={{ color: s.color }}>
+                    <div className="text-xs font-medium mt-1.5" style={{ color: "var(--color-plum-600)" }}>
                       Avg 1-bed £{avgRent(s).toLocaleString()}/mo
                     </div>
                   </div>
@@ -402,7 +402,7 @@ export default async function NeighbourhoodDetailPage({
           <Link
             href={`/neighbourhoods?compare=${n.slug}`}
             className="flex-1 text-center py-3 px-6 rounded-xl text-white font-semibold text-sm transition-opacity hover:opacity-90"
-            style={{ backgroundColor: n.color }}
+            style={{ backgroundColor: "var(--color-plum-600)" }}
           >
             Compare {n.name} with others
           </Link>

@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import PageHeader from "@/components/page-header";
+import Band from "@/components/band";
+import PageIntro from "@/components/page-intro";
 import SectionTabs from "@/components/section-tabs";
 
 const TABS = [
@@ -305,12 +307,12 @@ const FUN_AND_GAMES = [
 
 // Fallback colours when an image fails to load
 const FALLBACK_GRADIENTS = [
+  "from-plum-900 to-plum-700",
+  "from-slate-900 to-slate-700",
+  "from-emerald-900 to-emerald-700",
+  "from-plum-700 to-plum-600",
+  "from-amber-800 to-amber-600",
   "from-slate-700 to-slate-500",
-  "from-sky-700 to-sky-500",
-  "from-emerald-700 to-emerald-500",
-  "from-violet-700 to-violet-500",
-  "from-amber-700 to-amber-500",
-  "from-rose-700 to-rose-500",
 ];
 
 function PlaceCard({
@@ -320,23 +322,23 @@ function PlaceCard({
   image: string; tag: string; color: string; extra?: string; index?: number;
 }) {
   const tagColors: Record<string, string> = {
-    amber:   "bg-amber-100 text-amber-800",
-    orange:  "bg-orange-100 text-orange-800",
-    yellow:  "bg-yellow-100 text-yellow-800",
-    stone:   "bg-stone-100 text-stone-700",
-    indigo:  "bg-indigo-100 text-indigo-800",
-    emerald: "bg-emerald-100 text-emerald-800",
-    rose:    "bg-rose-100 text-rose-800",
-    lime:    "bg-lime-100 text-lime-800",
-    sky:     "bg-sky-100 text-sky-800",
-    blue:    "bg-blue-100 text-blue-800",
-    cyan:    "bg-cyan-100 text-cyan-800",
-    teal:    "bg-teal-100 text-teal-800",
-    violet:  "bg-violet-100 text-violet-800",
-    fuchsia: "bg-fuchsia-100 text-fuchsia-800",
-    purple:  "bg-purple-100 text-purple-800",
-    red:     "bg-red-100 text-red-800",
-    green:   "bg-green-100 text-green-800",
+    amber:   "bg-amber-50 text-amber-800",
+    orange:  "bg-emerald-50 text-emerald-900",
+    yellow:  "bg-amber-50 text-amber-800",
+    stone:   "bg-slate-100 text-slate-700",
+    indigo:  "bg-emerald-50 text-emerald-900",
+    emerald: "bg-emerald-50 text-emerald-900",
+    rose:    "bg-emerald-50 text-emerald-900",
+    lime:    "bg-emerald-50 text-emerald-900",
+    sky:     "bg-emerald-50 text-emerald-900",
+    blue:    "bg-emerald-50 text-emerald-900",
+    cyan:    "bg-emerald-50 text-emerald-900",
+    teal:    "bg-emerald-50 text-emerald-900",
+    violet:  "bg-emerald-50 text-emerald-900",
+    fuchsia: "bg-plum-200 text-plum-900",
+    purple:  "bg-emerald-50 text-emerald-900",
+    red:     "bg-red-50 text-red-700",
+    green:   "bg-emerald-50 text-emerald-900",
     slate:   "bg-slate-100 text-slate-700",
   };
   const tagClass = tagColors[color] ?? "bg-slate-100 text-slate-700";
@@ -366,13 +368,13 @@ function PlaceCard({
       <div className="p-4">
         <div className="font-bold text-slate-900 text-sm mb-0.5">{name}</div>
         <div className="text-xs text-slate-500 mb-2">📍 {address}</div>
-        <p className="text-xs text-slate-600 leading-relaxed mb-3">{desc}</p>
+        <p className="text-xs text-slate-700 leading-relaxed mb-3">{desc}</p>
         {extra && <div className="text-xs text-slate-500 mb-2">{extra}</div>}
         <a
           href={link}
           target="_blank"
           rel="noreferrer"
-          className="inline-flex items-center gap-1 text-xs font-bold text-sky-600 hover:underline"
+          className="inline-flex items-center gap-1 text-xs font-bold text-slate-700 hover:underline"
         >
           Visit website →
         </a>
@@ -385,28 +387,25 @@ export default function EntertainmentPage() {
   const [tab, setTab] = useState("pubs");
 
   return (
-    <div className="min-h-full bg-slate-50">
+    <div className="min-h-full">
       <PageHeader
+        section="The city"
         title="Entertainment"
         subtitle="Pubs, restaurants, parks, museums, skating & fun across Edinburgh"
       />
 
-      <div className="p-5 w-full max-w-6xl mx-auto">
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 mb-5">
-          <h1 className="text-2xl font-bold text-slate-900 mb-2">
-            Edinburgh <span className="text-pink-500">Entertainment.</span>
-          </h1>
-          <p className="text-sm text-slate-600">
-            Centuries-old pubs, Michelin-starred dining, world-class museums, stunning parks, ice rinks, and escape rooms — Edinburgh has it all.
-          </p>
-        </div>
+            <PageIntro label="In brief">
+        Centuries-old pubs, Michelin-starred dining, world-class museums, stunning parks, ice rinks, and escape rooms — Edinburgh has it all.
+      </PageIntro>
+      <Band label="What's on" ground="paper">
+        
 
         <SectionTabs tabs={TABS} active={tab} onChange={setTab} />
 
         {tab === "pubs" && (
           <div className="space-y-4">
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
-              <p className="text-xs text-amber-800">
+            <div className="border-l-2 border-amber-600 bg-amber-50 px-5 py-4 max-w-3xl">
+              <p className="text-[0.9375rem] text-emerald-900 leading-relaxed">
                 <strong>Scottish licensing:</strong> Pubs typically close around midnight on weekdays and 1am on weekends. Drinking age is 18+.
               </p>
             </div>
@@ -414,7 +413,7 @@ export default function EntertainmentPage() {
               {PUBS.map((p, i) => <PlaceCard key={p.name} {...p} index={i} />)}
             </div>
             <a href="https://www.visitscotland.com/see-do/food-drink/pubs-bars/edinburgh/" target="_blank" rel="noreferrer"
-              className="block text-center text-xs font-bold text-sky-600 hover:underline mt-2">
+              className="block text-center text-xs font-bold text-slate-700 hover:underline mt-2">
               See more Edinburgh pubs on VisitScotland →
             </a>
           </div>
@@ -422,8 +421,8 @@ export default function EntertainmentPage() {
 
         {tab === "restaurants" && (
           <div className="space-y-4">
-            <div className="bg-rose-50 border border-rose-200 rounded-xl p-4">
-              <p className="text-xs text-rose-800">
+            <div className="border-l-2 border-emerald-700 bg-emerald-50 px-5 py-4 max-w-3xl">
+              <p className="text-[0.9375rem] text-emerald-900 leading-relaxed">
                 <strong>Tip:</strong> Top restaurants book up fast, especially during the Fringe (August) and Christmas. Always book ahead online.
               </p>
             </div>
@@ -431,7 +430,7 @@ export default function EntertainmentPage() {
               {RESTAURANTS.map((r, i) => <PlaceCard key={r.name} {...r} extra={`💷 ${r.price}`} index={i} />)}
             </div>
             <a href="https://www.visitscotland.com/see-do/food-drink/restaurants/edinburgh/" target="_blank" rel="noreferrer"
-              className="block text-center text-xs font-bold text-sky-600 hover:underline mt-2">
+              className="block text-center text-xs font-bold text-slate-700 hover:underline mt-2">
               Explore more Edinburgh restaurants →
             </a>
           </div>
@@ -439,8 +438,8 @@ export default function EntertainmentPage() {
 
         {tab === "skating" && (
           <div className="space-y-4">
-            <div className="bg-sky-50 border border-sky-200 rounded-xl p-4">
-              <p className="text-xs text-sky-800">
+            <div className="border-l-2 border-emerald-700 bg-emerald-50 px-5 py-4 max-w-3xl">
+              <p className="text-[0.9375rem] text-emerald-900 leading-relaxed">
                 <strong>Skate hire:</strong> All venues offer skate hire. Book sessions in advance for busy weekends and school holidays.
               </p>
             </div>
@@ -453,7 +452,7 @@ export default function EntertainmentPage() {
         {tab === "parks" && (
           <div className="space-y-4">
             <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
-              <p className="text-xs text-emerald-800">
+              <p className="text-[0.9375rem] text-emerald-900 leading-relaxed">
                 <strong>Edinburgh outdoors:</strong> Most parks and green spaces are free and open year-round. Edinburgh is one of the greenest cities in Europe with over 100 parks and green spaces.
               </p>
             </div>
@@ -461,7 +460,7 @@ export default function EntertainmentPage() {
               {PARKS.map((p, i) => <PlaceCard key={p.name} {...p} index={i} />)}
             </div>
             <a href="https://www.edinburgh.gov.uk/parks-greenspaces" target="_blank" rel="noreferrer"
-              className="block text-center text-xs font-bold text-sky-600 hover:underline mt-2">
+              className="block text-center text-xs font-bold text-slate-700 hover:underline mt-2">
               All Edinburgh parks & green spaces →
             </a>
           </div>
@@ -469,8 +468,8 @@ export default function EntertainmentPage() {
 
         {tab === "museums" && (
           <div className="space-y-4">
-            <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-4">
-              <p className="text-xs text-indigo-800">
+            <div className="border-l-2 border-emerald-700 bg-emerald-50 px-5 py-4 max-w-3xl">
+              <p className="text-[0.9375rem] text-emerald-900 leading-relaxed">
                 <strong>Free museums:</strong> Most of Edinburgh's major museums and galleries are completely free. National Galleries of Scotland and National Museums of Scotland offer free permanent collections.
               </p>
             </div>
@@ -478,7 +477,7 @@ export default function EntertainmentPage() {
               {MUSEUMS.map((m, i) => <PlaceCard key={m.name} {...m} index={i} />)}
             </div>
             <a href="https://www.edinburghmuseums.org.uk/" target="_blank" rel="noreferrer"
-              className="block text-center text-xs font-bold text-sky-600 hover:underline mt-2">
+              className="block text-center text-xs font-bold text-slate-700 hover:underline mt-2">
               All Edinburgh city museums →
             </a>
           </div>
@@ -486,8 +485,8 @@ export default function EntertainmentPage() {
 
         {tab === "fun" && (
           <div className="space-y-4">
-            <div className="bg-purple-50 border border-purple-200 rounded-xl p-4">
-              <p className="text-xs text-purple-800">
+            <div className="border-l-2 border-emerald-700 bg-emerald-50 px-5 py-4 max-w-3xl">
+              <p className="text-[0.9375rem] text-emerald-900 leading-relaxed">
                 <strong>Edinburgh for families:</strong> Many attractions offer discounted family tickets. Always check websites for seasonal offers and online booking discounts.
               </p>
             </div>
@@ -495,12 +494,12 @@ export default function EntertainmentPage() {
               {FUN_AND_GAMES.map((f, i) => <PlaceCard key={f.name} {...f} extra={`💷 ${f.price}`} index={i} />)}
             </div>
             <a href="https://www.visitscotland.com/see-do/attractions/edinburgh/" target="_blank" rel="noreferrer"
-              className="block text-center text-xs font-bold text-sky-600 hover:underline mt-2">
+              className="block text-center text-xs font-bold text-slate-700 hover:underline mt-2">
               Discover more Edinburgh attractions on VisitScotland →
             </a>
           </div>
         )}
-      </div>
+      </Band>
     </div>
   );
 }

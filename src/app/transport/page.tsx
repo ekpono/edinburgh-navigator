@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import PageHeader from "@/components/page-header";
+import Band from "@/components/band";
+import PageIntro from "@/components/page-intro";
 import SectionTabs from "@/components/section-tabs";
 import ServiceCard from "@/components/service-card";
 import { SERVICE_CONTACTS } from "@/lib/edinburgh-data";
@@ -60,28 +62,14 @@ export default function TransportPage() {
   );
 
   return (
-    <div className="min-h-full bg-slate-50">
-      <PageHeader title="Transport" subtitle="Getting around Edinburgh by bus, tram, bike, and rail" />
+    <div className="min-h-full">
+      <PageHeader section="Getting about" title="Transport" subtitle="Getting around Edinburgh by bus, tram, bike, and rail" />
 
-      <div className="p-5 w-full max-w-6xl mx-auto">
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 mb-5">
-          <h1 className="text-2xl font-bold text-slate-900 mb-2">Getting <span className="text-orange-500">Around.</span></h1>
-          <p className="text-sm text-slate-600">Edinburgh is compact and walkable in the centre, with an extensive Lothian Buses network, trams, cycling routes, and ScotRail connections across Scotland.</p>
-          <div className="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2">
-            {[
-              { label: "Bus single", value: "£1.80", note: "Exact change or app" },
-              { label: "Day ticket", value: "£4.50", note: "Unlimited bus travel" },
-              { label: "Under 22s", value: "Free", note: "National bus pass" },
-              { label: "Tram airport", value: "£8.50", note: "Single to city centre" },
-            ].map((s) => (
-              <div key={s.label} className="bg-orange-50 border border-orange-200 rounded-xl p-3 text-center">
-                <div className="text-lg font-bold text-orange-700">{s.value}</div>
-                <div className="text-xs font-semibold text-slate-800 mt-0.5">{s.label}</div>
-                <div className="text-xs text-slate-500 mt-0.5">{s.note}</div>
-              </div>
-            ))}
-          </div>
-        </div>
+            <PageIntro label="In brief">
+        Edinburgh is compact and walkable in the centre, with an extensive Lothian Buses network, trams, cycling routes, and ScotRail connections across Scotland.
+      </PageIntro>
+      <Band label="Getting around" ground="paper">
+        
 
         <div className="grid gap-3 sm:grid-cols-2 mb-5">
           {keyServices.map((service) => (
@@ -110,14 +98,14 @@ export default function TransportPage() {
                     }
                   }}
                   placeholder="e.g. 36237809"
-                  className="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50 focus:outline-none focus:ring-2 focus:ring-orange-400 font-mono"
+                  className="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 text-sm bg-slate-50 font-mono"
                 />
                 <button
                   onClick={() => {
                     if (stopCode) window.open(`https://lothianbuses.com/rtpi/?stopId=${stopCode}`, "_blank", "noreferrer");
                   }}
                   disabled={!stopCode}
-                  className="bg-orange-600 text-white text-sm font-bold px-4 py-2.5 rounded-xl hover:bg-orange-700 transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex-shrink-0"
+                  className="bg-slate-900 text-white text-sm font-bold px-4 py-2.5 rounded-xl hover:bg-slate-900 transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex-shrink-0"
                 >
                   See arrivals →
                 </button>
@@ -137,13 +125,13 @@ export default function TransportPage() {
                     href={`https://lothianbuses.com/rtpi/?stopId=${stop.code}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center justify-between p-3 border border-slate-200 rounded-xl hover:bg-orange-50 hover:border-orange-200 transition-colors group"
+                    className="flex items-center justify-between p-3 border border-slate-200 rounded-xl hover:bg-emerald-50 hover:border-emerald-200 transition-colors group"
                   >
                     <div>
-                      <div className="text-xs font-semibold text-slate-900 group-hover:text-orange-700">{stop.name}</div>
+                      <div className="text-xs font-semibold text-slate-900 group-hover:text-emerald-700">{stop.name}</div>
                       <div className="text-xs text-slate-400 mt-0.5">{stop.area} • Stop {stop.code}</div>
                     </div>
-                    <span className="text-orange-500 font-bold text-xs ml-2 flex-shrink-0">Live →</span>
+                    <span className="text-slate-700 font-bold text-xs ml-2 flex-shrink-0">Live →</span>
                   </a>
                 ))}
               </div>
@@ -167,21 +155,21 @@ export default function TransportPage() {
                       <div className="font-semibold text-slate-900 text-xs">{s.name}</div>
                       <div className="text-xs text-slate-500 mt-0.5 leading-relaxed">{s.desc}</div>
                     </div>
-                    <span className="text-orange-500 font-bold text-xs flex-shrink-0 ml-1">→</span>
+                    <span className="text-slate-700 font-bold text-xs flex-shrink-0 ml-1">→</span>
                   </a>
                 ))}
               </div>
             </div>
 
             {/* Tram live tracker embed info */}
-            <div className="bg-sky-50 border border-sky-200 rounded-xl p-4">
-              <h3 className="font-bold text-sky-900 text-sm mb-2">🚋 Edinburgh Trams — Tram Tracker</h3>
-              <p className="text-xs text-sky-800 leading-relaxed mb-3">
+            <div className="border-l-2 border-emerald-700 bg-emerald-50 px-5 py-4 max-w-3xl">
+              <h3 className="font-bold text-emerald-900 text-sm mb-2">🚋 Edinburgh Trams — Tram Tracker</h3>
+              <p className="text-xs text-emerald-900 leading-relaxed mb-3">
                 Edinburgh Trams has a live "Tram Tracker" showing where each tram is right now and when it will reach each stop. Runs every 7–8 minutes at peak times, 12–15 minutes off-peak.
               </p>
               <a href="https://edinburghtrams.com/travel-information/tram-tracker"
                 target="_blank" rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-sky-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl hover:bg-sky-700 transition-colors">
+                className="inline-flex items-center gap-2 bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-xl hover:bg-slate-900 transition-colors">
                 Open Tram Tracker →
               </a>
             </div>
@@ -214,22 +202,22 @@ export default function TransportPage() {
               {
                 emoji: "🚌",
                 title: "Lothian Buses",
-                colour: "bg-orange-50 border-orange-200",
-                titleColour: "text-orange-900",
+                colour: "bg-emerald-50 border-emerald-200",
+                titleColour: "text-emerald-900",
                 body: "Edinburgh's main bus operator runs 70+ routes across the city and suburbs. Single fare is £1.80 (exact change or Lothian Buses app). Day tickets £4.50, weekly Ridacards also available. Under-22s travel free with a Young Persons Free Bus Pass.",
               },
               {
                 emoji: "🚋",
                 title: "Edinburgh Trams",
-                colour: "bg-sky-50 border-sky-200",
-                titleColour: "text-sky-900",
+                colour: "bg-emerald-50 border-emerald-200",
+                titleColour: "text-emerald-900",
                 body: "One tram line runs from Edinburgh Airport through Murrayfield, Haymarket, Princes Street, St Andrew Square, York Place, and on to Newhaven. Journey from airport to city centre takes ~35 minutes. Single £8.50, day ticket £9. Cheaper and easier than taxis.",
               },
               {
                 emoji: "🚂",
                 title: "ScotRail",
-                colour: "bg-blue-50 border-blue-200",
-                titleColour: "text-blue-900",
+                colour: "bg-emerald-50 border-emerald-200",
+                titleColour: "text-emerald-900",
                 body: "Trains from Edinburgh Waverley and Haymarket connect to Glasgow (50 min), Dundee (1hr 20min), Aberdeen (2hr 30min), Inverness (3hr 30min), and London King's Cross (4hr 20min via LNER). Use the ScotRail app or Trainline to plan and book.",
               },
               {
@@ -242,8 +230,8 @@ export default function TransportPage() {
               {
                 emoji: "🚕",
                 title: "Taxis & Rideshare",
-                colour: "bg-yellow-50 border-yellow-200",
-                titleColour: "text-yellow-900",
+                colour: "bg-amber-50 border-amber-200",
+                titleColour: "text-amber-800",
                 body: "Licensed black cabs can be hailed or booked via City Cabs (0131 228 1211) or Central Taxis (0131 229 2468). Uber and Bolt also operate in Edinburgh. Airport to city centre by taxi is typically £25–40 depending on traffic.",
               },
               {
@@ -256,7 +244,7 @@ export default function TransportPage() {
             ].map((item) => (
               <div key={item.title} className={`rounded-xl border p-4 ${item.colour}`}>
                 <div className={`font-bold text-sm mb-1 ${item.titleColour}`}>{item.emoji} {item.title}</div>
-                <p className="text-xs text-slate-600 leading-relaxed">{item.body}</p>
+                <p className="text-xs text-slate-700 leading-relaxed">{item.body}</p>
               </div>
             ))}
             <div className="bg-slate-900 text-white rounded-xl p-4">
@@ -274,7 +262,7 @@ export default function TransportPage() {
                       <div className="text-xs font-semibold">{link.label}</div>
                       <div className="text-xs text-slate-400">{link.desc}</div>
                     </div>
-                    <span className="text-orange-400 text-xs font-bold ml-3">→</span>
+                    <span className="text-slate-700 text-xs font-bold ml-3">→</span>
                   </a>
                 ))}
               </div>
@@ -284,8 +272,8 @@ export default function TransportPage() {
 
         {tab === "buses" && (
           <div className="space-y-4">
-            <div className="bg-orange-50 border border-orange-200 rounded-xl p-5">
-              <h3 className="font-bold text-orange-900 text-sm mb-3">How to Pay</h3>
+            <div className="border-l-2 border-emerald-700 bg-emerald-50 px-5 py-4 max-w-3xl">
+              <h3 className="font-bold text-emerald-900 text-sm mb-3">How to Pay</h3>
               <div className="grid sm:grid-cols-2 gap-3">
                 {[
                   { method: "Lothian Buses App", desc: "Buy a single or day ticket before you board. Scan your phone on the reader. Cheapest and most convenient." },
@@ -293,9 +281,9 @@ export default function TransportPage() {
                   { method: "Ridacard", desc: "Weekly (£19), monthly, or annual pass. Tap-on, tap-off. Best value if you travel daily." },
                   { method: "Day ticket £4.50", desc: "Unlimited travel all day on Lothian Buses. Buy on the app or from the driver. Great for tourists and occasional users." },
                 ].map((m) => (
-                  <div key={m.method} className="bg-white rounded-xl border border-orange-100 p-3">
+                  <div key={m.method} className="bg-white rounded-xl border border-emerald-50 p-3">
                     <div className="font-bold text-sm text-slate-900 mb-1">{m.method}</div>
-                    <div className="text-xs text-slate-600 leading-relaxed">{m.desc}</div>
+                    <div className="text-xs text-slate-700 leading-relaxed">{m.desc}</div>
                   </div>
                 ))}
               </div>
@@ -309,7 +297,7 @@ export default function TransportPage() {
               <div className="divide-y divide-slate-100">
                 {KEY_ROUTES.map((r) => (
                   <div key={r.route} className="px-5 py-3 flex items-start gap-3">
-                    <div className="bg-orange-600 text-white text-xs font-bold px-2 py-1 rounded-lg flex-shrink-0 min-w-[52px] text-center">
+                    <div className="bg-slate-900 text-white text-xs font-bold px-2 py-1 rounded-lg flex-shrink-0 min-w-[52px] text-center">
                       {r.route}
                     </div>
                     <div className="min-w-0 flex-1">
@@ -336,7 +324,7 @@ export default function TransportPage() {
               <strong className="text-sm text-slate-900">Real-time arrivals</strong>
               <p className="text-xs text-slate-500 mt-1 mb-2">Every bus stop has a number on the pole. Text it to 87010 to get the next arrivals by SMS, or use the Lothian Buses app.</p>
               <a href="https://lothianbuses.com/plan-my-journey" target="_blank" rel="noreferrer"
-                className="inline-block text-xs font-bold bg-orange-600 text-white px-3 py-1.5 rounded-lg hover:bg-orange-700 transition-colors">
+                className="inline-block text-xs font-bold bg-slate-900 text-white px-3 py-1.5 rounded-lg hover:bg-slate-900 transition-colors">
                 Plan journey →
               </a>
             </div>
@@ -345,16 +333,16 @@ export default function TransportPage() {
 
         {tab === "tram" && (
           <div className="space-y-4">
-            <div className="bg-sky-50 border border-sky-200 rounded-xl p-5">
-              <h3 className="font-bold text-sky-900 text-sm mb-2">Edinburgh Trams — Line 1</h3>
-              <p className="text-xs text-sky-800 leading-relaxed mb-3">One tram line runs from Edinburgh Airport to Newhaven (Leith waterfront), passing through the city centre. Trams run every 7–8 minutes at peak times.</p>
+            <div className="border-l-2 border-emerald-700 bg-emerald-50 px-5 py-4 max-w-3xl">
+              <h3 className="font-bold text-emerald-900 text-sm mb-2">Edinburgh Trams — Line 1</h3>
+              <p className="text-xs text-emerald-900 leading-relaxed mb-3">One tram line runs from Edinburgh Airport to Newhaven (Leith waterfront), passing through the city centre. Trams run every 7–8 minutes at peak times.</p>
               <div className="flex flex-col gap-1.5">
                 {TRAM_STOPS.map((stop, i) => (
                   <div key={stop} className="flex items-center gap-2">
-                    <div className={`size-2.5 rounded-full flex-shrink-0 ${i === 0 || i === TRAM_STOPS.length - 1 ? "bg-sky-600" : "bg-sky-300"}`} />
+                    <div className={`size-2.5 rounded-full flex-shrink-0 ${i === 0 || i === TRAM_STOPS.length - 1 ? "bg-slate-900" : "bg-slate-200"}`} />
                     <div className="text-xs text-slate-700 font-medium">{stop}</div>
-                    {i === 0 && <div className="text-xs text-sky-600 font-semibold ml-auto">Start</div>}
-                    {i === TRAM_STOPS.length - 1 && <div className="text-xs text-sky-600 font-semibold ml-auto">End</div>}
+                    {i === 0 && <div className="text-xs text-slate-700 font-semibold ml-auto">Start</div>}
+                    {i === TRAM_STOPS.length - 1 && <div className="text-xs text-slate-700 font-semibold ml-auto">End</div>}
                   </div>
                 ))}
               </div>
@@ -370,8 +358,8 @@ export default function TransportPage() {
                 <div key={f.zone} className="border-b border-slate-100 last:border-0 py-3">
                   <div className="font-semibold text-slate-900 text-xs">{f.zone}</div>
                   <div className="flex gap-4 mt-1">
-                    <div className="text-xs"><span className="text-slate-400">Single</span> <span className="font-bold text-sky-700">{f.single}</span></div>
-                    <div className="text-xs"><span className="text-slate-400">Day</span> <span className="font-bold text-sky-700">{f.day}</span></div>
+                    <div className="text-xs"><span className="text-slate-400">Single</span> <span className="font-bold text-emerald-700">{f.single}</span></div>
+                    <div className="text-xs"><span className="text-slate-400">Day</span> <span className="font-bold text-emerald-700">{f.day}</span></div>
                   </div>
                   <div className="text-xs text-slate-400 mt-0.5">{f.note}</div>
                 </div>
@@ -394,12 +382,12 @@ export default function TransportPage() {
                   <div className="flex flex-wrap gap-3 mt-1">
                     <span className="text-xs text-slate-500">⏱ {r.time}</span>
                     <span className="text-xs text-slate-500">🕐 {r.freq}</span>
-                    <span className="text-xs font-semibold text-sky-700">{r.price}</span>
+                    <span className="text-xs font-semibold text-emerald-700">{r.price}</span>
                   </div>
                 </div>
               ))}
               <a href="https://www.scotrail.co.uk/" target="_blank" rel="noreferrer"
-                className="inline-block mt-3 text-xs font-bold bg-sky-600 text-white px-3 py-1.5 rounded-lg hover:bg-sky-700 transition-colors">
+                className="inline-block mt-3 text-xs font-bold bg-slate-900 text-white px-3 py-1.5 rounded-lg hover:bg-slate-900 transition-colors">
                 Book at scotrail.co.uk →
               </a>
             </div>
@@ -410,9 +398,9 @@ export default function TransportPage() {
           <div className="space-y-4">
             <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5">
               <h3 className="font-bold text-emerald-900 text-sm mb-2">Just Eat Cycles — Edinburgh E-bike Hire</h3>
-              <p className="text-xs text-emerald-800 leading-relaxed mb-3">Over 200 e-bikes and pedal bikes available at docking stations across Edinburgh. No membership required — use the Just Eat Cycles app. 30p per minute; £1 unlock fee. Great for short trips around the city.</p>
+              <p className="text-xs text-emerald-900 leading-relaxed mb-3">Over 200 e-bikes and pedal bikes available at docking stations across Edinburgh. No membership required — use the Just Eat Cycles app. 30p per minute; £1 unlock fee. Great for short trips around the city.</p>
               <a href="https://edinburghcyclehire.com/" target="_blank" rel="noreferrer"
-                className="inline-block text-xs font-bold bg-emerald-700 text-white px-4 py-2.5 rounded-xl hover:bg-emerald-800 transition-colors">
+                className="inline-block text-xs font-bold bg-emerald-700 text-white px-4 py-2.5 rounded-xl hover:bg-emerald-900 transition-colors">
                 Find nearest bike →
               </a>
             </div>
@@ -467,9 +455,9 @@ export default function TransportPage() {
                     price: "£8.50 single | £9 day ticket",
                     freq: "Every 7–8 min",
                     note: "Most reliable option — no traffic delays. Buy ticket at airport tram stop before boarding.",
-                    colour: "border-sky-200 bg-sky-50",
+                    colour: "border-emerald-200 bg-emerald-50",
                     badge: "Recommended",
-                    badgeColour: "bg-sky-600 text-white",
+                    badgeColour: "bg-slate-900 text-white",
                   },
                   {
                     method: "🚌 Airlink 100 (bus)",
@@ -477,9 +465,9 @@ export default function TransportPage() {
                     price: "£4.50 single | £7.50 day",
                     freq: "Every 10 min",
                     note: "Stops at Haymarket and Waverley Bridge. Cheaper than tram. Can be slower in traffic.",
-                    colour: "border-orange-200 bg-orange-50",
+                    colour: "border-emerald-200 bg-emerald-50",
                     badge: "Budget option",
-                    badgeColour: "bg-orange-600 text-white",
+                    badgeColour: "bg-slate-900 text-white",
                   },
                   {
                     method: "🚕 Taxi / Uber",
@@ -487,9 +475,9 @@ export default function TransportPage() {
                     price: "£25–40 to city centre",
                     freq: "On demand",
                     note: "Useful with heavy luggage. Official taxi rank outside arrivals. Uber and Bolt available. Agree price or use meter.",
-                    colour: "border-yellow-200 bg-yellow-50",
+                    colour: "border-amber-200 bg-amber-50",
                     badge: "Convenient",
-                    badgeColour: "bg-yellow-600 text-white",
+                    badgeColour: "bg-amber-600 text-white",
                   },
                   {
                     method: "🚗 Driving / Park & Ride",
@@ -499,7 +487,7 @@ export default function TransportPage() {
                     note: "Ingliston Park & Ride is directly adjacent and connects to trams. Long-stay parking for multi-day trips.",
                     colour: "border-slate-200 bg-slate-50",
                     badge: "Car users",
-                    badgeColour: "bg-slate-600 text-white",
+                    badgeColour: "bg-slate-700 text-white",
                   },
                 ].map((opt) => (
                   <div key={opt.method} className={`rounded-xl border p-4 ${opt.colour}`}>
@@ -508,20 +496,20 @@ export default function TransportPage() {
                       <span className={`text-xs font-semibold px-2 py-0.5 rounded-full flex-shrink-0 ${opt.badgeColour}`}>{opt.badge}</span>
                     </div>
                     <div className="grid grid-cols-2 gap-2 mb-2">
-                      <div className="text-xs"><span className="text-slate-400">Time:</span> <span className="font-semibold text-slate-800">{opt.time}</span></div>
-                      <div className="text-xs"><span className="text-slate-400">Price:</span> <span className="font-semibold text-slate-800">{opt.price}</span></div>
-                      <div className="text-xs"><span className="text-slate-400">Freq:</span> <span className="font-semibold text-slate-800">{opt.freq}</span></div>
+                      <div className="text-xs"><span className="text-slate-400">Time:</span> <span className="font-semibold text-slate-900">{opt.time}</span></div>
+                      <div className="text-xs"><span className="text-slate-400">Price:</span> <span className="font-semibold text-slate-900">{opt.price}</span></div>
+                      <div className="text-xs"><span className="text-slate-400">Freq:</span> <span className="font-semibold text-slate-900">{opt.freq}</span></div>
                     </div>
-                    <p className="text-xs text-slate-600 leading-relaxed">{opt.note}</p>
+                    <p className="text-xs text-slate-700 leading-relaxed">{opt.note}</p>
                   </div>
                 ))}
               </div>
             </div>
             <div className="bg-slate-900 text-white rounded-xl p-4">
               <strong className="text-sm">Edinburgh Airport info</strong>
-              <div className="mt-2 space-y-1 text-xs text-slate-300">
+              <div className="mt-2 space-y-1 text-xs text-slate-200">
                 <div>📞 General enquiries: <span className="font-mono font-bold text-white">0844 448 8833</span></div>
-                <div>🔗 <a href="https://www.edinburghairport.com/" target="_blank" rel="noreferrer" className="text-orange-400 hover:underline">edinburghairport.com</a></div>
+                <div>🔗 <a href="https://www.edinburghairport.com/" target="_blank" rel="noreferrer" className="text-slate-700 hover:underline">edinburghairport.com</a></div>
                 <div>📍 Edinburgh Airport, EH12 9DN</div>
               </div>
             </div>
@@ -542,7 +530,7 @@ export default function TransportPage() {
                   <div key={pr.name} className="border border-slate-200 rounded-xl p-4">
                     <div className="flex items-start justify-between gap-2">
                       <div className="font-bold text-slate-900 text-sm">{pr.name}</div>
-                      <span className="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full flex-shrink-0">{pr.tip}</span>
+                      <span className="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded-full flex-shrink-0">{pr.tip}</span>
                     </div>
                     <div className="text-xs text-slate-500 mt-1">📍 {pr.location}</div>
                     <div className="grid grid-cols-2 gap-2 mt-2">
@@ -570,20 +558,20 @@ export default function TransportPage() {
                     <div className="font-semibold text-slate-900">{cp.name}</div>
                     <div className="text-slate-400">📍 {cp.address}</div>
                   </div>
-                  <div className="text-orange-700 font-bold flex-shrink-0 ml-3">{cp.price}</div>
+                  <div className="text-emerald-700 font-bold flex-shrink-0 ml-3">{cp.price}</div>
                 </div>
               ))}
             </div>
 
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
-              <strong className="text-sm text-amber-900">Resident parking permits</strong>
+            <div className="border-l-2 border-amber-600 bg-amber-50 px-5 py-4 max-w-3xl">
+              <strong className="text-sm text-amber-800">Resident parking permits</strong>
               <p className="text-xs text-amber-800 mt-1 leading-relaxed">If you live in a Controlled Parking Zone, you can apply for a resident permit at edinburgh.gov.uk/parking-permits. Permits cost from £104/year and must match your registered vehicle and address.</p>
               <a href="https://www.edinburgh.gov.uk/parking-permits" target="_blank" rel="noreferrer"
-                className="inline-block mt-2 text-xs font-bold text-amber-700 hover:underline">Apply for permit →</a>
+                className="inline-block mt-2 text-xs font-bold text-amber-800 hover:underline">Apply for permit →</a>
             </div>
           </div>
         )}
-      </div>
+      </Band>
     </div>
   );
 }

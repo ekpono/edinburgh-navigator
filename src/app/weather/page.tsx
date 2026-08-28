@@ -1,5 +1,6 @@
 import Link from "next/link";
 import PageHeader from "@/components/page-header";
+import Band from "@/components/band";
 
 const EDINBURGH = {
   name: "Edinburgh",
@@ -90,17 +91,17 @@ export default async function WeatherPage() {
   const emoji = condition ? EMOJI[condition.main] ?? "🌤️" : "🌤️";
 
   return (
-    <div className="min-h-full bg-slate-50">
-      <PageHeader title="Weather" subtitle="Live conditions across Edinburgh" />
+    <div className="min-h-full">
+      <PageHeader section="Getting about" title="Weather" subtitle="Live conditions across Edinburgh" />
 
-      <div className="px-5 py-6 max-w-6xl mx-auto space-y-6">
-        <section className="relative overflow-hidden rounded-3xl border border-sky-200 bg-gradient-to-br from-sky-50 via-white to-amber-50 p-6 sm:p-8">
-          <div className="absolute -top-24 -right-20 size-64 rounded-full bg-sky-200/40 blur-3xl" />
+            <Band label="Conditions" ground="paper">
+        <section className="relative overflow-hidden rounded-3xl border border-emerald-200 bg-gradient-to-br from-slate-50 via-white to-amber-50 p-6 sm:p-8">
+          <div className="absolute -top-24 -right-20 size-64 rounded-full bg-emerald-200/40 blur-3xl" />
           <div className="absolute -bottom-28 -left-20 size-72 rounded-full bg-amber-200/30 blur-3xl" />
 
           <div className="relative grid gap-6 lg:grid-cols-[1.1fr,1fr]">
             <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/70 px-3 py-1 text-xs font-semibold text-slate-600">
+              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white/70 px-3 py-1 text-xs font-semibold text-slate-700">
                 <span className="text-base">🌦️</span>
                 <span>Live conditions • {EDINBURGH.name}</span>
               </div>
@@ -108,9 +109,9 @@ export default async function WeatherPage() {
               <div className="space-y-2">
                 <h1 className="text-3xl sm:text-4xl font-bold text-slate-900">
                   Edinburgh Sky
-                  <span className="block text-sky-600">right now.</span>
+                  <span className="block text-slate-700">right now.</span>
                 </h1>
-                <p className="text-sm text-slate-600 max-w-lg">
+                <p className="text-sm text-slate-700 max-w-lg">
                   A quick read of the city&apos;s current conditions, wind, humidity, and visibility.
                   Updated every 10 minutes using OpenWeather.
                 </p>
@@ -119,13 +120,13 @@ export default async function WeatherPage() {
               <div className="flex flex-wrap gap-3">
                 <Link
                   href="/transport"
-                  className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-4 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-slate-800"
+                  className="inline-flex items-center gap-2 rounded-xl bg-slate-900 px-4 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-slate-900"
                 >
                   🚌 Check transport impact
                 </Link>
                 <Link
                   href="/visitor"
-                  className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-slate-300"
+                  className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2 text-xs font-semibold text-slate-700 shadow-sm transition hover:border-slate-200"
                 >
                   🏴 Plan a day out
                 </Link>
@@ -144,15 +145,15 @@ export default async function WeatherPage() {
                     <div className="mt-2 text-sm font-semibold text-slate-700 capitalize">{condition?.description}</div>
                     <div className="mt-3 text-xs text-slate-500">
                       Feels like <strong className="text-slate-700">{formatTemp(weather.main.feels_like)}</strong>
-                      <span className="px-2 text-slate-300">•</span>
+                      <span className="px-2 text-slate-200">•</span>
                       High {formatTemp(weather.main.temp_max)} / Low {formatTemp(weather.main.temp_min)}
                     </div>
-                    <div className="mt-3 inline-flex items-center gap-2 rounded-lg bg-sky-100 px-3 py-1 text-[11px] font-semibold text-sky-800">
+                    <div className="mt-3 inline-flex items-center gap-2 rounded-lg bg-emerald-50 px-3 py-1 text-[11px] font-semibold text-emerald-900">
                       Updated {timeInEdinburgh(weather.dt)}
                     </div>
                   </div>
                 ) : (
-                  <div className="mt-3 text-sm text-slate-600">
+                  <div className="mt-3 text-sm text-slate-700">
                     {result.error === "missing" ? (
                       <span>Add <code className="font-mono">OPENWEATHER_API_KEY</code> to load live data.</span>
                     ) : (
@@ -171,7 +172,7 @@ export default async function WeatherPage() {
 
               <div className="rounded-2xl border border-slate-200 bg-white/80 p-4 shadow-sm backdrop-blur">
                 <div className="text-xs font-semibold text-slate-500">Sky + Air</div>
-                <div className="mt-3 grid gap-3 text-xs text-slate-600">
+                <div className="mt-3 grid gap-3 text-xs text-slate-700">
                   <div className="flex items-center justify-between">
                     <span>Cloud cover</span>
                     <span className="font-semibold text-slate-900">{weather ? `${weather.clouds.all}%` : "—"}</span>
@@ -226,7 +227,7 @@ export default async function WeatherPage() {
                 <span>Base</span>
                 <span className="font-semibold">Tee + light knit</span>
               </div>
-              <div className="flex items-center justify-between rounded-xl bg-sky-50 px-3 py-2">
+              <div className="flex items-center justify-between rounded-xl bg-emerald-50 px-3 py-2">
                 <span>Outer</span>
                 <span className="font-semibold">Waterproof shell</span>
               </div>
@@ -254,13 +255,13 @@ export default async function WeatherPage() {
                   className="flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-3 py-2 transition hover:bg-white/10"
                 >
                   <span>{link.label}</span>
-                  <span className="text-sky-300">→</span>
+                  <span className="text-slate-200">→</span>
                 </a>
               ))}
             </div>
           </div>
         </section>
-      </div>
+      </Band>
     </div>
   );
 }

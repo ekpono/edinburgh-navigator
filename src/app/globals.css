@@ -1,54 +1,278 @@
 @import "tailwindcss";
 
-:root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
+/* ============================================================================
+   EDINBURGH NAVIGATOR — "Corporation"
+
+   The city's own livery, not picture-postcard Edinburgh. The anchor is
+   #6d3465, the City of Edinburgh Council's plum; the paper is enamel
+   oatmeal; brass is the wayfinding metal on tenement stairs. Gold on plum is
+   the pairing everything else is built around. Five inks and nothing else:
+
+     ink      near-black, cast toward the plum — all text
+     paper    warm oatmeal — the ground
+     plum     the institution — Edinburgh Council's own #6d3465
+     green    what Scotland entitles you to
+     brass    marks, emphasis, the current place
+     oxblood  emergencies, and nothing else
+
+   Type is a grotesque for display and a reading serif for prose — the
+   inversion of the usual pairing, and the reason the page reads as edited
+   rather than generated.
+
+   Colour is applied by overriding Tailwind's default ramps, so the ~1500
+   existing utility classes across 45 files inherit the identity from this
+   file. Every step keeps its default OKLCH lightness and moves only hue and
+   chroma, which is what preserves contrast across pages nobody re-checked.
+   The palette is CLOSED: slate, plum, emerald, amber, red, and nothing else
+   is defined here. Every other Tailwind family (violet, cyan, lime, rose…)
+   was removed rather than recoloured, so reaching for one is a visible
+   mistake — it renders in Tailwind's stock rainbow instead of blending in.
+   Steps are rationed too; the whole app draws on 26 of them:
+
+     slate    50 100 200 400 500 700 900
+     plum     200 600 700 900 950
+     emerald  50 200 700 900
+     amber    50 200 400 600 800
+     red      50 200 500 600 700
+   ========================================================================= */
+
+@theme {
+
+  /* slate */
+  --color-slate-50: oklch(98.4% 0.006 60);
+  --color-slate-100: oklch(96.8% 0.008 60);
+  --color-slate-200: oklch(92.9% 0.01 55);
+  --color-slate-300: oklch(86.9% 0.012 50);
+  --color-slate-400: oklch(70.4% 0.012 330);
+  --color-slate-500: oklch(55.4% 0.016 332);
+  --color-slate-600: oklch(44.6% 0.02 333);
+  --color-slate-700: oklch(37.2% 0.024 333);
+  --color-slate-800: oklch(27.9% 0.028 333);
+  --color-slate-900: oklch(20.8% 0.03 333);
+  --color-slate-950: oklch(12.9% 0.022 333);
+
+  /* emerald */
+  --color-emerald-50: oklch(97.9% 0.013 155);
+  --color-emerald-100: oklch(95.0% 0.032 155);
+  --color-emerald-200: oklch(90.5% 0.058 155);
+  --color-emerald-300: oklch(84.5% 0.089 155);
+  --color-emerald-400: oklch(76.5% 0.11 155);
+  --color-emerald-500: oklch(69.6% 0.105 155);
+  --color-emerald-600: oklch(59.6% 0.09 155);
+  --color-emerald-700: oklch(50.8% 0.073 155);
+  --color-emerald-800: oklch(43.2% 0.059 155);
+  --color-emerald-900: oklch(37.8% 0.048 155);
+  --color-emerald-950: oklch(26.2% 0.032 155);
+
+  /* amber */
+  --color-amber-50: oklch(98.7% 0.015 88);
+  --color-amber-100: oklch(96.2% 0.045 88);
+  --color-amber-200: oklch(92.4% 0.074 82);
+  --color-amber-300: oklch(87.9% 0.121 82);
+  --color-amber-400: oklch(82.8% 0.132 68);
+  --color-amber-500: oklch(76.9% 0.162 68);
+  --color-amber-600: oklch(66.6% 0.154 52);
+  --color-amber-700: oklch(55.5% 0.14 52);
+  --color-amber-800: oklch(47.3% 0.118 52);
+  --color-amber-900: oklch(41.4% 0.096 52);
+  --color-amber-950: oklch(27.9% 0.066 52);
+
+  /* red */
+  --color-red-50: oklch(97.1% 0.009 30);
+  --color-red-100: oklch(93.6% 0.023 30);
+  --color-red-200: oklch(88.5% 0.045 30);
+  --color-red-300: oklch(80.8% 0.089 30);
+  --color-red-400: oklch(70.4% 0.176 30);
+  --color-red-500: oklch(63.7% 0.225 30);
+  --color-red-600: oklch(57.7% 0.231 30);
+  --color-red-700: oklch(50.5% 0.202 30);
+  --color-red-800: oklch(44.4% 0.156 30);
+  --color-red-900: oklch(39.6% 0.116 30);
+  --color-red-950: oklch(25.8% 0.074 30);
+
+  /* Edinburgh plum — the City of Edinburgh Council's own colour, #6d3465.
+     plum-600 is that hex exactly and carries the page mastheads; plum-900
+     is the sidebar, so the nav recedes and the masthead sings. Gold on
+     plum is the pairing this palette is actually built around. */
+  --color-plum-100: oklch(93.0% 0.03 333);
+  --color-plum-200: oklch(87.0% 0.052 333);
+  --color-plum-300: oklch(77.0% 0.08 333);
+  --color-plum-500: oklch(50.0% 0.118 333);
+  --color-plum-600: oklch(41.8% 0.105 333);
+  --color-plum-700: oklch(34.5% 0.09 333);
+  --color-plum-800: oklch(27.5% 0.074 333);
+  --color-plum-900: oklch(21.5% 0.06 333);
+  --color-plum-950: oklch(15.5% 0.044 333);
+
+  /* Surfaces are enamelled, never bleached. */
+  --color-white: oklch(99.4% 0.004 85);
+
+  /* Printed radii. The 414 rounded-* utilities in this app were set for a
+     card dashboard; at 2–4px they read as trimmed paper instead. rounded-full
+     is left alone — those are real pills. */
+  --radius-xs:  1px;
+  --radius-sm:  2px;
+  --radius-md:  2px;
+  --radius-lg:  3px;
+  --radius-xl:  3px;
+  --radius-2xl: 4px;
+  --radius-3xl: 4px;
+  --radius-4xl: 6px;
+
+  /* Ink on paper casts a tighter, warmer shadow than a floating card does. */
+  --shadow-sm: 0 1px 0 0 oklch(20.8% 0.032 155 / 0.07);
+  --shadow-md: 0 1px 2px 0 oklch(20.8% 0.032 155 / 0.10);
+  --shadow-lg: 0 2px 8px -2px oklch(20.8% 0.032 155 / 0.14);
+  --shadow-xl: 0 6px 20px -6px oklch(20.8% 0.032 155 / 0.18);
+
+  --font-sans:    var(--font-body), Georgia, serif;
+  --font-display: var(--font-display-face), ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    var(--font-mono-face), ui-monospace, monospace;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+}
+
+:root {
+  --background: var(--color-slate-50);
+  --foreground: var(--color-slate-900);
+  --rule: var(--color-slate-200);
+  --brass: var(--color-amber-600);
+  --brass-light: var(--color-amber-400);
+  --plum: var(--color-plum-600);
+  --plum-deep: var(--color-plum-900);
+  --measure: 68ch;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+/* ── Type ─────────────────────────────────────────────────────────────────
+   The display face is scoped to h1/h2 and .display only. It is a heavy
+   grotesque and would fight the reading serif at the text-sm h3s that fill
+   these pages — and this app has readers using the A+ and Simplified
+   toggles, for whom that fight is not free. */
+h1, h2, .display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  font-variation-settings: "wdth" 92;
 }
 
-/* Focus styles */
-*:focus-visible {
-  outline: 2px solid #0f172a;
-  outline-offset: 2px;
-  border-radius: 4px;
+h1 { letter-spacing: -0.035em; }
+
+h3, h4, h5, h6 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  line-height: 1.25;
 }
 
-html.text-size-lg body {
-  font-size: 17px;
+p { max-width: var(--measure); }
+
+.font-mono, code, kbd, samp {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "zero" 1;
 }
 
-html.simplified-mode body {
-  line-height: 1.8;
+/* ── Eyebrow ──────────────────────────────────────────────────────────────
+   The one repeated structural mark: mono caps over a brass hairline, after
+   the plates on Edinburgh stair doors. It labels a band; it never decorates
+   one. */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--color-slate-500);
+  padding-top: 0.5rem;
+  border-top: 2px solid var(--brass);
+  display: block;
 }
 
-html.simplified-mode p {
-  max-width: 72ch;
+.eyebrow-dark {
+  color: color-mix(in oklab, white 62%, transparent);
+  border-top-color: var(--brass-light);
 }
 
-/* Sherlock animations */
+/* ── Bands ────────────────────────────────────────────────────────────────
+   Sections are full-bleed horizontal bands with their own ground, stacked
+   without gaps. This is the structural break from the previous design, where
+   every section floated as a rounded card on a grey field — the look the
+   whole app was asked to stop having. */
+.band { width: 100%; }
+.band + .band { border-top: 1px solid var(--rule); }
+.band-paper  { background: var(--color-slate-50); }
+.band-white  { background: var(--color-white); }
+.band-plum { background: var(--plum); color: var(--color-slate-100); border-top-color: transparent; }
+.band-ink    { background: var(--color-slate-900); color: var(--color-slate-100); border-top-color: transparent; }
+
+.band-inner {
+  max-width: 70rem;
+  margin-inline: auto;
+  padding: 2.75rem 1.5rem;
+}
+@media (max-width: 640px) { .band-inner { padding: 2rem 1.15rem; } }
+
+/* Asymmetric editorial split: a narrow label rail, a wide reading column.
+   The label sticks so you always know which band you are in. */
+.split {
+  display: grid;
+  gap: 1.25rem 2.5rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 900px) {
+  .split { grid-template-columns: 9.5rem minmax(0, 1fr); }
+  /* The rail label is set flush right, against the content column. The gap
+     then reads as a measured margin rather than as an empty column. */
+  .split > .split-label { position: sticky; top: 1.5rem; align-self: start; text-align: right; }
+  .split > .split-label .eyebrow { border-top-width: 2px; }
+}
+
+/* ── Entries ──────────────────────────────────────────────────────────────
+   Listings are separated by rules inside one band, not boxed individually.
+   A directory, which is what this app is. */
+.entries > * + * { border-top: 1px solid var(--rule); }
+.entry { padding-block: 1.25rem; }
+.entry:first-child { padding-top: 0; }
+
+/* ── Focus ────────────────────────────────────────────────────────────────
+   Drawn inside the box, for two reasons. Two-tone means one ring is always
+   legible — the dark edge on paper, the brass just inside it on plum and
+   ink grounds. And outer rings are clipped by overflow-hidden ancestors,
+   which this app has focusable elements sitting flush inside. */
+:focus-visible {
+  outline: 2px solid transparent; /* keeps a ring in forced-colors mode */
+  outline-offset: -2px;
+  box-shadow:
+    inset 0 0 0 2px var(--color-slate-900),
+    inset 0 0 0 4px var(--brass-light);
+}
+
+/* ── Readability controls (wired to the sidebar toggles) ─────────────── */
+html.text-size-lg body { font-size: 1.0625rem; }
+html.simplified-mode body { line-height: 1.85; }
+html.simplified-mode p { max-width: 64ch; }
+
+html { scroll-behavior: smooth; }
+
+/* ── Motion ───────────────────────────────────────────────────────────── */
 @keyframes sherlock-float {
   0%, 100% { transform: translateY(0px) rotate(-1deg); }
   50%       { transform: translateY(-8px) rotate(1deg); }
 }
-
 @keyframes sherlock-wiggle {
   0%, 100% { transform: rotate(0deg); }
   20%       { transform: rotate(-8deg); }
@@ -56,30 +280,27 @@ html.simplified-mode p {
   60%       { transform: rotate(-5deg); }
   80%       { transform: rotate(5deg); }
 }
-
 @keyframes sherlock-entrance {
   0%   { opacity: 0; transform: translateY(20px) scale(0.8); }
   60%  { transform: translateY(-4px) scale(1.05); }
   100% { opacity: 1; transform: translateY(0) scale(1); }
 }
-
 @keyframes panel-slide-up {
   0%   { opacity: 0; transform: translateY(16px) scale(0.97); }
   100% { opacity: 1; transform: translateY(0) scale(1); }
 }
+.sherlock-float    { animation: sherlock-float 3s ease-in-out infinite; }
+.sherlock-wiggle   { animation: sherlock-wiggle 0.6s ease-in-out; }
+.sherlock-entrance { animation: sherlock-entrance 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+.panel-slide-up    { animation: panel-slide-up 0.25s ease-out forwards; }
 
-.sherlock-float {
-  animation: sherlock-float 3s ease-in-out infinite;
-}
-
-.sherlock-wiggle {
-  animation: sherlock-wiggle 0.6s ease-in-out;
-}
-
-.sherlock-entrance {
-  animation: sherlock-entrance 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-
-.panel-slide-up {
-  animation: panel-slide-up 0.25s ease-out forwards;
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .sherlock-entrance, .panel-slide-up { opacity: 1; transform: none; }
 }

@@ -1,4 +1,5 @@
 import PageHeader from "@/components/page-header";
+import Band from "@/components/band";
 import TaskPanel from "@/components/task-panel";
 import NearbyPanel from "@/components/nearby-panel";
 import QuickChecker from "@/components/quick-checker";
@@ -24,15 +25,12 @@ export default async function ResidentPage() {
   const newsItems: NewsItem[] = await fetchCouncilNews();
 
   return (
-    <div className="min-h-full bg-slate-50">
-      <PageHeader title="Resident Hub" subtitle="Everyday services for people living in Edinburgh" />
+    <div className="min-h-full">
+      <PageHeader section="Start here" title="Resident Hub" subtitle="Everyday services for people living in Edinburgh" />
 
-      <div className="p-5 w-full max-w-6xl mx-auto space-y-6">
+            <Band label="Your services" ground="paper">
         <div className="bg-white rounded-2xl border border-slate-200 p-6">
-          <h1 className="text-2xl font-bold text-slate-900 mb-2">
-            Resident <span className="text-sky-500">Essentials.</span>
-          </h1>
-          <p className="text-sm text-slate-600">
+          <p className="text-lg text-slate-700 leading-relaxed">
             A practical hub for housing, health, council tasks, and everyday support.
           </p>
         </div>
@@ -69,7 +67,7 @@ export default async function ResidentPage() {
               href="https://www.edinburgh.gov.uk/news"
               target="_blank"
               rel="noreferrer"
-              className="text-sm font-semibold text-slate-600 hover:underline"
+              className="text-sm font-semibold text-slate-700 hover:underline"
             >
               View all
             </a>
@@ -169,7 +167,7 @@ export default async function ResidentPage() {
             hrefLabel="Check eligibility"
           />
         </div>
-      </div>
+      </Band>
     </div>
   );
 }

@@ -42,12 +42,12 @@ function Winner({ neighbourhoods, field, label, format }: {
         <td
           key={n.slug}
           className={`py-2 px-2 text-sm text-center font-semibold ${
-            v === best.v ? "text-emerald-600" : "text-slate-700"
+            v === best.v ? "text-emerald-700" : "text-slate-700"
           }`}
         >
           {format(v)}
           {v === best.v && values.filter((x) => x.v === best.v).length === 1 && (
-            <span className="ml-1 text-emerald-500">★</span>
+            <span className="ml-1 text-emerald-700">★</span>
           )}
         </td>
       ))}
@@ -116,7 +116,7 @@ export default function CompareModal({
               <div
                 key={n.slug}
                 className="rounded-xl p-4 text-white"
-                style={{ backgroundColor: n.color }}
+                style={{ backgroundColor: "var(--color-plum-600)" }}
               >
                 <div className="text-2xl mb-1">{n.emoji}</div>
                 <div className="font-bold text-lg leading-tight">{n.name}</div>
@@ -160,7 +160,7 @@ export default function CompareModal({
                   {neighbourhoods.map((n) => (
                     <td key={n.slug} className="py-2 px-2 text-center text-sm">
                       {n.transport.tram ? (
-                        <span className="text-emerald-600 font-semibold">Yes ✓</span>
+                        <span className="text-emerald-700 font-semibold">Yes ✓</span>
                       ) : (
                         <span className="text-slate-400">No</span>
                       )}
@@ -232,13 +232,13 @@ export default function CompareModal({
             >
               {neighbourhoods.map((n) => (
                 <div key={n.slug} className="bg-slate-50 rounded-xl p-4 space-y-3">
-                  <div className="text-sm font-bold text-slate-800 mb-2">{n.name}</div>
+                  <div className="text-sm font-bold text-slate-900 mb-2">{n.name}</div>
                   {VIBE_CONFIG.map(({ key, label, emoji }) => (
                     <div key={key}>
                       <div className="flex items-center justify-between mb-1">
                         <span className="text-xs text-slate-500">{emoji} {label}</span>
                       </div>
-                      <VibeBar score={n.vibes[key]} color={n.color} />
+                      <VibeBar score={n.vibes[key]} color="var(--color-plum-600)" />
                     </div>
                   ))}
                 </div>
@@ -257,11 +257,11 @@ export default function CompareModal({
             >
               {neighbourhoods.map((n) => (
                 <div key={n.slug} className="bg-slate-50 rounded-xl p-4">
-                  <div className="text-sm font-bold text-slate-800 mb-2">{n.name}</div>
+                  <div className="text-sm font-bold text-slate-900 mb-2">{n.name}</div>
                   <ul className="space-y-1.5">
                     {n.bestFor.map((item) => (
-                      <li key={item} className="text-xs text-slate-600 flex items-start gap-1.5">
-                        <span className="text-emerald-500 mt-0.5 flex-shrink-0">✓</span>
+                      <li key={item} className="text-xs text-slate-700 flex items-start gap-1.5">
+                        <span className="text-emerald-700 mt-0.5 flex-shrink-0">✓</span>
                         {item}
                       </li>
                     ))}
@@ -282,7 +282,7 @@ export default function CompareModal({
                 href={`/neighbourhoods/${n.slug}`}
                 onClick={onClose}
                 className="text-center text-sm font-semibold py-2.5 px-4 rounded-xl text-white transition-opacity hover:opacity-90"
-                style={{ backgroundColor: n.color }}
+                style={{ backgroundColor: "var(--color-plum-600)" }}
               >
                 Full guide: {n.name}
               </Link>

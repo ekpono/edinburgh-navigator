@@ -11,7 +11,7 @@ export default function OgImage() {
         style={{
           width: "1200px",
           height: "630px",
-          background: "#0f172a",
+          background: "#6d3465",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
@@ -86,7 +86,7 @@ export default function OgImage() {
             }}
           >
             <span>Edinburgh</span>
-            <span style={{ color: "#38bdf8" }}>Navigator.</span>
+            <span style={{ color: "#ffb661" }}>Navigator.</span>
           </div>
           <div
             style={{

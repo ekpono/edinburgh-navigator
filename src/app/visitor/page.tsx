@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import PageHeader from "@/components/page-header";
+import Band from "@/components/band";
+import PageIntro from "@/components/page-intro";
 import SectionTabs from "@/components/section-tabs";
 import ServiceCard from "@/components/service-card";
 import { SERVICE_CONTACTS } from "@/lib/edinburgh-data";
@@ -30,8 +32,8 @@ const ITINERARIES: Itinerary[] = [
     title: "1 Day in Edinburgh",
     subtitle: "The essential loop — Old Town, the Castle, and Princes Street",
     badge: "1 Day",
-    badgeColour: "bg-sky-100 text-sky-700",
-    headerColour: "bg-sky-50 border-sky-200",
+    badgeColour: "bg-emerald-50 text-emerald-700",
+    headerColour: "bg-emerald-50 border-emerald-200",
     stops: [
       { time: "9:00 am", place: "Edinburgh Castle", desc: "Start early to beat the crowds. See the Scottish Crown Jewels, the Stone of Destiny, and panoramic views over the city. Allow 2 hours.", cost: "£17.50 adults · Book online", tip: "The One O'Clock Gun fires every weekday at 13:00 — time your visit to hear it." },
       { time: "11:30 am", place: "Royal Mile stroll", desc: "Walk downhill from the Castle Esplanade through the heart of the Old Town. Dip into a close — try Bakehouse Close or Anchor Close. Stop at St Giles' Cathedral (free).", cost: "Free" },
@@ -53,8 +55,8 @@ const ITINERARIES: Itinerary[] = [
     title: "48 Hours in Edinburgh",
     subtitle: "Two full days covering the city's highlights and a taste of Leith",
     badge: "2 Days",
-    badgeColour: "bg-violet-100 text-violet-700",
-    headerColour: "bg-violet-50 border-violet-200",
+    badgeColour: "bg-emerald-50 text-emerald-700",
+    headerColour: "bg-emerald-50 border-emerald-200",
     stops: [
       { time: "Day 1 · 9:00 am", place: "Arthur's Seat", desc: "Start with the hike — 45–60 min at a moderate pace. Begin at the Holyrood Park car park or from Dunsapie Loch. Incredible views in every direction.", cost: "Free", tip: "Start early — it gets very busy by 10:30 am in summer." },
       { time: "Day 1 · 11:30 am", place: "Palace of Holyroodhouse", desc: "At the bottom of the Royal Mile. The King's official Scottish residence — state apartments and the haunting ruins of Holyrood Abbey.", cost: "£18 adults" },
@@ -80,7 +82,7 @@ const ITINERARIES: Itinerary[] = [
     title: "Weekend with Kids",
     subtitle: "Family-friendly Edinburgh — interactive, outdoor, and budget-aware",
     badge: "Family",
-    badgeColour: "bg-emerald-100 text-emerald-700",
+    badgeColour: "bg-emerald-50 text-emerald-700",
     headerColour: "bg-emerald-50 border-emerald-200",
     stops: [
       { time: "Day 1 · 9:30 am", place: "Dynamic Earth", desc: "Best Edinburgh attraction for children — immersive journey from the Big Bang to now. Interactive exhibits, volcano simulation, and ice cave. Allow 2.5 hours.", cost: "£16 adults / £10 children (3–14)", tip: "Book online for a small discount. Check for school holiday family deals." },
@@ -106,7 +108,7 @@ const ITINERARIES: Itinerary[] = [
     title: "Rainy Day Edinburgh",
     subtitle: "A full indoor day — world-class museums, history, food, and live music",
     badge: "Indoors",
-    badgeColour: "bg-slate-100 text-slate-600",
+    badgeColour: "bg-slate-100 text-slate-700",
     headerColour: "bg-slate-50 border-slate-200",
     stops: [
       { time: "10:00 am", place: "National Museum of Scotland", desc: "World-class, free, and could fill an entire day alone. Scottish history from ancient times to the present, science and technology, fashion, and global cultures. Excellent café on site.", cost: "Free", tip: "The rooftop terrace has glass cover — you can look out even in rain." },
@@ -134,27 +136,14 @@ export default function VisitorPage() {
   );
 
   return (
-    <div className="min-h-full bg-slate-50">
-      <PageHeader title="Visitor Guide" subtitle="Everything you need for Edinburgh" />
+    <div className="min-h-full">
+      <PageHeader section="Visiting" title="Visitor Guide" subtitle="Everything you need for Edinburgh" />
 
-      <div className="p-5 w-full max-w-6xl mx-auto">
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 mb-5">
-          <h1 className="text-2xl font-bold text-slate-900 mb-2">Visitor <span className="text-rose-500">Guide.</span></h1>
-          <p className="text-sm text-slate-600">Edinburgh - Scotland's capital, a UNESCO World Heritage city, and one of Europe's most beautiful and walkable cities. Here's everything you need to get the most from your visit.</p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            {[
-              { label: "🏰 UNESCO Heritage", note: "Old & New Towns" },
-              { label: "🎭 August Festivals", note: "World's biggest arts event" },
-              { label: "🏔️ Arthur's Seat", note: "Volcano in the city" },
-              { label: "🥃 Whisky Capital", note: "Scotch Whisky Experience" },
-            ].map((b) => (
-              <div key={b.label} className="bg-rose-50 border border-rose-200 rounded-xl px-3 py-2">
-                <div className="text-xs font-semibold text-slate-900">{b.label}</div>
-                <div className="text-xs text-slate-500">{b.note}</div>
-              </div>
-            ))}
-          </div>
-        </div>
+            <PageIntro label="In brief">
+        Edinburgh - Scotland's capital, a UNESCO World Heritage city, and one of Europe's most beautiful and walkable cities. Here's everything you need to get the most from your visit.
+      </PageIntro>
+      <Band label="For visitors" ground="paper">
+        
 
         <div className="grid gap-3 sm:grid-cols-2 mb-5">
           {keyServices.map((service) => (
@@ -166,8 +155,8 @@ export default function VisitorPage() {
 
         {tab === "itineraries" && (
           <div className="space-y-4">
-            <div className="bg-rose-50 border border-rose-200 rounded-xl p-4">
-              <p className="text-xs text-rose-800 leading-relaxed">
+            <div className="border-l-2 border-emerald-700 bg-emerald-50 px-5 py-4 max-w-3xl">
+              <p className="text-xs text-emerald-900 leading-relaxed">
                 <strong>Pick your itinerary below</strong> — each one is timed, budgeted, and written for Edinburgh specifically. All stops are reachable by foot or public transport.
               </p>
             </div>
@@ -181,7 +170,7 @@ export default function VisitorPage() {
                   className={`rounded-xl border p-4 text-left transition-all hover:-translate-y-0.5 ${
                     activeItinerary === it.id
                       ? "border-slate-900 bg-slate-900 shadow-md"
-                      : "border-slate-200 bg-white hover:border-slate-300 hover:shadow-sm"
+                      : "border-slate-200 bg-white hover:border-slate-200 hover:shadow-sm"
                   }`}
                 >
                   <span className="text-2xl block mb-2">{it.emoji}</span>
@@ -206,7 +195,7 @@ export default function VisitorPage() {
                     <span className="text-3xl">{it.emoji}</span>
                     <div>
                       <div className="font-bold text-slate-900 text-base">{it.title}</div>
-                      <div className="text-xs text-slate-600 mt-0.5">{it.subtitle}</div>
+                      <div className="text-xs text-slate-700 mt-0.5">{it.subtitle}</div>
                     </div>
                   </div>
                 </div>
@@ -229,11 +218,11 @@ export default function VisitorPage() {
                               <div className="text-xs font-semibold text-slate-400 mb-0.5">{stop.time}</div>
                               <div className="font-bold text-slate-900 text-sm">{stop.place}</div>
                             </div>
-                            <span className="text-xs bg-slate-100 text-slate-600 px-2 py-1 rounded-lg font-medium flex-shrink-0">{stop.cost}</span>
+                            <span className="text-xs bg-slate-100 text-slate-700 px-2 py-1 rounded-lg font-medium flex-shrink-0">{stop.cost}</span>
                           </div>
-                          <div className="text-xs text-slate-600 mt-2 leading-relaxed">{stop.desc}</div>
+                          <div className="text-xs text-slate-700 mt-2 leading-relaxed">{stop.desc}</div>
                           {stop.tip && (
-                            <div className="mt-2 text-xs bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 text-amber-800">
+                            <div className="mt-2 text-sm border-l-2 border-amber-600 bg-amber-50 px-4 py-2.5 text-amber-800">
                               💡 {stop.tip}
                             </div>
                           )}
@@ -248,7 +237,7 @@ export default function VisitorPage() {
                   <div className="font-bold text-slate-700 text-xs mb-2">📋 Good to know</div>
                   <ul className="space-y-1.5">
                     {it.notes.map((note, i) => (
-                      <li key={i} className="text-xs text-slate-600 flex items-start gap-2">
+                      <li key={i} className="text-xs text-slate-700 flex items-start gap-2">
                         <span className="text-slate-400 flex-shrink-0">•</span>
                         {note}
                       </li>
@@ -264,7 +253,7 @@ export default function VisitorPage() {
           <div className="space-y-4">
             <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4">
               <strong className="text-sm text-emerald-900">💡 Edinburgh is remarkably free</strong>
-              <p className="text-xs text-emerald-800 mt-1">Many of Edinburgh's best attractions are completely free — including national museums, galleries, parks, and Arthur's Seat. You can have an excellent 2–3 day visit spending very little.</p>
+              <p className="text-xs text-emerald-900 mt-1">Many of Edinburgh's best attractions are completely free — including national museums, galleries, parks, and Arthur's Seat. You can have an excellent 2–3 day visit spending very little.</p>
             </div>
 
             <div className="bg-white rounded-xl border border-slate-200 p-5">
@@ -283,10 +272,10 @@ export default function VisitorPage() {
                   <div key={a.name} className="border-b border-slate-100 last:border-0 pb-3 last:pb-0">
                     <div className="flex items-start justify-between gap-2">
                       <div className="font-bold text-slate-900 text-sm">{a.name}</div>
-                      <span className="text-xs bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full flex-shrink-0 font-semibold">Free</span>
+                      <span className="text-xs bg-emerald-50 text-emerald-900 px-2 py-0.5 rounded-full flex-shrink-0 font-semibold">Free</span>
                     </div>
                     <div className="text-xs text-slate-500 mt-0.5">📍 {a.location} · ⏱ {a.time}</div>
-                    <div className="text-xs text-slate-600 mt-1.5 leading-relaxed">{a.desc}</div>
+                    <div className="text-xs text-slate-700 mt-1.5 leading-relaxed">{a.desc}</div>
                   </div>
                 ))}
               </div>
@@ -306,10 +295,10 @@ export default function VisitorPage() {
                   <div key={a.name} className="border-b border-slate-100 last:border-0 pb-3 last:pb-0">
                     <div className="flex items-start justify-between gap-2">
                       <div className="font-bold text-slate-900 text-sm">{a.name}</div>
-                      <span className="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full flex-shrink-0 font-semibold">{a.price}</span>
+                      <span className="text-xs bg-amber-50 text-amber-800 px-2 py-0.5 rounded-full flex-shrink-0 font-semibold">{a.price}</span>
                     </div>
-                    <div className="text-xs text-slate-600 mt-1.5 leading-relaxed">{a.desc}</div>
-                    <a href={a.link} target="_blank" rel="noreferrer" className="inline-block mt-1 text-xs font-semibold text-rose-600 hover:underline">Book →</a>
+                    <div className="text-xs text-slate-700 mt-1.5 leading-relaxed">{a.desc}</div>
+                    <a href={a.link} target="_blank" rel="noreferrer" className="inline-block mt-1 text-xs font-semibold text-slate-700 hover:underline">Book →</a>
                   </div>
                 ))}
               </div>
@@ -319,9 +308,9 @@ export default function VisitorPage() {
 
         {tab === "around" && (
           <div className="space-y-3">
-            <div className="bg-sky-50 border border-sky-200 rounded-xl p-4">
-              <strong className="text-sm text-sky-900">Edinburgh is very walkable</strong>
-              <p className="text-xs text-sky-800 mt-1 leading-relaxed">The city centre (Old Town and New Town) is compact. Castle to Princes Street: 5 min walk. Royal Mile to Grassmarket: 5 min. Most central attractions are within 20 minutes' walk of each other. Wear comfortable shoes — Edinburgh is hilly.</p>
+            <div className="border-l-2 border-emerald-700 bg-emerald-50 px-5 py-4 max-w-3xl">
+              <strong className="text-sm text-emerald-900">Edinburgh is very walkable</strong>
+              <p className="text-xs text-emerald-900 mt-1 leading-relaxed">The city centre (Old Town and New Town) is compact. Castle to Princes Street: 5 min walk. Royal Mile to Grassmarket: 5 min. Most central attractions are within 20 minutes' walk of each other. Wear comfortable shoes — Edinburgh is hilly.</p>
             </div>
 
             {[
@@ -353,8 +342,8 @@ export default function VisitorPage() {
             ].map((item) => (
               <div key={item.method} className="bg-white rounded-xl border border-slate-200 p-4">
                 <div className="font-bold text-slate-900 text-sm mb-1">{item.method}</div>
-                <div className="text-xs text-slate-600 leading-relaxed mb-2">{item.detail}</div>
-                <div className="text-xs bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 text-amber-800">
+                <div className="text-xs text-slate-700 leading-relaxed mb-2">{item.detail}</div>
+                <div className="text-sm border-l-2 border-amber-600 bg-amber-50 px-4 py-2.5 text-amber-800">
                   💡 {item.tip}
                 </div>
               </div>
@@ -439,9 +428,9 @@ export default function VisitorPage() {
                   <div className="min-w-0">
                     <div className="flex items-center gap-2 flex-wrap">
                       <div className="font-bold text-slate-900 text-sm">{trip.dest}</div>
-                      <div className="text-xs bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">⏱ {trip.time}</div>
+                      <div className="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded-full">⏱ {trip.time}</div>
                     </div>
-                    <div className="text-xs text-slate-600 mt-1.5 leading-relaxed">{trip.desc}</div>
+                    <div className="text-xs text-slate-700 mt-1.5 leading-relaxed">{trip.desc}</div>
                     <div className="mt-2 flex flex-wrap gap-3">
                       <div className="text-xs"><span className="text-slate-400">Price:</span> <span className="font-medium text-slate-700">{trip.price}</span></div>
                       <div className="text-xs"><span className="text-slate-400">Getting there:</span> <span className="font-medium text-slate-700">{trip.transport}</span></div>
@@ -538,21 +527,21 @@ export default function VisitorPage() {
                           event.type === "Free"
                             ? "bg-emerald-50 text-emerald-700"
                             : event.type === "Mixed"
-                              ? "bg-amber-50 text-amber-700"
+                              ? "bg-amber-50 text-amber-800"
                               : "bg-slate-200 text-slate-700"
                         }`}
                       >
                         {event.type}
                       </span>
                     </div>
-                    <div className="text-xs text-slate-600 mt-2 leading-relaxed">{event.desc}</div>
+                    <div className="text-xs text-slate-700 mt-2 leading-relaxed">{event.desc}</div>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="bg-rose-50 border border-rose-200 rounded-xl p-4">
-              <strong className="text-sm text-rose-900">Book early for August</strong>
-              <p className="text-xs text-rose-800 mt-1">Accommodation can sell out months ahead during the Fringe and International Festival.</p>
+            <div className="border-l-2 border-emerald-700 bg-emerald-50 px-5 py-4 max-w-3xl">
+              <strong className="text-sm text-emerald-900">Book early for August</strong>
+              <p className="text-xs text-emerald-900 mt-1">Accommodation can sell out months ahead during the Fringe and International Festival.</p>
             </div>
           </div>
         )}
@@ -562,8 +551,8 @@ export default function VisitorPage() {
             {[
               {
                 category: "🌦 Weather",
-                colour: "bg-blue-50 border-blue-200",
-                titleColour: "text-blue-900",
+                colour: "bg-emerald-50 border-emerald-200",
+                titleColour: "text-emerald-900",
                 tips: [
                   "Pack layers and a waterproof — Edinburgh weather changes rapidly and it rains year-round",
                   "Average summer temp is 18–19°C (not hot!). Winters are mild but wet and windy",
@@ -574,7 +563,7 @@ export default function VisitorPage() {
               {
                 category: "💷 Money",
                 colour: "bg-amber-50 border-amber-200",
-                titleColour: "text-amber-900",
+                titleColour: "text-amber-800",
                 tips: [
                   "Bank of Scotland, RBS, and Clydesdale Bank issue Scottish banknotes — legally valid but some shops (especially in England) may refuse them. Request Bank of England notes if needed",
                   "Card payments are widely accepted — contactless everywhere",
@@ -584,8 +573,8 @@ export default function VisitorPage() {
               },
               {
                 category: "🗓 When to Visit",
-                colour: "bg-rose-50 border-rose-200",
-                titleColour: "text-rose-900",
+                colour: "bg-emerald-50 border-emerald-200",
+                titleColour: "text-emerald-900",
                 tips: [
                   "August: Edinburgh Fringe Festival — world's largest arts festival. Incredible but very expensive, crowded, and accommodation books out months ahead",
                   "December: Christmas markets and Hogmanay (Scots New Year) — festive and atmospheric",
@@ -595,8 +584,8 @@ export default function VisitorPage() {
               },
               {
                 category: "🗣 Scottish Language & Culture",
-                colour: "bg-purple-50 border-purple-200",
-                titleColour: "text-purple-900",
+                colour: "bg-emerald-50 border-emerald-200",
+                titleColour: "text-emerald-900",
                 tips: [
                   "Scots language phrases: 'Braw' = excellent/beautiful, 'Dreich' = grey/drizzly weather, 'Wee' = small, 'Aye' = yes, 'Nae bother' = no problem",
                   "Edinburgh Scots accent is different from Glasgow — generally clearer for international visitors",
@@ -695,12 +684,12 @@ export default function VisitorPage() {
                   },
                 ].map((tier) => (
                   <div key={tier.level}>
-                    <div className="font-semibold text-slate-800 text-xs mb-2">{tier.level}</div>
+                    <div className="font-semibold text-slate-900 text-xs mb-2">{tier.level}</div>
                     <div className="space-y-1.5">
                       {tier.places.map((p) => (
                         <div key={p.name} className="flex items-start gap-2 text-xs">
-                          <span className="text-slate-300 flex-shrink-0 mt-0.5">•</span>
-                          <div><span className="font-semibold text-slate-800">{p.name}</span> — <span className="text-slate-500">{p.desc}</span></div>
+                          <span className="text-slate-200 flex-shrink-0 mt-0.5">•</span>
+                          <div><span className="font-semibold text-slate-900">{p.name}</span> — <span className="text-slate-500">{p.desc}</span></div>
                         </div>
                       ))}
                     </div>
@@ -711,7 +700,7 @@ export default function VisitorPage() {
 
             <div className="bg-white rounded-xl border border-slate-200 p-4">
               <h3 className="font-bold text-slate-900 text-sm mb-3">🥃 Scottish Whisky</h3>
-              <p className="text-xs text-slate-600 leading-relaxed mb-3">Edinburgh has dozens of whisky bars. A good dram starts around £5–10. Key whisky regions to try: Islay (peaty, smoky), Speyside (fruit, honey), Highland (complex), Lowland (lighter).</p>
+              <p className="text-xs text-slate-700 leading-relaxed mb-3">Edinburgh has dozens of whisky bars. A good dram starts around £5–10. Key whisky regions to try: Islay (peaty, smoky), Speyside (fruit, honey), Highland (complex), Lowland (lighter).</p>
               <div className="space-y-1.5">
                 {[
                   { name: "The Scotch Malt Whisky Society (Leith)", desc: "Private club with extensive cask selections — day membership available" },
@@ -719,7 +708,7 @@ export default function VisitorPage() {
                   { name: "Cadenhead's Whisky Shop (Canongate)", desc: "Edinburgh's oldest independent bottler — shop and tasting room" },
                 ].map((w) => (
                   <div key={w.name} className="text-xs">
-                    <span className="font-semibold text-slate-800">{w.name}</span>
+                    <span className="font-semibold text-slate-900">{w.name}</span>
                     <span className="text-slate-500"> — {w.desc}</span>
                   </div>
                 ))}
@@ -727,7 +716,7 @@ export default function VisitorPage() {
             </div>
           </div>
         )}
-      </div>
+      </Band>
     </div>
   );
 }

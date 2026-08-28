@@ -1,4 +1,5 @@
 import PageHeader from "@/components/page-header";
+import Band from "@/components/band";
 import NearbyPanel from "@/components/nearby-panel";
 import ServiceCard from "@/components/service-card";
 import TaskPanel from "@/components/task-panel";
@@ -11,15 +12,12 @@ export default function VisitorEssentialsPage() {
   );
 
   return (
-    <div className="min-h-full bg-slate-50">
-      <PageHeader title="Visitor Essentials" subtitle="First 48 hours in Edinburgh" />
+    <div className="min-h-full">
+      <PageHeader section="Visiting" title="Visitor Essentials" subtitle="First 48 hours in Edinburgh" />
 
-      <div className="p-5 w-full max-w-6xl mx-auto space-y-6">
+            <Band label="For visitors" ground="paper">
         <div className="bg-white rounded-2xl border border-slate-200 p-6">
-          <h1 className="text-2xl font-bold text-slate-900 mb-2">
-            Visitor <span className="text-rose-500">Essentials.</span>
-          </h1>
-          <p className="text-sm text-slate-600">
+          <p className="text-lg text-slate-700 leading-relaxed">
             The fastest way to get settled, move around, and see the best of Edinburgh.
           </p>
         </div>
@@ -36,7 +34,7 @@ export default function VisitorEssentialsPage() {
             {VISITOR_FIRST_48.map((item) => (
               <div key={item.id} className="rounded-xl border border-slate-200 bg-slate-50 p-3">
                 <div className="text-sm font-semibold text-slate-900">{item.title}</div>
-                <div className="text-xs text-slate-600 mt-1">{item.detail}</div>
+                <div className="text-xs text-slate-700 mt-1">{item.detail}</div>
               </div>
             ))}
           </div>
@@ -52,7 +50,7 @@ export default function VisitorEssentialsPage() {
         </section>
 
         <NearbyPanel title="Nearby Visitor Essentials" services={visitorServices} />
-      </div>
+      </Band>
     </div>
   );
 }

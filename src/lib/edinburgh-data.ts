@@ -104,8 +104,8 @@ export const CRISIS_ORGS = [
 export const CRISIS_SCENARIOS = [
   {
     title: "If you are homeless tonight",
-    color: "#fef2f2",
-    border: "#ef4444",
+    color: "var(--color-red-50)",
+    border: "var(--color-red-600)",
     emoji: "🏠",
     steps: [
       "Call City of Edinburgh Council Housing out-of-hours: 0131 200 2000 — they have a 24/7 duty.",
@@ -117,8 +117,8 @@ export const CRISIS_SCENARIOS = [
   },
   {
     title: "If you are fleeing domestic abuse",
-    color: "#fdf4ff",
-    border: "#a855f7",
+    color: "var(--color-red-50)",
+    border: "var(--color-red-600)",
     emoji: "💜",
     steps: [
       "If in immediate danger, call 999.",
@@ -131,8 +131,8 @@ export const CRISIS_SCENARIOS = [
   },
   {
     title: "If you are in a mental health crisis",
-    color: "#f0f9ff",
-    border: "#2563eb",
+    color: "var(--color-red-50)",
+    border: "var(--color-red-600)",
     emoji: "🧠",
     steps: [
       "Call the Edinburgh Crisis Centre (free, 24/7): 0808 801 0414. Staffed by trained mental health workers.",

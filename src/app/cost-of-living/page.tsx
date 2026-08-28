@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import PageHeader from "@/components/page-header";
+import Band from "@/components/band";
+import PageIntro from "@/components/page-intro";
 import SectionTabs from "@/components/section-tabs";
 
 const TABS = [
@@ -40,35 +42,18 @@ export default function CostOfLivingPage() {
   const [tab, setTab] = useState("overview");
 
   return (
-    <div className="min-h-full bg-slate-50">
+    <div className="min-h-full">
       <PageHeader
+        section="Money"
         title="Cost of Living in Edinburgh"
         subtitle="Rent, food, bills, and budget tips for life in Scotland's capital"
       />
 
-      <div className="p-5 w-full max-w-6xl mx-auto">
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 mb-5">
-          <h1 className="text-2xl font-bold text-slate-900 mb-2">
-            Cost of <span className="text-green-500">Living.</span>
-          </h1>
-          <p className="text-sm text-slate-600">
-            Edinburgh is the most expensive city in Scotland, and one of the priciest in the UK outside London. But Scottish benefits, free prescriptions, and free bus travel for many residents significantly offset these costs.
-          </p>
-          <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-2">
-            {[
-              { label: "Avg 1-bed rent", value: "£1,100", note: "Per month (city centre)" },
-              { label: "Bus single", value: "£1.80", note: "Lothian Buses" },
-              { label: "Pint of beer", value: "£4.50–6", note: "City centre pub" },
-              { label: "Prescriptions", value: "FREE", note: "All NHS prescriptions in Scotland" },
-            ].map((s) => (
-              <div key={s.label} className="bg-green-50 border border-green-200 rounded-xl p-3 text-center">
-                <div className="text-base font-bold text-green-700">{s.value}</div>
-                <div className="text-xs font-semibold text-slate-800 mt-0.5">{s.label}</div>
-                <div className="text-xs text-slate-500 mt-0.5">{s.note}</div>
-              </div>
-            ))}
-          </div>
-        </div>
+            <PageIntro label="In brief">
+        Edinburgh is the most expensive city in Scotland, and one of the priciest in the UK outside London. But Scottish benefits, free prescriptions, and free bus travel for many residents significantly offset these costs.
+      </PageIntro>
+      <Band label="Money" ground="paper">
+        
 
         <SectionTabs tabs={TABS} active={tab} onChange={setTab} />
 
@@ -91,15 +76,15 @@ export default function CostOfLivingPage() {
                   <div key={row.category} className={`grid grid-cols-4 py-2.5 text-xs ${i % 2 === 0 ? "bg-slate-50" : "bg-white"} rounded-lg px-3`}>
                     <div className="text-slate-700 font-medium col-span-1">{row.category}</div>
                     <div className="text-emerald-700 font-semibold text-center">{row.low}</div>
-                    <div className="text-amber-700 font-semibold text-center">{row.mid}</div>
+                    <div className="text-amber-800 font-semibold text-center">{row.mid}</div>
                     <div className="text-red-600 font-semibold text-center">{row.high}</div>
                   </div>
                 ))}
                 <div className="grid grid-cols-4 py-2.5 px-3 bg-slate-900 rounded-lg mt-1">
                   <div className="text-white font-bold text-xs">Total estimate</div>
-                  <div className="text-emerald-400 font-bold text-xs text-center">~£1,220</div>
+                  <div className="text-emerald-700 font-bold text-xs text-center">~£1,220</div>
                   <div className="text-amber-400 font-bold text-xs text-center">~£1,765</div>
-                  <div className="text-red-400 font-bold text-xs text-center">~£2,570</div>
+                  <div className="text-red-500 font-bold text-xs text-center">~£2,570</div>
                 </div>
                 <div className="grid grid-cols-4 mt-1 px-3 text-xs text-slate-400">
                   <div />
@@ -122,12 +107,12 @@ export default function CostOfLivingPage() {
                     "✓ Dental check-ups — free for under-26s and over-60s",
                     "✓ Free school meals P1–P5 (saves ~£500/year per child)",
                   ].map((item) => (
-                    <li key={item} className="text-xs text-emerald-800">{item}</li>
+                    <li key={item} className="text-xs text-emerald-900">{item}</li>
                   ))}
                 </ul>
               </div>
-              <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
-                <h3 className="font-bold text-amber-900 text-sm mb-2">Edinburgh is expensive for…</h3>
+              <div className="border-l-2 border-amber-600 bg-amber-50 px-5 py-4 max-w-3xl">
+                <h3 className="font-bold text-amber-800 text-sm mb-2">Edinburgh is expensive for…</h3>
                 <ul className="space-y-1.5">
                   {[
                     "⚠ Rent — up 14.7% in one year, one of UK's fastest-rising",
@@ -158,7 +143,7 @@ export default function CostOfLivingPage() {
                     <div className="font-semibold text-slate-900 text-xs">{r.role}</div>
                     <div className="text-xs text-slate-400 mt-0.5">{r.note}</div>
                   </div>
-                  <div className="text-xs font-bold text-green-700 flex-shrink-0">{r.salary}</div>
+                  <div className="text-xs font-bold text-emerald-700 flex-shrink-0">{r.salary}</div>
                 </div>
               ))}
             </div>
@@ -167,7 +152,7 @@ export default function CostOfLivingPage() {
 
         {tab === "rent" && (
           <div className="space-y-4">
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+            <div className="border-l-2 border-amber-600 bg-amber-50 px-5 py-4 max-w-3xl">
               <p className="text-xs text-amber-800 leading-relaxed">
                 <strong>Edinburgh rental market:</strong> Rents have risen sharply — up ~14.7% in 2022–23. Competition is fierce, especially in summer and at university start (September). Have references, proof of income (3x monthly rent), and ID ready before viewing.
               </p>
@@ -210,7 +195,7 @@ export default function CostOfLivingPage() {
                       <div className="text-xs font-semibold text-slate-900">{l.name}</div>
                       <div className="text-xs text-slate-400">{l.desc}</div>
                     </div>
-                    <span className="text-xs text-green-600 font-bold flex-shrink-0 ml-2">→</span>
+                    <span className="text-xs text-emerald-700 font-bold flex-shrink-0 ml-2">→</span>
                   </a>
                 ))}
               </div>
@@ -229,14 +214,14 @@ export default function CostOfLivingPage() {
                     <div className="flex items-center justify-between mb-2">
                       <div>
                         <div className="font-bold text-slate-900 text-sm">{s.name}</div>
-                        <div className={`text-xs font-semibold mt-0.5 ${s.type === "Discount" ? "text-emerald-600" : s.type === "Premium" ? "text-violet-600" : "text-amber-600"}`}>{s.type}</div>
+                        <div className={`text-xs font-semibold mt-0.5 ${s.type === "Discount" ? "text-emerald-700" : s.type === "Premium" ? "text-slate-700" : "text-amber-600"}`}>{s.type}</div>
                       </div>
                       <div className="text-xs font-bold text-slate-700 text-right">
                         {s.tipical_shop}<span className="text-slate-400 font-normal">/week</span>
                       </div>
                     </div>
                     <div className="text-xs text-slate-500 mb-1">📍 {s.locations}</div>
-                    <div className="text-xs text-slate-600 italic">{s.verdict}</div>
+                    <div className="text-xs text-slate-700 italic">{s.verdict}</div>
                   </div>
                 ))}
               </div>
@@ -260,7 +245,7 @@ export default function CostOfLivingPage() {
                   { item: "Farmers' market veg box", price: "£12–20" },
                 ].map((p) => (
                   <div key={p.item} className="bg-slate-50 rounded-lg p-3">
-                    <div className="text-xs text-slate-600">{p.item}</div>
+                    <div className="text-xs text-slate-700">{p.item}</div>
                     <div className="text-xs font-bold text-slate-900 mt-0.5">{p.price}</div>
                   </div>
                 ))}
@@ -304,10 +289,10 @@ export default function CostOfLivingPage() {
                   <div key={u.utility} className="border border-slate-200 rounded-xl p-4">
                     <div className="flex items-start justify-between gap-2 mb-1.5">
                       <div className="font-bold text-slate-900 text-sm">{u.utility}</div>
-                      <span className="text-xs font-bold text-green-700 bg-green-50 px-2 py-0.5 rounded-full flex-shrink-0">{u.cost}</span>
+                      <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full flex-shrink-0">{u.cost}</span>
                     </div>
-                    <p className="text-xs text-slate-600 leading-relaxed mb-1.5">{u.note}</p>
-                    <div className="text-xs text-sky-600 bg-sky-50 rounded-lg px-2.5 py-1.5">💡 {u.tip}</div>
+                    <p className="text-xs text-slate-700 leading-relaxed mb-1.5">{u.note}</p>
+                    <div className="text-xs text-slate-700 bg-emerald-50 rounded-lg px-2.5 py-1.5">💡 {u.tip}</div>
                   </div>
                 ))}
               </div>
@@ -331,7 +316,7 @@ export default function CostOfLivingPage() {
                     <div className="font-semibold text-slate-900 text-xs">{fb.name}</div>
                     <div className="text-xs text-slate-500 mt-0.5">📍 {fb.locations}</div>
                     <div className="text-xs text-slate-500 mt-0.5">📞 {fb.contact}</div>
-                    <a href={fb.link} target="_blank" rel="noreferrer" className="text-xs font-bold text-green-600 hover:underline mt-1 inline-block">Website →</a>
+                    <a href={fb.link} target="_blank" rel="noreferrer" className="text-xs font-bold text-emerald-700 hover:underline mt-1 inline-block">Website →</a>
                   </div>
                 ))}
               </div>
@@ -359,10 +344,10 @@ export default function CostOfLivingPage() {
 
             <div className="bg-slate-900 text-white rounded-xl p-5">
               <strong className="text-sm">Free money/debt advice</strong>
-              <p className="text-xs text-slate-300 mt-1 mb-3">Citizens Advice Edinburgh offer free, confidential advice on all financial matters — benefits, debt, energy costs. No appointment needed for drop-in sessions.</p>
+              <p className="text-xs text-slate-200 mt-1 mb-3">Citizens Advice Edinburgh offer free, confidential advice on all financial matters — benefits, debt, energy costs. No appointment needed for drop-in sessions.</p>
               <div className="flex flex-wrap gap-2">
                 <a href="https://www.citizensadviceedinburgh.org.uk/" target="_blank" rel="noreferrer"
-                  className="text-xs font-bold bg-green-500 text-white px-3 py-2 rounded-lg hover:bg-green-600 transition-colors">
+                  className="text-xs font-bold bg-emerald-700 text-white px-3 py-2 rounded-lg hover:bg-emerald-700 transition-colors">
                   Citizens Advice Edinburgh →
                 </a>
                 <a href="https://www.stepchange.org/" target="_blank" rel="noreferrer"
@@ -377,7 +362,7 @@ export default function CostOfLivingPage() {
             </div>
           </div>
         )}
-      </div>
+      </Band>
     </div>
   );
 }

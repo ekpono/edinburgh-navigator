@@ -61,7 +61,7 @@ function TransportBadge({ tram, walkToCentre }: { tram: boolean; walkToCentre: n
   return (
     <div className="flex items-center gap-2 text-xs text-slate-500">
       <span title="Walk to centre">🚶 {walkToCentre} min</span>
-      {tram && <span title="Tram available" className="text-emerald-600 font-medium">🚋 Tram</span>}
+      {tram && <span title="Tram available" className="text-emerald-700 font-medium">🚋 Tram</span>}
     </div>
   );
 }
@@ -82,13 +82,13 @@ function NeighbourhoodCard({
   return (
     <div
       className={`group relative bg-white rounded-2xl shadow-sm border-2 transition-all duration-200 hover:shadow-lg hover:-translate-y-0.5 flex flex-col overflow-hidden ${
-        selected ? "border-slate-800 shadow-md" : "border-slate-100"
+        selected ? "border-slate-900 shadow-md" : "border-slate-100"
       }`}
     >
       {/* Colour accent bar */}
       <div
         className="h-1.5 w-full"
-        style={{ backgroundColor: n.color }}
+        style={{ backgroundColor: "var(--color-plum-600)" }}
       />
 
       {/* Selected badge */}
@@ -103,7 +103,7 @@ function NeighbourhoodCard({
         <div className="flex items-start gap-3 mb-3">
           <span
             className="text-3xl size-12 rounded-xl flex items-center justify-center flex-shrink-0"
-            style={{ backgroundColor: n.color + "18" }}
+            style={{ backgroundColor: "var(--color-plum-100)" }}
           >
             {n.emoji}
           </span>
@@ -114,14 +114,14 @@ function NeighbourhoodCard({
         </div>
 
         {/* Description */}
-        <p className="text-sm text-slate-600 leading-relaxed mb-4 flex-1">
+        <p className="text-sm text-slate-700 leading-relaxed mb-4 flex-1">
           {n.description.split(".")[0]}.
         </p>
 
         {/* Stats row */}
         <div
           className="rounded-xl p-3 mb-4 grid grid-cols-2 gap-2"
-          style={{ backgroundColor: n.color + "10" }}
+          style={{ backgroundColor: "var(--color-plum-100)" }}
         >
           <div>
             <div className="text-xs text-slate-500 mb-0.5">Avg 1-bed</div>
@@ -144,8 +144,8 @@ function NeighbourhoodCard({
               key={tag}
               className="text-xs px-2 py-0.5 rounded-full font-medium"
               style={{
-                backgroundColor: n.color + "18",
-                color: n.color,
+                backgroundColor: "var(--color-plum-100)",
+                color: "var(--color-plum-600)",
               }}
             >
               {LIFESTYLE_LABELS[tag]}
@@ -163,7 +163,7 @@ function NeighbourhoodCard({
           <Link
             href={`/neighbourhoods/${n.slug}`}
             className="flex-1 text-center text-sm font-semibold py-2 px-3 rounded-xl text-white transition-opacity hover:opacity-90"
-            style={{ backgroundColor: n.color }}
+            style={{ backgroundColor: "var(--color-plum-600)" }}
           >
             View guide
           </Link>
@@ -172,10 +172,10 @@ function NeighbourhoodCard({
             disabled={compareDisabled && !selected}
             className={`text-sm font-medium py-2 px-3 rounded-xl border-2 transition-all ${
               selected
-                ? "border-slate-800 bg-slate-800 text-white"
+                ? "border-slate-900 bg-slate-900 text-white"
                 : compareDisabled
-                ? "border-slate-200 text-slate-300 cursor-not-allowed"
-                : "border-slate-200 text-slate-600 hover:border-slate-400 hover:text-slate-800"
+                ? "border-slate-200 text-slate-200 cursor-not-allowed"
+                : "border-slate-200 text-slate-700 hover:border-slate-400 hover:text-slate-900"
             }`}
             title={compareDisabled && !selected ? "Max 3 neighbourhoods" : "Add to comparison"}
           >
@@ -299,7 +299,7 @@ export default function NeighbourhoodGrid() {
               className={`text-xs font-medium px-3 py-1.5 rounded-full border transition-all ${
                 lifestyle === tag
                   ? "bg-slate-900 text-white border-slate-900"
-                  : "border-slate-200 text-slate-600 hover:border-slate-400 hover:text-slate-800 bg-white"
+                  : "border-slate-200 text-slate-700 hover:border-slate-400 hover:text-slate-900 bg-white"
               }`}
             >
               {LIFESTYLE_LABELS[tag]}
@@ -378,7 +378,7 @@ export default function NeighbourhoodGrid() {
               </div>
             ))}
           </div>
-          <div className="h-5 w-px bg-slate-600" />
+          <div className="h-5 w-px bg-slate-700" />
           <button
             onClick={() => setShowCompare(true)}
             className="text-sm font-bold bg-white text-slate-900 px-4 py-1.5 rounded-xl hover:bg-slate-100 transition-colors"

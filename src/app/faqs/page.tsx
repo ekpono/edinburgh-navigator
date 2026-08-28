@@ -3,16 +3,18 @@
 import { useState, useMemo } from "react";
 import { FAQS } from "@/lib/edinburgh-data";
 import PageHeader from "@/components/page-header";
+import Band from "@/components/band";
+import PageIntro from "@/components/page-intro";
 
 const CATEGORIES = ["All", "Housing", "Health", "Benefits", "Environment", "Council", "Youth"];
 
 const CATEGORY_COLOURS: Record<string, string> = {
-  Housing: "bg-sky-100 text-sky-800",
-  Health: "bg-rose-100 text-rose-800",
-  Benefits: "bg-violet-100 text-violet-800",
-  Environment: "bg-emerald-100 text-emerald-800",
-  Council: "bg-amber-100 text-amber-800",
-  Youth: "bg-purple-100 text-purple-800",
+  Housing: "bg-emerald-50 text-emerald-900",
+  Health: "bg-emerald-50 text-emerald-900",
+  Benefits: "bg-emerald-50 text-emerald-900",
+  Environment: "bg-emerald-50 text-emerald-900",
+  Council: "bg-amber-50 text-amber-800",
+  Youth: "bg-emerald-50 text-emerald-900",
 };
 
 export default function FaqsPage() {
@@ -30,30 +32,20 @@ export default function FaqsPage() {
   }, [query, category]);
 
   return (
-    <div className="min-h-full bg-slate-50">
-      <PageHeader title="Council FAQs" subtitle="Common questions answered for Edinburgh residents" />
+    <div className="min-h-full">
+      <PageHeader section="Reference" title="Council FAQs" subtitle="Common questions answered for Edinburgh residents" />
 
-      <div className="p-5 w-full max-w-6xl mx-auto">
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 mb-5">
-          <h1 className="text-2xl font-bold text-slate-900 mb-2">Council <span className="text-sky-500">FAQs.</span></h1>
-          <p className="text-sm text-slate-600">Answers to the most common questions about living in Edinburgh — housing, health, benefits, council services, and more.</p>
-
-          <div className="mt-4">
-            <input
-              type="search"
-              value={query}
-              onChange={(e) => { setQuery(e.target.value); setOpenIndex(null); }}
-              placeholder="Search questions… e.g. 'deposit', 'GP', 'council tax'"
-              className="w-full border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
-            />
-          </div>
-        </div>
+            <PageIntro label="In brief">
+        Answers to the most common questions about living in Edinburgh — housing, health, benefits, council services, and more.
+      </PageIntro>
+      <Band label="Answers" ground="paper">
+        
 
         {/* Category filter */}
         <div className="flex flex-wrap gap-2 mb-5">
           {CATEGORIES.map((cat) => (
             <button key={cat} onClick={() => { setCategory(cat); setOpenIndex(null); }}
-              className={`px-4 py-2 rounded-full text-xs font-semibold border transition-all ${category === cat ? "bg-slate-900 text-white border-slate-900" : "bg-white text-slate-600 border-slate-200 hover:border-slate-400"}`}>
+              className={`px-4 py-2 rounded-full text-xs font-semibold border transition-all ${category === cat ? "bg-slate-900 text-white border-slate-900" : "bg-white text-slate-700 border-slate-200 hover:border-slate-400"}`}>
               {cat}
               {cat !== "All" && (
                 <span className="ml-1.5 opacity-60">
@@ -78,7 +70,7 @@ export default function FaqsPage() {
             <div className="font-bold text-slate-900 text-sm mb-1">No results found</div>
             <p className="text-xs text-slate-500">Try different keywords or browse all categories.</p>
             <button onClick={() => { setQuery(""); setCategory("All"); }}
-              className="mt-3 text-xs font-semibold text-sky-600 hover:underline">
+              className="mt-3 text-xs font-semibold text-slate-700 hover:underline">
               Clear search
             </button>
           </div>
@@ -125,7 +117,7 @@ export default function FaqsPage() {
 
         <div className="mt-6 bg-slate-900 text-white rounded-xl p-5">
           <h3 className="font-bold text-sm mb-1">Can't find the answer?</h3>
-          <p className="text-xs text-slate-300 mb-3">Citizens Advice Edinburgh can help with almost any question about living in Edinburgh — housing, benefits, employment, debt, and more.</p>
+          <p className="text-xs text-slate-200 mb-3">Citizens Advice Edinburgh can help with almost any question about living in Edinburgh — housing, benefits, employment, debt, and more.</p>
           <div className="flex flex-wrap gap-3">
             <div>
               <div className="text-xs text-slate-400">Phone</div>
@@ -137,11 +129,11 @@ export default function FaqsPage() {
             </div>
           </div>
           <a href="https://www.edinburgh.gov.uk" target="_blank" rel="noreferrer"
-            className="inline-block mt-3 text-xs font-bold text-sky-400 hover:underline">
+            className="inline-block mt-3 text-xs font-bold text-slate-700 hover:underline">
             Edinburgh Council website →
           </a>
         </div>
-      </div>
+      </Band>
     </div>
   );
 }

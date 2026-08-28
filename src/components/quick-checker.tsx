@@ -30,7 +30,7 @@ export default function QuickChecker({
   return (
     <div className="bg-white rounded-2xl border border-slate-200 p-5">
       <h3 className="text-sm font-bold text-slate-900">{title}</h3>
-      <p className="text-sm text-slate-600 mt-1">{question}</p>
+      <p className="text-sm text-slate-700 mt-1">{question}</p>
 
       <div className="mt-4 flex gap-2">
         <button

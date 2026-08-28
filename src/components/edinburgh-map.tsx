@@ -4,11 +4,11 @@ import { useEffect, useRef } from "react";
 import { MAP_LOCATIONS } from "@/lib/edinburgh-data";
 
 const CATEGORY_COLORS: Record<string, string> = {
-  library: "#7c3aed",
-  health: "#dc2626",
-  community: "#2563eb",
-  park: "#16a34a",
-  employment: "#d97706",
+  library: "var(--color-plum-600)",
+  health: "var(--color-red-600)",
+  community: "var(--color-emerald-700)",
+  park: "var(--color-emerald-700)",
+  employment: "var(--color-amber-600)",
 };
 
 export default function EdinburghMap() {
@@ -46,7 +46,7 @@ export default function EdinburghMap() {
       }).addTo(map);
 
       MAP_LOCATIONS.forEach((loc) => {
-        const color = CATEGORY_COLORS[loc.category] || "#64748b";
+        const color = CATEGORY_COLORS[loc.category] || "var(--color-slate-500)";
         const icon = Leaflet.divIcon({
           html: `<div style="background:${color};color:white;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,0.3);">${loc.emoji}</div>`,
           className: "",
@@ -59,9 +59,9 @@ export default function EdinburghMap() {
           .addTo(map)
           .bindPopup(`
             <div style="min-width:180px;font-family:sans-serif;">
-              <strong style="font-size:13px;color:#0f172a;">${loc.emoji} ${loc.name}</strong>
-              <p style="font-size:11px;color:#64748b;margin:4px 0 0;">${loc.address}</p>
-              <p style="font-size:11px;color:#475569;margin:4px 0 0;">${loc.note}</p>
+              <strong style="font-size:13px;color:var(--color-slate-900);">${loc.emoji} ${loc.name}</strong>
+              <p style="font-size:11px;color:var(--color-slate-500);margin:4px 0 0;">${loc.address}</p>
+              <p style="font-size:11px;color:var(--color-slate-700);margin:4px 0 0;">${loc.note}</p>
             </div>
           `);
       });

@@ -164,14 +164,14 @@ export default function Sherlock() {
                   />
                 </div>
                 <div className="text-center">
-                  <p className="text-base font-semibold text-slate-800">Ask me anything about Edinburgh</p>
+                  <p className="text-base font-semibold text-slate-900">Ask me anything about Edinburgh</p>
                   <p className="text-sm text-slate-400 mt-1">
                     Housing, health, transport, benefits, things to do…
                   </p>
                 </div>
                 {pathname !== "/" && (
                   <div className="inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200 rounded-full px-4 py-1.5">
-                    <span className="size-2 rounded-full bg-emerald-400" />
+                    <span className="size-2 rounded-full bg-emerald-700" />
                     <span className="text-sm text-slate-500">
                       Context: <span className="font-medium text-slate-700">{getPageLabel(pathname)}</span>
                     </span>
@@ -191,7 +191,7 @@ export default function Sherlock() {
                       className={`max-w-[85%] rounded-3xl px-4 py-3 text-base leading-relaxed whitespace-pre-wrap ${
                         msg.role === "user"
                           ? "bg-slate-900 text-white rounded-br-md"
-                          : "bg-slate-50 border border-slate-200 text-slate-800 rounded-bl-md"
+                          : "bg-slate-50 border border-slate-200 text-slate-900 rounded-bl-md"
                       }`}
                     >
                       {msg.text}
@@ -267,7 +267,7 @@ export default function Sherlock() {
       {open && (
         <button
           onClick={() => setOpen(false)}
-          className="size-10 rounded-full bg-white/90 hover:bg-white text-slate-600 flex items-center justify-center transition-colors shadow-lg border border-slate-200"
+          className="size-10 rounded-full bg-white/90 hover:bg-white text-slate-700 flex items-center justify-center transition-colors shadow-lg border border-slate-200"
           aria-label="Close Sherlock"
         >
           <svg className="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

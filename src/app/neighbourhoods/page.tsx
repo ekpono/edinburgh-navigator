@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { NEIGHBOURHOODS, avgRent } from "@/lib/neighbourhoods";
 import NeighbourhoodGrid from "@/components/neighbourhood-grid";
+import PageHeader from "@/components/page-header";
+import Band from "@/components/band";
 
 export const metadata: Metadata = {
   title: "Neighbourhood Guide — Edinburgh Navigator",
@@ -14,47 +16,38 @@ const tramNeighbourhoods = NEIGHBOURHOODS.filter((n) => n.transport.tram).length
 
 export default function NeighbourhoodsPage() {
   return (
-    <div className="min-h-screen bg-slate-50">
-      {/* Hero */}
-      <section className="bg-slate-900 text-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 sm:py-20">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-white/10 text-white/80 text-xs font-medium px-3 py-1.5 rounded-full mb-5">
-              <span>🏰</span>
-              Edinburgh Neighbourhood Guide
-            </div>
-            <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-4">
-              Find your{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-teal-400">
-                Edinburgh
-              </span>
-            </h1>
-            <p className="text-lg text-slate-300 leading-relaxed max-w-2xl">
-              Moving to Edinburgh? Every neighbourhood tells a different story. We&apos;ve
-              researched all 20 to give you honest, practical breakdowns — rents, transport,
-              vibe scores, and who each area actually suits.
-            </p>
+    <div className="min-h-full">
+      <PageHeader
+        section="Getting about"
+        title="Find your Edinburgh"
+        subtitle="Honest breakdowns of all 20 neighbourhoods — rents, transport, vibe, and who each area actually suits"
+      />
 
-            {/* Quick stats */}
-            <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {[
-                { value: `${NEIGHBOURHOODS.length}`, label: "Areas covered" },
-                { value: `£${lowestRent}`, label: "Lowest 1-bed from" },
-                { value: `${tramNeighbourhoods}`, label: "Tram-connected" },
-                { value: "6", label: "Vibe dimensions" },
-              ].map(({ value, label }) => (
-                <div key={label} className="bg-white/5 rounded-xl p-4 border border-white/10">
-                  <div className="text-2xl font-bold text-white">{value}</div>
-                  <div className="text-xs text-slate-400 mt-0.5">{label}</div>
-                </div>
-              ))}
+      <Band label="At a glance" meta={`${NEIGHBOURHOODS.length} areas`} ground="ink">
+        <p className="text-lg text-white/70 leading-relaxed max-w-2xl">
+          Moving to Edinburgh? Every neighbourhood tells a different story. We&apos;ve
+          researched all 20 to give you honest, practical breakdowns — rents, transport,
+          vibe scores, and who each area actually suits.
+        </p>
+        <div className="mt-9 grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-6">
+          {[
+            { value: `${NEIGHBOURHOODS.length}`, label: "Areas covered" },
+            { value: `£${lowestRent}`, label: "Lowest 1-bed from" },
+            { value: `${tramNeighbourhoods}`, label: "Tram-connected" },
+            { value: "6", label: "Vibe dimensions" },
+          ].map(({ value, label }) => (
+            <div key={label} className="border-t-2 border-amber-400 pt-3">
+              <div className="display text-3xl text-white tabular-nums">{value}</div>
+              <div className="mt-1.5 font-mono text-[0.625rem] uppercase tracking-[0.14em] text-amber-400">
+                {label}
+              </div>
             </div>
-          </div>
+          ))}
         </div>
-      </section>
+      </Band>
 
       {/* Scottish context banner */}
-      <section className="bg-amber-50 border-b border-amber-100">
+      <section className="bg-amber-50 border-b border-amber-50">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3">
           <p className="text-xs text-amber-800 flex items-start sm:items-center gap-2">
             <span className="text-base flex-shrink-0">⚖️</span>
@@ -74,12 +67,12 @@ export default function NeighbourhoodsPage() {
         {/* How to use tip */}
         <div className="bg-white rounded-2xl border border-slate-200 p-4 mb-8 flex items-start gap-3">
           <span className="text-xl flex-shrink-0">💡</span>
-          <div className="text-sm text-slate-600">
-            <strong className="text-slate-800">How to use this guide:</strong> Use the filters
+          <div className="text-sm text-slate-700">
+            <strong className="text-slate-900">How to use this guide:</strong> Use the filters
             below to narrow by area, budget, and lifestyle. Hit the{" "}
-            <strong className="text-slate-800">+ button</strong> on up to 3 cards to compare
+            <strong className="text-slate-900">+ button</strong> on up to 3 cards to compare
             them side by side. Click{" "}
-            <strong className="text-slate-800">View guide</strong> for the full neighbourhood
+            <strong className="text-slate-900">View guide</strong> for the full neighbourhood
             breakdown.
           </div>
         </div>

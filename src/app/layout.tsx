@@ -1,11 +1,25 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Bricolage_Grotesque, Literata, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/sidebar";
 import Sherlock from "@/components/sherlock";
 
-const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
+// Bricolage Grotesque: a display grotesque with real quirks in it — the
+// headline face. Narrowed via `wdth` so it reads like painted fascia lettering.
+const display = Bricolage_Grotesque({
+  variable: "--font-display-face",
+  subsets: ["latin"],
+  axes: ["opsz", "wdth"],
+});
+// Literata: a serif drawn for screen reading. Prose face — this app is read
+// by people working out whether they can be evicted, not skimmed.
+const body = Literata({ variable: "--font-body", subsets: ["latin"] });
+// IBM Plex Mono: labels, and the numbers people dial under pressure.
+const mono = IBM_Plex_Mono({
+  variable: "--font-mono-face",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
 
 const BASE_URL = "https://edinburghnavigator.com";
 
@@ -86,32 +100,44 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-GB" className={`${geistSans.variable} ${geistMono.variable} h-full`}>
+    <html lang="en-GB" className={`${display.variable} ${body.variable} ${mono.variable} h-full`}>
       <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="h-full antialiased bg-slate-100">
+      <body className="h-full antialiased bg-slate-50">
         <div className="flex h-full">
           <Sidebar />
           <main className="flex-1 overflow-y-auto min-h-full pt-14 md:pt-0">
             {children}
             <Sherlock />
-            <footer className="mt-10 border-t border-slate-200 bg-white">
-              <div className="px-5 py-8">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-                  <div>
-                    <div className="text-sm font-semibold text-slate-900">Edinburgh Navigator</div>
-                    <div className="text-xs text-slate-500 mt-1">Practical help for Edinburgh residents and visitors.</div>
+            <footer className="band band-ink">
+              <div className="band-inner py-10">
+                <div className="split">
+                  <div className="split-label">
+                    <span className="eyebrow eyebrow-dark">Edinburgh Navigator</span>
                   </div>
-                  <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500">
-                    <span>© 2026- Present</span>
-                    <span className="text-slate-300">•</span>
-                    <span>Supporting the community</span>
-                    <span className="text-slate-300">•</span>
-                    <span>Made with ❤️ by <a href="https://github.com/ekpono/" target="_blank" rel="noreferrer" className="font-semibold hover:underline">Ambrose</a></span>
+                  <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+                    <p className="text-sm text-slate-200 max-w-sm leading-relaxed">
+                      Practical help for Edinburgh residents and visitors. Every
+                      listing carries the date it was last checked.
+                    </p>
+                    <div className="font-mono text-xs text-slate-400 leading-relaxed sm:text-right">
+                      <div>© 2026 — present</div>
+                      <div className="mt-1">
+                        Built by{" "}
+                        <a
+                          href="https://github.com/ekpono/"
+                          target="_blank"
+                          rel="noreferrer"
+                          className="text-amber-400 hover:underline"
+                        >
+                          Ambrose
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>

@@ -61,7 +61,7 @@ export default function SavePlaceButton({ service }: { service: Service }) {
       className={`inline-flex items-center gap-1 rounded-lg border px-3 py-1.5 font-semibold text-sm transition-colors ${
         saved
           ? "border-emerald-200 bg-emerald-50 text-emerald-700"
-          : "border-slate-200 text-slate-600 hover:border-slate-400"
+          : "border-slate-200 text-slate-700 hover:border-slate-400"
       }`}
     >
       {saved ? "Saved" : "Save"}

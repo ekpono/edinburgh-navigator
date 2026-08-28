@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import PageHeader from "@/components/page-header";
+import Band from "@/components/band";
+import PageIntro from "@/components/page-intro";
 import SectionTabs from "@/components/section-tabs";
 
 const TABS = [
@@ -75,35 +77,18 @@ export default function SchoolsPage() {
   const [tab, setTab] = useState("catchment");
 
   return (
-    <div className="min-h-full bg-slate-50">
+    <div className="min-h-full">
       <PageHeader
+        section="Home & health"
         title="Schools & Catchment Areas"
         subtitle="Find schools, check catchments, and understand your rights"
       />
 
-      <div className="p-5 w-full max-w-6xl mx-auto">
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 mb-5">
-          <h1 className="text-2xl font-bold text-slate-900 mb-2">
-            Edinburgh <span className="text-blue-500">Schools.</span>
-          </h1>
-          <p className="text-sm text-slate-600">
-            Edinburgh City Council operates 98 primary schools and 23 secondary schools. All council schools are free. Your child's school is determined by your home address — unless you apply for a placing request.
-          </p>
-          <div className="mt-4 grid grid-cols-2 sm:grid-cols-4 gap-2">
-            {[
-              { label: "Primary schools", value: "98", note: "Council-run, free" },
-              { label: "Secondary schools", value: "23", note: "Including RC schools" },
-              { label: "Gaelic-medium", value: "3", note: "Gaelic-medium units" },
-              { label: "Free school meals", value: "P1–P5", note: "Universal free meals" },
-            ].map((s) => (
-              <div key={s.label} className="bg-blue-50 border border-blue-200 rounded-xl p-3 text-center">
-                <div className="text-lg font-bold text-blue-700">{s.value}</div>
-                <div className="text-xs font-semibold text-slate-800 mt-0.5">{s.label}</div>
-                <div className="text-xs text-slate-500 mt-0.5">{s.note}</div>
-              </div>
-            ))}
-          </div>
-        </div>
+            <PageIntro label="In brief">
+        Edinburgh City Council operates 98 primary schools and 23 secondary schools. All council schools are free. Your child's school is determined by your home address — unless you apply for a placing request.
+      </PageIntro>
+      <Band label="Family" ground="paper">
+        
 
         <SectionTabs tabs={TABS} active={tab} onChange={setTab} />
 
@@ -118,16 +103,16 @@ export default function SchoolsPage() {
                 href="https://www.edinburgh.gov.uk/schoolcatchments"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 bg-blue-600 text-white text-sm font-bold px-5 py-3 rounded-xl hover:bg-blue-700 transition-colors"
+                className="inline-flex items-center gap-2 bg-slate-900 text-white text-sm font-bold px-5 py-3 rounded-xl hover:bg-slate-900 transition-colors"
               >
                 🗺️ Open Edinburgh Catchment Finder →
               </a>
               <p className="text-xs text-slate-400 mt-3">Opens the official Edinburgh City Council tool — enter any EH postcode to get your catchment schools.</p>
             </div>
 
-            <div className="bg-blue-50 border border-blue-200 rounded-xl p-5">
-              <h3 className="font-bold text-blue-900 text-sm mb-2">What is a catchment area?</h3>
-              <p className="text-xs text-blue-800 leading-relaxed mb-3">
+            <div className="border-l-2 border-emerald-700 bg-emerald-50 px-5 py-4 max-w-3xl">
+              <h3 className="font-bold text-emerald-900 text-sm mb-2">What is a catchment area?</h3>
+              <p className="text-xs text-emerald-900 leading-relaxed mb-3">
                 Every address in Edinburgh is assigned to a specific primary school and secondary school. Children living in that area have a <strong>right to a place</strong> at their catchment school. If you want a different school, you must apply through a <strong>placing request</strong>.
               </p>
               <div className="space-y-2">
@@ -137,9 +122,9 @@ export default function SchoolsPage() {
                   { q: "Do siblings get priority?", a: "Yes. Siblings of children already attending a school (including RC schools) get priority in placing requests, even if outside the catchment." },
                   { q: "What about RC (Catholic) schools?", a: "RC schools serve a wider geographic area based on parish boundaries, not street-by-street catchments. Priority is given to baptised Catholics." },
                 ].map((item) => (
-                  <div key={item.q} className="bg-white rounded-lg p-3 border border-blue-100">
+                  <div key={item.q} className="bg-white rounded-lg p-3 border border-emerald-50">
                     <div className="font-semibold text-slate-900 text-xs mb-0.5">{item.q}</div>
-                    <div className="text-xs text-slate-600 leading-relaxed">{item.a}</div>
+                    <div className="text-xs text-slate-700 leading-relaxed">{item.a}</div>
                   </div>
                 ))}
               </div>
@@ -159,9 +144,9 @@ export default function SchoolsPage() {
                       <div className="text-xs text-slate-500 mt-0.5">{c.note}</div>
                     </div>
                     {c.type === "phone" ? (
-                      <a href={`tel:${c.contact}`} className="text-xs font-mono font-bold text-blue-600 flex-shrink-0">{c.contact}</a>
+                      <a href={`tel:${c.contact}`} className="text-xs font-mono font-bold text-slate-700 flex-shrink-0">{c.contact}</a>
                     ) : (
-                      <a href={c.contact} target="_blank" rel="noreferrer" className="text-xs font-bold text-blue-600 flex-shrink-0 hover:underline">Visit →</a>
+                      <a href={c.contact} target="_blank" rel="noreferrer" className="text-xs font-bold text-slate-700 flex-shrink-0 hover:underline">Visit →</a>
                     )}
                   </div>
                 ))}
@@ -173,7 +158,7 @@ export default function SchoolsPage() {
         {tab === "primaries" && (
           <div className="space-y-4">
             <div className="bg-white rounded-xl border border-slate-200 p-4">
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <p className="text-xs text-slate-700 leading-relaxed">
                 Edinburgh has 98 primary schools across the city. Schools are non-denominational (non-denom) unless marked as RC (Roman Catholic). All council schools are free. Primary education covers Primary 1 (age 5) to Primary 7 (age 12).
               </p>
             </div>
@@ -185,15 +170,15 @@ export default function SchoolsPage() {
                 <div className="p-4 grid sm:grid-cols-2 gap-2">
                   {area.schools.map((school) => (
                     <div key={school} className="flex items-center gap-2 text-xs text-slate-700">
-                      <span className="size-1.5 rounded-full bg-blue-400 flex-shrink-0" />
+                      <span className="size-1.5 rounded-full bg-slate-400 flex-shrink-0" />
                       {school}
                     </div>
                   ))}
                 </div>
               </div>
             ))}
-            <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
-              <p className="text-xs text-blue-800">
+            <div className="border-l-2 border-emerald-700 bg-emerald-50 px-5 py-4 max-w-3xl">
+              <p className="text-[0.9375rem] text-emerald-900 leading-relaxed">
                 <strong>Full list:</strong> Edinburgh has 98 primary schools — see the complete list at{" "}
                 <a href="https://www.edinburgh.gov.uk/directory/10/schools" target="_blank" rel="noreferrer" className="font-bold underline">edinburgh.gov.uk/directory/10/schools</a>
               </p>
@@ -204,7 +189,7 @@ export default function SchoolsPage() {
         {tab === "secondaries" && (
           <div className="space-y-4">
             <div className="bg-white rounded-xl border border-slate-200 p-4">
-              <p className="text-xs text-slate-600 leading-relaxed">
+              <p className="text-xs text-slate-700 leading-relaxed">
                 Edinburgh has 23 secondary schools (S1–S6, ages 12–18). All state secondaries are free. Most are non-denominational; two are Roman Catholic. Secondary school is determined by which primary school your child attends — each primary has a named secondary it feeds into.
               </p>
             </div>
@@ -218,12 +203,12 @@ export default function SchoolsPage() {
                 {SECONDARIES.map((s) => (
                   <div key={s.name} className="px-4 py-3 grid grid-cols-3 gap-2 items-start">
                     <a href={s.link} target="_blank" rel="noreferrer"
-                      className="text-xs font-semibold text-blue-600 hover:underline leading-tight">
+                      className="text-xs font-semibold text-slate-700 hover:underline leading-tight">
                       {s.name}
                     </a>
                     <div className="text-xs text-slate-500 leading-relaxed">{s.area}</div>
                     <div>
-                      <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${s.type === "RC" ? "bg-yellow-100 text-yellow-800" : "bg-slate-100 text-slate-600"}`}>
+                      <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${s.type === "RC" ? "bg-amber-50 text-amber-800" : "bg-slate-100 text-slate-700"}`}>
                         {s.type}
                       </span>
                     </div>
@@ -231,8 +216,8 @@ export default function SchoolsPage() {
                 ))}
               </div>
             </div>
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
-              <strong className="text-xs text-amber-900">Gaelic-medium secondary education</strong>
+            <div className="border-l-2 border-amber-600 bg-amber-50 px-5 py-4 max-w-3xl">
+              <strong className="text-xs text-amber-800">Gaelic-medium secondary education</strong>
               <p className="text-xs text-amber-800 mt-1 leading-relaxed">
                 Boroughmuir High School offers a Gaelic-medium stream for pupils from Taobh na Pàirce (James Gillespie's), Bun-sgoil Taobh na Pàirce, and Bun-sgoil Ghàidhlig Dhùn Èideann. Contact the council's Gaelic team on 0131 469 3000.
               </p>
@@ -253,7 +238,7 @@ export default function SchoolsPage() {
                   { step: "5", title: "In-year transfers", desc: "If you move house or need to change schools during the year, contact the School Placement Team on 0131 469 3000.", when: "Any time" },
                 ].map((step) => (
                   <div key={step.step} className="flex gap-4">
-                    <div className="size-7 rounded-full bg-blue-600 text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
+                    <div className="size-7 rounded-full bg-slate-900 text-white flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
                       {step.step}
                     </div>
                     <div className="flex-1">
@@ -261,7 +246,7 @@ export default function SchoolsPage() {
                         <div className="font-bold text-slate-900 text-sm">{step.title}</div>
                         <span className="text-xs bg-slate-100 text-slate-500 px-2 py-0.5 rounded-full">{step.when}</span>
                       </div>
-                      <p className="text-xs text-slate-600 leading-relaxed">{step.desc}</p>
+                      <p className="text-xs text-slate-700 leading-relaxed">{step.desc}</p>
                     </div>
                   </div>
                 ))}
@@ -279,7 +264,7 @@ export default function SchoolsPage() {
                 { date: "August 2025", event: "New school year begins" },
               ].map((d) => (
                 <div key={d.event} className="flex gap-3 py-2 border-b border-slate-100 last:border-0">
-                  <div className="text-xs font-bold text-blue-600 w-36 flex-shrink-0">{d.date}</div>
+                  <div className="text-xs font-bold text-slate-700 w-36 flex-shrink-0">{d.date}</div>
                   <div className="text-xs text-slate-700">{d.event}</div>
                 </div>
               ))}
@@ -287,9 +272,9 @@ export default function SchoolsPage() {
 
             <div className="grid sm:grid-cols-2 gap-3">
               <a href="https://www.edinburgh.gov.uk/schools-learning/apply-school-place" target="_blank" rel="noreferrer"
-                className="bg-blue-600 text-white rounded-xl p-4 block hover:bg-blue-700 transition-colors">
+                className="bg-slate-900 text-white rounded-xl p-4 block hover:bg-slate-900 transition-colors">
                 <div className="font-bold text-sm mb-1">Apply for a school place</div>
-                <div className="text-xs text-blue-200">Official council application portal →</div>
+                <div className="text-xs text-slate-200">Official council application portal →</div>
               </a>
               <a href="https://www.edinburgh.gov.uk/schools-learning/school-placing-requests" target="_blank" rel="noreferrer"
                 className="bg-white border border-slate-200 rounded-xl p-4 block hover:shadow-sm transition-shadow">
@@ -304,7 +289,7 @@ export default function SchoolsPage() {
           <div className="space-y-4">
             <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5">
               <h3 className="font-bold text-emerald-900 text-sm mb-2">🍽️ Free School Meals</h3>
-              <p className="text-xs text-emerald-800 leading-relaxed">
+              <p className="text-xs text-emerald-900 leading-relaxed">
                 <strong>All Primary 1–5 children in Scotland get free school meals</strong> — regardless of household income. This is a Scottish Government commitment and covers a nutritious hot meal every school day. P6 and P7 pupils from low-income families may also qualify — check via the council.
               </p>
               <a href="https://www.edinburgh.gov.uk/schools-learning/free-school-meals" target="_blank" rel="noreferrer"
@@ -313,7 +298,7 @@ export default function SchoolsPage() {
 
             <div className="bg-white rounded-xl border border-slate-200 p-5">
               <h3 className="font-bold text-slate-900 text-sm mb-3">Additional Support Needs (ASN)</h3>
-              <p className="text-xs text-slate-600 leading-relaxed mb-3">
+              <p className="text-xs text-slate-700 leading-relaxed mb-3">
                 The Education (Additional Support for Learning) (Scotland) Act 2009 gives children with additional support needs legal rights to appropriate support. This includes children with dyslexia, autism, physical disabilities, English as an additional language, and many other needs.
               </p>
               <div className="space-y-2">
@@ -330,12 +315,12 @@ export default function SchoolsPage() {
                 ))}
               </div>
               <a href="https://enquire.scot/" target="_blank" rel="noreferrer"
-                className="inline-block mt-3 text-xs font-bold text-blue-600 hover:underline">Enquire Scotland — free ASN advice →</a>
+                className="inline-block mt-3 text-xs font-bold text-slate-700 hover:underline">Enquire Scotland — free ASN advice →</a>
             </div>
 
             <div className="bg-white rounded-xl border border-slate-200 p-5">
               <h3 className="font-bold text-slate-900 text-sm mb-3">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Gaelic-Medium Education</h3>
-              <p className="text-xs text-slate-600 leading-relaxed mb-3">
+              <p className="text-xs text-slate-700 leading-relaxed mb-3">
                 Edinburgh has one of the fastest-growing Gaelic-medium education sectors in Scotland. Children learn all subjects through the medium of Scottish Gaelic — no prior knowledge required.
               </p>
               {[
@@ -351,7 +336,7 @@ export default function SchoolsPage() {
                 </div>
               ))}
               <a href="https://www.edinburgh.gov.uk/gaelic-education" target="_blank" rel="noreferrer"
-                className="inline-block mt-3 text-xs font-bold text-blue-600 hover:underline">Edinburgh Gaelic education guide →</a>
+                className="inline-block mt-3 text-xs font-bold text-slate-700 hover:underline">Edinburgh Gaelic education guide →</a>
             </div>
 
             <div className="bg-white rounded-xl border border-slate-200 p-5">
@@ -372,7 +357,7 @@ export default function SchoolsPage() {
             </div>
           </div>
         )}
-      </div>
+      </Band>
     </div>
   );
 }

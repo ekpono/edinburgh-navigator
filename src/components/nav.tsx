@@ -45,12 +45,12 @@ export default function Nav() {
                   className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
                     active
                       ? "bg-white/10 text-white"
-                      : "text-slate-300 hover:text-white hover:bg-white/5"
+                      : "text-slate-200 hover:text-white hover:bg-white/5"
                   } ${link.soon ? "opacity-50 cursor-not-allowed" : ""}`}
                 >
                   {link.label}
                   {link.soon && (
-                    <span className="ml-1.5 text-xs bg-slate-700 text-slate-300 px-1.5 py-0.5 rounded-full">
+                    <span className="ml-1.5 text-xs bg-slate-700 text-slate-200 px-1.5 py-0.5 rounded-full">
                       soon
                     </span>
                   )}
@@ -61,7 +61,7 @@ export default function Nav() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
+            className="md:hidden p-2 rounded-lg text-slate-200 hover:text-white hover:bg-white/10 transition-colors"
             onClick={() => setOpen(!open)}
             aria-label="Toggle menu"
           >
@@ -90,7 +90,7 @@ export default function Nav() {
                   className={`flex items-center justify-between px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
                     active
                       ? "bg-white/10 text-white"
-                      : "text-slate-300 hover:text-white hover:bg-white/5"
+                      : "text-slate-200 hover:text-white hover:bg-white/5"
                   }`}
                 >
                   {link.label}

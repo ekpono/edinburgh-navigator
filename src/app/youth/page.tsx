@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { YOUTH_SERVICES, YOUTH_RIGHTS } from "@/lib/edinburgh-data";
 import PageHeader from "@/components/page-header";
+import Band from "@/components/band";
+import PageIntro from "@/components/page-intro";
 import SectionTabs from "@/components/section-tabs";
 
 const TABS = [
@@ -16,17 +18,14 @@ export default function YouthPage() {
   const [tab, setTab] = useState("rights");
 
   return (
-    <div className="min-h-full bg-slate-50">
-      <PageHeader title="Youth & Rights" subtitle="For young people in Edinburgh" />
+    <div className="min-h-full">
+      <PageHeader section="The city" title="Youth & Rights" subtitle="For young people in Edinburgh" />
 
-      <div className="p-5 w-full max-w-6xl mx-auto">
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 mb-5">
-          <h1 className="text-2xl font-bold text-slate-900 mb-2">Youth <span className="text-purple-500">& Rights.</span></h1>
-          <p className="text-sm text-slate-600">Rights, entitlements, and support for young people in Edinburgh and Scotland.</p>
-          <div className="mt-3 bg-purple-50 border border-purple-200 rounded-xl p-3">
-            <p className="text-xs text-purple-900"><strong>🚌 Free buses for under-22s:</strong> All young people under 22 in Scotland get free bus travel. Apply for your Young Persons Free Bus Pass at transport.gov.scot.</p>
-          </div>
-        </div>
+            <PageIntro label="In brief" note={<><strong>Free buses for under-22s:</strong> All young people under 22 in Scotland get free bus travel. Apply for your Young Persons Free Bus Pass at transport.gov.scot.</>}>
+        Rights, entitlements, and support for young people in Edinburgh and Scotland.
+      </PageIntro>
+      <Band label="Young people" ground="paper">
+        
 
         <SectionTabs tabs={TABS} active={tab} onChange={setTab} />
 
@@ -34,14 +33,14 @@ export default function YouthPage() {
           <div className="space-y-3">
             {YOUTH_RIGHTS.map((r, i) => (
               <div key={i} className="bg-white rounded-xl border border-slate-200 p-4">
-                <strong className="text-sm text-purple-700">{r.title}</strong>
-                <p className="text-xs text-slate-600 mt-2 leading-relaxed">{r.body}</p>
+                <strong className="text-sm text-emerald-700">{r.title}</strong>
+                <p className="text-xs text-slate-700 mt-2 leading-relaxed">{r.body}</p>
               </div>
             ))}
             <div className="bg-slate-900 text-white rounded-xl p-4">
               <strong className="text-sm">🪪 Young Scot Card</strong>
-              <p className="text-xs text-slate-300 mt-1">Free national card for 11–26 year olds in Scotland — discounts on transport, food, cinema, sport, and culture. Also a digital ID. Apply free at youngscot.net.</p>
-              <a href="https://youngscot.net" target="_blank" rel="noreferrer" className="inline-block mt-2 text-xs font-bold text-purple-400 hover:underline">Apply free →</a>
+              <p className="text-xs text-slate-200 mt-1">Free national card for 11–26 year olds in Scotland — discounts on transport, food, cinema, sport, and culture. Also a digital ID. Apply free at youngscot.net.</p>
+              <a href="https://youngscot.net" target="_blank" rel="noreferrer" className="inline-block mt-2 text-xs font-bold text-slate-700 hover:underline">Apply free →</a>
             </div>
           </div>
         )}
@@ -57,8 +56,8 @@ export default function YouthPage() {
               { title: "Care Experienced Students", body: "If you have been in care, you are entitled to additional support at university including a bursary of at least £8,100 per year from SAAS, priority accommodation, and year-round housing support. Contact your university's widening participation team." },
             ].map((item, i) => (
               <div key={i} className="bg-white rounded-xl border border-slate-200 p-4">
-                <strong className="text-sm text-sky-700">{item.title}</strong>
-                <p className="text-xs text-slate-600 mt-2 leading-relaxed">{item.body}</p>
+                <strong className="text-sm text-emerald-700">{item.title}</strong>
+                <p className="text-xs text-slate-700 mt-2 leading-relaxed">{item.body}</p>
               </div>
             ))}
           </div>
@@ -70,12 +69,12 @@ export default function YouthPage() {
               <div key={s.name} className="bg-white rounded-xl border border-slate-200 p-4">
                 <div className="font-bold text-slate-900 text-sm">{s.name}</div>
                 <div className="text-xs text-slate-500 mt-1 leading-relaxed">{s.focus}</div>
-                <a href={s.link} target="_blank" rel="noreferrer" className="text-xs font-semibold text-purple-600 hover:underline mt-2 inline-block">Visit →</a>
+                <a href={s.link} target="_blank" rel="noreferrer" className="text-xs font-semibold text-slate-700 hover:underline mt-2 inline-block">Visit →</a>
               </div>
             ))}
-            <div className="bg-purple-50 border border-purple-200 rounded-xl p-4">
-              <strong className="text-sm text-purple-900">Edinburgh Youth Guarantee</strong>
-              <p className="text-xs text-purple-800 mt-1 leading-relaxed">Edinburgh's commitment to every young person aged 16–24 having a positive destination — work, training, or education. If you need support, contact edinburgh.gov.uk/youth-guarantee or call 0131 469 3500.</p>
+            <div className="border-l-2 border-emerald-700 bg-emerald-50 px-5 py-4 max-w-3xl">
+              <strong className="text-sm text-emerald-900">Edinburgh Youth Guarantee</strong>
+              <p className="text-xs text-emerald-900 mt-1 leading-relaxed">Edinburgh's commitment to every young person aged 16–24 having a positive destination — work, training, or education. If you need support, contact edinburgh.gov.uk/youth-guarantee or call 0131 469 3500.</p>
             </div>
           </div>
         )}
@@ -91,10 +90,10 @@ export default function YouthPage() {
                   { name: "Childline", desc: "Free, confidential support for children and young people, any time.", num: "0800 1111" },
                   { name: "Samaritans", desc: "Listening support for anyone in distress, 24/7, free, any age.", num: "116 123" },
                 ].map((item) => (
-                  <div key={item.num} className="bg-purple-50 border border-purple-200 rounded-xl p-3">
+                  <div key={item.num} className="border-l-2 border-emerald-700 bg-emerald-50 px-5 py-4 max-w-3xl">
                     <div className="font-bold text-slate-900 text-xs mb-1">{item.name}</div>
-                    <div className="text-xs text-slate-600 mb-2">{item.desc}</div>
-                    <div className="font-mono font-bold text-sm text-purple-800">{item.num}</div>
+                    <div className="text-xs text-slate-700 mb-2">{item.desc}</div>
+                    <div className="font-mono font-bold text-sm text-emerald-900">{item.num}</div>
                   </div>
                 ))}
               </div>
@@ -108,12 +107,12 @@ export default function YouthPage() {
               <div key={org.name} className="bg-white rounded-xl border border-slate-200 p-4">
                 <div className="font-bold text-slate-900 text-sm">{org.name}</div>
                 <div className="text-xs text-slate-500 mt-1 leading-relaxed">{org.desc}</div>
-                <a href={org.link} target="_blank" rel="noreferrer" className="text-xs font-semibold text-purple-600 hover:underline mt-2 inline-block">Visit →</a>
+                <a href={org.link} target="_blank" rel="noreferrer" className="text-xs font-semibold text-slate-700 hover:underline mt-2 inline-block">Visit →</a>
               </div>
             ))}
           </div>
         )}
-      </div>
+      </Band>
     </div>
   );
 }

@@ -82,38 +82,32 @@ export default function SupportFinder() {
   }
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+    <div className="border-t-2 border-slate-900">
       {/* Header */}
-      <div className="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
+      <div className="py-4 flex items-start justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2">
-            <div className="size-2 rounded-full bg-emerald-400 animate-pulse" />
-            <h3 className="font-bold text-slate-900 text-base">AI Assistant</h3>
-          </div>
-          <p className="text-xs text-slate-500 mt-0.5">Ask anything about living in Edinburgh — housing, health, benefits, transport</p>
+          <h3 className="display text-xl text-slate-900">Ask the directory</h3>
+          <p className="text-sm text-slate-700 mt-1 leading-relaxed">
+            Housing law, NHS Lothian, Scottish benefits, transport — answered for Edinburgh specifically.
+          </p>
         </div>
         {started && (
-          <button onClick={reset} className="text-xs text-slate-400 hover:text-slate-600 transition-colors flex-shrink-0 ml-3">
-            Clear chat
+          <button onClick={reset} className="flex-shrink-0 font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-slate-500 hover:text-slate-900 transition-colors">
+            Clear
           </button>
         )}
       </div>
 
       {/* Messages */}
       {started ? (
-        <div className="px-5 py-4 space-y-4 max-h-96 overflow-y-auto">
+        <div className="py-4 space-y-4 max-h-96 overflow-y-auto">
           {messages.map((msg, i) => (
             <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-              {msg.role === "assistant" && (
-                <div className="size-7 rounded-full bg-slate-900 flex items-center justify-center text-xs flex-shrink-0 mr-2 mt-0.5">
-                  🏰
-                </div>
-              )}
               <div
-                className={`max-w-[82%] rounded-2xl px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap ${
+                className={`max-w-[82%] px-4 py-3 text-sm leading-relaxed whitespace-pre-wrap ${
                   msg.role === "user"
-                    ? "bg-slate-900 text-white rounded-br-sm"
-                    : "bg-slate-50 border border-slate-200 text-slate-800 rounded-bl-sm"
+                    ? "bg-slate-900 text-white"
+                    : "bg-slate-50 border-l-2 border-amber-600 text-slate-900"
                 }`}
               >
                 {msg.text}
@@ -123,10 +117,7 @@ export default function SupportFinder() {
 
           {loading && (
             <div className="flex justify-start">
-              <div className="size-7 rounded-full bg-slate-900 flex items-center justify-center text-xs flex-shrink-0 mr-2 mt-0.5">
-                🏰
-              </div>
-              <div className="bg-slate-50 border border-slate-200 rounded-2xl rounded-bl-sm px-4 py-3">
+              <div className="bg-slate-50 border-l-2 border-amber-600 px-4 py-3">
                 <div className="flex items-center gap-1.5">
                   <span className="size-1.5 rounded-full bg-slate-400 animate-bounce" style={{ animationDelay: "0ms" }} />
                   <span className="size-1.5 rounded-full bg-slate-400 animate-bounce" style={{ animationDelay: "150ms" }} />
@@ -138,19 +129,18 @@ export default function SupportFinder() {
         </div>
       ) : (
         /* Welcome / suggestions */
-        <div className="px-5 py-5">
-          <p className="text-sm text-slate-600 mb-4">
-            I know Edinburgh's housing law, NHS Lothian, Scottish benefits, transport, and more.
-            What do you need help with?
-          </p>
-          <div className="flex flex-wrap gap-2">
+        <div className="pb-2">
+          <div className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-slate-500 pb-2 border-b border-slate-200">
+            What people ask
+          </div>
+          <div className="entries">
             {SUGGESTIONS.map((s) => (
               <button
                 key={s}
                 onClick={() => send(s)}
-                className="text-xs bg-slate-50 border border-slate-200 text-slate-700 px-3 py-1.5 rounded-full hover:bg-slate-100 hover:border-slate-300 transition-all text-left"
+                className="entry w-full text-left text-[0.9375rem] text-slate-900 py-2.5 hover:text-plum-700 transition-colors group"
               >
-                {s}
+                <span className="group-hover:underline decoration-amber-600 decoration-2 underline-offset-4">{s}</span>
               </button>
             ))}
           </div>
@@ -158,7 +148,7 @@ export default function SupportFinder() {
       )}
 
       {/* Input */}
-      <div className="px-4 py-3 border-t border-slate-100 bg-slate-50/50">
+      <div className="mt-4 pt-4 border-t border-slate-200">
         <div className="flex items-center gap-2">
           <input
             ref={inputRef}
@@ -168,23 +158,21 @@ export default function SupportFinder() {
             onKeyDown={handleKey}
             placeholder="Ask anything about Edinburgh…"
             disabled={loading}
-            className="flex-1 text-sm border border-slate-200 rounded-xl px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-slate-900 disabled:opacity-50 bg-white placeholder:text-slate-400"
+            className="flex-1 text-[0.9375rem] border border-slate-200 px-4 py-2.5 disabled:opacity-50 bg-white placeholder:text-slate-400"
           />
           <button
             onClick={() => send(input)}
             disabled={!input.trim() || loading}
-            className="size-10 rounded-xl bg-slate-900 text-white flex items-center justify-center hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors flex-shrink-0"
+            className="h-[2.875rem] px-5 bg-slate-900 text-white font-semibold text-sm flex items-center justify-center hover:bg-plum-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors flex-shrink-0"
             aria-label="Send"
           >
-            <svg className="size-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-            </svg>
+            Ask
           </button>
         </div>
         <div className="flex items-center justify-between mt-2">
-          <p className="text-xs text-slate-400">Press Enter to send · Scottish law applies</p>
-          <Link href="/crisis" className="text-xs text-red-500 font-semibold hover:underline">
-            In crisis? →
+          <p className="font-mono text-[0.6875rem] text-slate-500">Enter to send · Scottish law applies</p>
+          <Link href="/crisis" className="font-mono text-[0.6875rem] uppercase tracking-[0.12em] text-red-700 font-semibold hover:underline">
+            In crisis?
           </Link>
         </div>
       </div>

@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { COUNCIL_TAX_BANDS, COUNCIL_TAX_EXEMPTIONS, BUDGET_FACTS } from "@/lib/edinburgh-data";
 import PageHeader from "@/components/page-header";
+import Band from "@/components/band";
+import PageIntro from "@/components/page-intro";
 import SectionTabs from "@/components/section-tabs";
 
 const TABS = [
@@ -45,28 +47,14 @@ export default function BudgetPage() {
     }).format(value);
 
   return (
-    <div className="min-h-full bg-slate-50">
-      <PageHeader title="Tax & Budget" subtitle="Council tax, spending, and financial help" />
+    <div className="min-h-full">
+      <PageHeader section="Money" title="Tax & Budget" subtitle="Council tax, spending, and financial help" />
 
-      <div className="p-5 w-full max-w-6xl mx-auto">
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 mb-5">
-          <h1 className="text-2xl font-bold text-slate-900 mb-2">Tax <span className="text-amber-500">& Budget.</span></h1>
-          <p className="text-sm text-slate-600">Edinburgh's council tax funds schools, roads, care, and housing. Understand what you pay and how to reduce it.</p>
-          <div className="mt-3 grid sm:grid-cols-3 gap-3">
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 text-center">
-              <div className="text-xl font-bold text-amber-700">{BUDGET_FACTS.annualBudget}</div>
-              <div className="text-xs text-amber-800 mt-0.5">Annual budget</div>
-            </div>
-            <div className="bg-red-50 border border-red-200 rounded-xl p-3 text-center">
-              <div className="text-xl font-bold text-red-700">{BUDGET_FACTS.gap}</div>
-              <div className="text-xs text-red-800 mt-0.5">Funding gap</div>
-            </div>
-            <div className="bg-slate-100 border border-slate-200 rounded-xl p-3 text-center">
-              <div className="text-xl font-bold text-slate-700">{BUDGET_FACTS.councilTaxIncrease2024}</div>
-              <div className="text-xs text-slate-600 mt-0.5">Recent increase</div>
-            </div>
-          </div>
-        </div>
+            <PageIntro label="In brief">
+        Edinburgh's council tax funds schools, roads, care, and housing. Understand what you pay and how to reduce it.
+      </PageIntro>
+      <Band label="Money" ground="paper">
+        
 
         <SectionTabs tabs={TABS} active={tab} onChange={setTab} />
 
@@ -76,7 +64,7 @@ export default function BudgetPage() {
               <h3 className="font-bold text-slate-900 text-sm mb-1">Check Your Band</h3>
               <p className="text-xs text-slate-500 mb-3">Your council tax band is based on your property's 1991 valuation. Check it at the Scottish Assessors Association.</p>
               <a href="https://www.saa.gov.uk/" target="_blank" rel="noreferrer"
-                className="inline-block bg-amber-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl hover:bg-amber-700 transition-colors">
+                className="inline-block bg-amber-600 text-white text-xs font-bold px-4 py-2.5 rounded-xl hover:bg-amber-800 transition-colors">
                 Check your band at saa.gov.uk →
               </a>
             </div>
@@ -98,8 +86,8 @@ export default function BudgetPage() {
                   {COUNCIL_TAX_BANDS.map((row, i) => (
                     <tr key={row.band} className={`border-b border-slate-100 last:border-0 text-xs ${i % 2 === 0 ? "bg-white" : "bg-slate-50/50"}`}>
                       <td className="px-5 py-3 font-bold text-slate-900">Band {row.band}</td>
-                      <td className="px-5 py-3 text-right font-semibold text-amber-700">{row.annual}</td>
-                      <td className="px-5 py-3 text-right text-slate-600">{row.monthly}</td>
+                      <td className="px-5 py-3 text-right font-semibold text-amber-800">{row.annual}</td>
+                      <td className="px-5 py-3 text-right text-slate-700">{row.monthly}</td>
                       <td className="px-5 py-3 text-slate-500 hidden sm:table-cell">
                         {row.band === "A" ? "Smallest flats" :
                          row.band === "B" ? "Smaller flats/houses" :
@@ -124,7 +112,7 @@ export default function BudgetPage() {
                 </div>
                 <div className="text-right">
                   <div className="text-xs text-slate-500">Estimated annual tax</div>
-                  <div className="text-lg font-bold text-amber-700">{formatMoney(totalTax)}</div>
+                  <div className="text-lg font-bold text-amber-800">{formatMoney(totalTax)}</div>
                 </div>
               </div>
               <div className="mt-4 grid sm:grid-cols-3 gap-3">
@@ -153,10 +141,10 @@ export default function BudgetPage() {
                 </div>
                 <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
                   <div className="text-xs text-amber-800">Effective tax rate</div>
-                  <div className="text-sm font-bold text-amber-900 mt-1">
+                  <div className="text-sm font-bold text-amber-800 mt-1">
                     {annualIncome > 0 ? `${((totalTax / annualIncome) * 100).toFixed(1)}%` : "0.0%"}
                   </div>
-                  <div className="text-[11px] text-amber-700 mt-1">Approx monthly tax: {formatMoney(totalTax / 12)}</div>
+                  <div className="text-[11px] text-amber-800 mt-1">Approx monthly tax: {formatMoney(totalTax / 12)}</div>
                 </div>
               </div>
               <div className="mt-4 grid sm:grid-cols-3 gap-2">
@@ -190,10 +178,10 @@ export default function BudgetPage() {
               </div>
             </div>
 
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
-              <strong className="text-sm text-amber-900">Appeal your band</strong>
+            <div className="border-l-2 border-amber-600 bg-amber-50 px-5 py-4 max-w-3xl">
+              <strong className="text-sm text-amber-800">Appeal your band</strong>
               <p className="text-xs text-amber-800 mt-1 leading-relaxed">If you think your property is in the wrong band, you can appeal to the Scottish Assessors Association within 6 months of moving in, or at any time if you think the band is wrong. Around 1 in 5 appeals succeed in Scotland.</p>
-              <a href="https://www.saa.gov.uk/" target="_blank" rel="noreferrer" className="inline-block mt-2 text-xs font-bold text-amber-700 hover:underline">Appeal at saa.gov.uk →</a>
+              <a href="https://www.saa.gov.uk/" target="_blank" rel="noreferrer" className="inline-block mt-2 text-xs font-bold text-amber-800 hover:underline">Appeal at saa.gov.uk →</a>
             </div>
           </div>
         )}
@@ -203,18 +191,18 @@ export default function BudgetPage() {
             <div className="bg-white rounded-xl border border-slate-200 p-5">
               <h3 className="font-bold text-slate-900 text-sm mb-4">How Edinburgh Spends Your Money</h3>
               {[
-                { label: "Education & Schools", pct: 38, colour: "bg-blue-500", detail: "The largest single spend — Edinburgh employs thousands of teachers and runs 100+ schools." },
-                { label: "Health & Social Care", pct: 22, colour: "bg-rose-500", detail: "Adult social care, Edinburgh Integration Joint Board, and community health services." },
-                { label: "Infrastructure & Roads", pct: 11, colour: "bg-amber-500", detail: "Potholes, streetlights, bridges, pavements, and major road projects." },
-                { label: "Housing & Homelessness", pct: 9, colour: "bg-teal-500", detail: `Homeless prevention, ${BUDGET_FACTS.housingSpend} housing programme over 5 years.` },
-                { label: "Environment & Waste", pct: 8, colour: "bg-emerald-500", detail: "Bin collections, recycling centres, parks, and environmental health." },
-                { label: "Culture & Leisure", pct: 7, colour: "bg-violet-500", detail: "Libraries, leisure centres, museums, and Edinburgh's festival support." },
+                { label: "Education & Schools", pct: 38, colour: "bg-slate-900", detail: "The largest single spend — Edinburgh employs thousands of teachers and runs 100+ schools." },
+                { label: "Health & Social Care", pct: 22, colour: "bg-slate-900", detail: "Adult social care, Edinburgh Integration Joint Board, and community health services." },
+                { label: "Infrastructure & Roads", pct: 11, colour: "bg-amber-600", detail: "Potholes, streetlights, bridges, pavements, and major road projects." },
+                { label: "Housing & Homelessness", pct: 9, colour: "bg-slate-900", detail: `Homeless prevention, ${BUDGET_FACTS.housingSpend} housing programme over 5 years.` },
+                { label: "Environment & Waste", pct: 8, colour: "bg-emerald-700", detail: "Bin collections, recycling centres, parks, and environmental health." },
+                { label: "Culture & Leisure", pct: 7, colour: "bg-slate-900", detail: "Libraries, leisure centres, museums, and Edinburgh's festival support." },
                 { label: "Corporate & Other", pct: 5, colour: "bg-slate-400", detail: "IT, HR, finance, legal, and Council administrative costs." },
               ].map((item) => (
                 <div key={item.label} className="mb-4">
                   <div className="flex justify-between items-center mb-1">
-                    <span className="text-xs font-semibold text-slate-800">{item.label}</span>
-                    <span className="text-xs font-bold text-slate-600">{item.pct}%</span>
+                    <span className="text-xs font-semibold text-slate-900">{item.label}</span>
+                    <span className="text-xs font-bold text-slate-700">{item.pct}%</span>
                   </div>
                   <div className="w-full bg-slate-100 rounded-full h-2 mb-1.5">
                     <div className={`${item.colour} h-2 rounded-full transition-all`} style={{ width: `${item.pct}%` }} />
@@ -233,7 +221,7 @@ export default function BudgetPage() {
                   { source: "Fees, charges & ring-fenced grants", pct: "14%" },
                 ].map((s) => (
                   <div key={s.source} className="flex justify-between text-xs">
-                    <span className="text-slate-300">{s.source}</span>
+                    <span className="text-slate-200">{s.source}</span>
                     <span className="font-bold text-white">{s.pct}</span>
                   </div>
                 ))}
@@ -245,8 +233,8 @@ export default function BudgetPage() {
         {tab === "pressures" && (
           <div className="space-y-4">
             <div className="bg-red-50 border border-red-200 rounded-xl p-5">
-              <h3 className="font-bold text-red-900 text-sm mb-2">Edinburgh's {BUDGET_FACTS.gap} Funding Gap</h3>
-              <p className="text-xs text-red-800 leading-relaxed">Like most Scottish councils, Edinburgh faces a structural funding gap — costs rising faster than income. This affects services across the city. The council raises council tax and cuts discretionary spending to bridge the gap each year.</p>
+              <h3 className="font-bold text-red-700 text-sm mb-2">Edinburgh's {BUDGET_FACTS.gap} Funding Gap</h3>
+              <p className="text-xs text-red-700 leading-relaxed">Like most Scottish councils, Edinburgh faces a structural funding gap — costs rising faster than income. This affects services across the city. The council raises council tax and cuts discretionary spending to bridge the gap each year.</p>
             </div>
             {[
               {
@@ -286,7 +274,7 @@ export default function BudgetPage() {
                 <h3 className="font-bold text-slate-900 text-sm mb-3">{section.emoji} {section.title}</h3>
                 <ul className="space-y-1.5">
                   {section.items.map((item) => (
-                    <li key={item} className="text-xs text-slate-600 flex items-start gap-2">
+                    <li key={item} className="text-xs text-slate-700 flex items-start gap-2">
                       <span className="text-slate-400 mt-0.5">•</span>
                       {item}
                     </li>
@@ -296,14 +284,14 @@ export default function BudgetPage() {
             ))}
             <div className="bg-white rounded-xl border border-slate-200 p-4">
               <h3 className="font-bold text-slate-900 text-sm mb-2">Have your say</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">Edinburgh Council consults residents on budget decisions each autumn. You can respond to consultations, attend public meetings, and contact your local councillor.</p>
+              <p className="text-xs text-slate-700 leading-relaxed">Edinburgh Council consults residents on budget decisions each autumn. You can respond to consultations, attend public meetings, and contact your local councillor.</p>
               <div className="flex flex-wrap gap-2 mt-3">
                 <a href="https://www.edinburgh.gov.uk/budget" target="_blank" rel="noreferrer"
                   className="text-xs font-bold bg-slate-900 text-white px-3 py-1.5 rounded-lg hover:bg-slate-700 transition-colors">
                   Budget consultation →
                 </a>
                 <a href="https://www.edinburgh.gov.uk/councillors" target="_blank" rel="noreferrer"
-                  className="text-xs font-bold border border-slate-300 text-slate-700 px-3 py-1.5 rounded-lg hover:bg-slate-50 transition-colors">
+                  className="text-xs font-bold border border-slate-200 text-slate-700 px-3 py-1.5 rounded-lg hover:bg-slate-50 transition-colors">
                   Find your councillor →
                 </a>
               </div>
@@ -313,10 +301,10 @@ export default function BudgetPage() {
 
         {tab === "help" && (
           <div className="space-y-4">
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
-              <strong className="text-sm text-amber-900">Struggling to pay council tax?</strong>
+            <div className="border-l-2 border-amber-600 bg-amber-50 px-5 py-4 max-w-3xl">
+              <strong className="text-sm text-amber-800">Struggling to pay council tax?</strong>
               <p className="text-xs text-amber-800 mt-1 leading-relaxed">Contact Edinburgh Council immediately — do not ignore bills. They can set up payment plans, check your eligibility for reductions, and refer you to further support.</p>
-              <div className="font-mono font-bold text-sm text-amber-900 mt-2">0131 608 1111</div>
+              <div className="font-mono font-bold text-sm text-amber-800 mt-2">0131 608 1111</div>
             </div>
 
             {[
@@ -326,7 +314,7 @@ export default function BudgetPage() {
                 link: "https://www.edinburgh.gov.uk/council-tax-reduction",
                 linkLabel: "Apply for CTR →",
                 badge: "Up to 100% off",
-                badgeColour: "bg-emerald-100 text-emerald-800",
+                badgeColour: "bg-emerald-50 text-emerald-900",
               },
               {
                 title: "Scottish Welfare Fund (Crisis Grants)",
@@ -334,7 +322,7 @@ export default function BudgetPage() {
                 link: "https://www.edinburgh.gov.uk/scottish-welfare-fund",
                 linkLabel: "Apply for crisis grant →",
                 badge: "One-off grant",
-                badgeColour: "bg-blue-100 text-blue-800",
+                badgeColour: "bg-emerald-50 text-emerald-900",
               },
               {
                 title: "Discretionary Housing Payment",
@@ -342,7 +330,7 @@ export default function BudgetPage() {
                 link: "https://www.edinburgh.gov.uk/discretionary-housing-payment",
                 linkLabel: "Apply →",
                 badge: "Rent support",
-                badgeColour: "bg-violet-100 text-violet-800",
+                badgeColour: "bg-emerald-50 text-emerald-900",
               },
               {
                 title: "Fuel Poverty Support",
@@ -350,7 +338,7 @@ export default function BudgetPage() {
                 link: "https://www.homeenergyscotland.org/",
                 linkLabel: "Get energy help →",
                 badge: "Heating & bills",
-                badgeColour: "bg-orange-100 text-orange-800",
+                badgeColour: "bg-emerald-50 text-emerald-900",
               },
               {
                 title: "Edinburgh Foodbanks",
@@ -358,7 +346,7 @@ export default function BudgetPage() {
                 link: "https://www.edinburgh.gov.uk/emergency-food",
                 linkLabel: "Find your nearest →",
                 badge: "Food",
-                badgeColour: "bg-rose-100 text-rose-800",
+                badgeColour: "bg-emerald-50 text-emerald-900",
               },
               {
                 title: "Citizens Advice Edinburgh — Free Benefits Check",
@@ -366,7 +354,7 @@ export default function BudgetPage() {
                 link: "https://www.cas.org.uk/bureaux/edinburgh",
                 linkLabel: "Book a check →",
                 badge: "Free advice",
-                badgeColour: "bg-teal-100 text-teal-800",
+                badgeColour: "bg-emerald-50 text-emerald-900",
               },
             ].map((item) => (
               <div key={item.title} className="bg-white rounded-xl border border-slate-200 p-4">
@@ -375,17 +363,17 @@ export default function BudgetPage() {
                   <div className={`text-xs font-semibold px-2 py-0.5 rounded-full flex-shrink-0 ${item.badgeColour}`}>{item.badge}</div>
                 </div>
                 <p className="text-xs text-slate-500 leading-relaxed">{item.desc}</p>
-                <a href={item.link} target="_blank" rel="noreferrer" className="inline-block mt-2 text-xs font-semibold text-amber-700 hover:underline">{item.linkLabel}</a>
+                <a href={item.link} target="_blank" rel="noreferrer" className="inline-block mt-2 text-xs font-semibold text-amber-800 hover:underline">{item.linkLabel}</a>
               </div>
             ))}
 
             <div className="bg-slate-900 text-white rounded-xl p-4">
               <strong className="text-sm">Universal Credit & Benefits Advice</strong>
-              <p className="text-xs text-slate-300 mt-1">For UC, DWP benefits, and Scottish benefits (ADP, Scottish Child Payment): Citizens Advice Edinburgh <strong>0131 557 1500</strong> or Social Security Scotland <strong>0800 182 2222</strong></p>
+              <p className="text-xs text-slate-200 mt-1">For UC, DWP benefits, and Scottish benefits (ADP, Scottish Child Payment): Citizens Advice Edinburgh <strong>0131 557 1500</strong> or Social Security Scotland <strong>0800 182 2222</strong></p>
             </div>
           </div>
         )}
-      </div>
+      </Band>
     </div>
   );
 }

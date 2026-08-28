@@ -11,22 +11,29 @@ interface SectionTabsProps {
   onChange: (id: string) => void;
 }
 
+/* Tabs sit on a rule and mark the current one with a brass underline, rather
+   than floating as a row of pills. */
 export default function SectionTabs({ tabs, active, onChange }: SectionTabsProps) {
   return (
-    <div className="flex flex-wrap gap-2 mb-5">
-      {tabs.map((t) => (
-        <button
-          key={t.id}
-          onClick={() => onChange(t.id)}
-          className={`px-4 py-2 rounded-full text-xs font-semibold border transition-all ${
-            active === t.id
-              ? "bg-slate-900 text-white border-slate-900"
-              : "bg-white text-slate-600 border-slate-200 hover:border-slate-400"
-          }`}
-        >
-          {t.label}
-        </button>
-      ))}
+    <div className="flex flex-wrap border-b border-slate-200 mb-7" role="tablist">
+      {tabs.map((t) => {
+        const selected = active === t.id;
+        return (
+          <button
+            key={t.id}
+            role="tab"
+            aria-selected={selected}
+            onClick={() => onChange(t.id)}
+            className={`relative -mb-px px-4 py-2.5 text-sm transition-colors ${
+              selected
+                ? "font-semibold text-slate-900 border-b-2 border-amber-600"
+                : "text-slate-500 border-b-2 border-transparent hover:text-slate-900 hover:border-slate-200"
+            }`}
+          >
+            {t.label}
+          </button>
+        );
+      })}
     </div>
   );
 }

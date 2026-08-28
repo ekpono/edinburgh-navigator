@@ -4,6 +4,8 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 import { CHARITY_ORGS, COMMUNITY_GROUPS, SERVICE_CONTACTS } from "@/lib/edinburgh-data";
 import PageHeader from "@/components/page-header";
+import Band from "@/components/band";
+import PageIntro from "@/components/page-intro";
 import SectionTabs from "@/components/section-tabs";
 import ServiceCard from "@/components/service-card";
 
@@ -23,14 +25,14 @@ export default function CommunityPage() {
   );
 
   return (
-    <div className="min-h-full bg-slate-50">
-      <PageHeader title="Community Hub" subtitle="Groups, events, and your local map" />
+    <div className="min-h-full">
+      <PageHeader section="The city" title="Community Hub" subtitle="Groups, events, and your local map" />
 
-      <div className="p-5 w-full max-w-6xl mx-auto">
-        <div className="bg-white rounded-2xl border border-slate-200 p-6 mb-5">
-          <h1 className="text-2xl font-bold text-slate-900 mb-2">Community <span className="text-teal-500">Hub.</span></h1>
-          <p className="text-sm text-slate-600">Find your community in Edinburgh — local groups, events, services and an interactive map of key locations.</p>
-        </div>
+            <PageIntro label="In brief">
+        Find your community in Edinburgh — local groups, events, services and an interactive map of key locations.
+      </PageIntro>
+      <Band label="Local" ground="paper">
+        
 
         <div className="grid gap-3 sm:grid-cols-2 mb-5">
           {keyServices.map((service) => (
@@ -61,7 +63,7 @@ export default function CommunityPage() {
               <div key={g.name} className="bg-white rounded-xl border border-slate-200 p-4">
                 <div className="font-bold text-slate-900 text-sm">{g.name}</div>
                 <div className="text-xs text-slate-500 mt-1 leading-relaxed">{g.focus}</div>
-                <a href={g.link} target="_blank" rel="noreferrer" className="text-xs font-semibold text-teal-600 hover:underline mt-2 inline-block">Visit →</a>
+                <a href={g.link} target="_blank" rel="noreferrer" className="text-xs font-semibold text-slate-700 hover:underline mt-2 inline-block">Visit →</a>
               </div>
             ))}
             <div className="bg-white rounded-xl border border-slate-200 p-4">
@@ -72,14 +74,14 @@ export default function CommunityPage() {
                   <div key={org.name} className="border border-slate-100 rounded-lg p-3">
                     <div className="text-xs font-semibold text-slate-900">{org.name}</div>
                     <div className="text-xs text-slate-500 mt-1 leading-relaxed">{org.focus}</div>
-                    <a href={org.link} target="_blank" rel="noreferrer" className="text-xs font-semibold text-teal-600 hover:underline mt-2 inline-block">Visit →</a>
+                    <a href={org.link} target="_blank" rel="noreferrer" className="text-xs font-semibold text-slate-700 hover:underline mt-2 inline-block">Visit →</a>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="bg-teal-50 border border-teal-200 rounded-xl p-4">
-              <strong className="text-sm text-teal-900">Community Councils</strong>
-              <p className="text-xs text-teal-800 mt-1 leading-relaxed">Edinburgh has 18 community councils — the grassroots democratic link between residents and the City Council. They hold public meetings, consult on planning, and run local campaigns. Find yours at edinburgh.gov.uk/community-councils.</p>
+            <div className="border-l-2 border-emerald-700 bg-emerald-50 px-5 py-4 max-w-3xl">
+              <strong className="text-sm text-emerald-900">Community Councils</strong>
+              <p className="text-xs text-emerald-900 mt-1 leading-relaxed">Edinburgh has 18 community councils — the grassroots democratic link between residents and the City Council. They hold public meetings, consult on planning, and run local campaigns. Find yours at edinburgh.gov.uk/community-councils.</p>
             </div>
           </div>
         )}
@@ -101,7 +103,7 @@ export default function CommunityPage() {
                       <div className="font-semibold text-slate-900 text-xs">{ev.name}</div>
                       <div className="text-xs text-slate-500 mt-0.5">{ev.desc}</div>
                     </div>
-                    <span className="text-xs text-teal-600 font-bold flex-shrink-0 ml-3">→</span>
+                    <span className="text-xs text-slate-700 font-bold flex-shrink-0 ml-3">→</span>
                   </a>
                 ))}
               </div>
@@ -121,7 +123,7 @@ export default function CommunityPage() {
                 <div key={item.event} className="flex items-center gap-3 py-2 border-b border-slate-100 last:border-0">
                   <div className="text-xs font-bold text-slate-500 w-16 flex-shrink-0">{item.month}</div>
                   <div className="text-xs text-slate-700 flex-1">{item.event}</div>
-                  <div className={`text-xs font-semibold px-2 py-0.5 rounded-full flex-shrink-0 ${item.free === true ? "bg-emerald-50 text-emerald-700" : item.free === false ? "text-slate-400" : "bg-amber-50 text-amber-700"}`}>
+                  <div className={`text-xs font-semibold px-2 py-0.5 rounded-full flex-shrink-0 ${item.free === true ? "bg-emerald-50 text-emerald-700" : item.free === false ? "text-slate-400" : "bg-amber-50 text-amber-800"}`}>
                     {item.free === true ? "Free" : item.free === false ? "Ticketed" : "Mixed"}
                   </div>
                 </div>
@@ -147,16 +149,16 @@ export default function CommunityPage() {
               { tradition: "Interfaith", place: "Interfaith Scotland", address: "Edinburgh office", note: "Builds understanding between faith communities across Scotland", link: "https://www.interfaithscotland.org/" },
             ].map((item) => (
               <div key={item.tradition} className="bg-white rounded-xl border border-slate-200 p-4">
-                <div className="text-xs font-bold text-teal-700 mb-0.5">{item.tradition}</div>
+                <div className="text-xs font-bold text-emerald-700 mb-0.5">{item.tradition}</div>
                 <div className="font-bold text-slate-900 text-sm">{item.place}</div>
                 <div className="text-xs text-slate-500 mt-0.5">📍 {item.address}</div>
-                <div className="text-xs text-slate-600 mt-1">{item.note}</div>
-                <a href={item.link} target="_blank" rel="noreferrer" className="text-xs font-semibold text-teal-600 hover:underline mt-1 inline-block">Visit →</a>
+                <div className="text-xs text-slate-700 mt-1">{item.note}</div>
+                <a href={item.link} target="_blank" rel="noreferrer" className="text-xs font-semibold text-slate-700 hover:underline mt-1 inline-block">Visit →</a>
               </div>
             ))}
           </div>
         )}
-      </div>
+      </Band>
     </div>
   );
 }
